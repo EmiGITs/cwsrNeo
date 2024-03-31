@@ -1,8 +1,12 @@
 package com.raptorbk.CyanWarriorSwordsRedux.core.init;
 
 
+import com.raptorbk.CyanWarriorSwordsRedux.customadv.Dualwieldachtrigger;
 import net.minecraft.advancements.Advancement;
 import net.minecraft.advancements.AdvancementProgress;
+import net.minecraft.advancements.CriteriaTriggers;
+import net.minecraft.advancements.Criterion;
+import net.minecraft.advancements.critereon.ImpossibleTrigger;
 import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.server.level.ServerLevel;
@@ -178,8 +182,10 @@ public class SWORD_CWSR extends SwordItem {
     public void unlockDWACH(Player entity, Level world){
         if(!(world instanceof ServerLevel)) return;
         ServerPlayer serverPlayer= (ServerPlayer) entity;
-
+        TriggerInit.DWE_TRIGGER.get().trigger(serverPlayer);
     }
+
+
 
     public InteractionResultHolder<ItemStack> callerRC(Level world, Player entity, InteractionHand handIn, ResourceLocation swordCH, int CooldownRC) {
 
@@ -187,6 +193,7 @@ public class SWORD_CWSR extends SwordItem {
         ItemStack OffHandItem = entity.getOffhandItem();
         ItemStack MainHandItem= entity.getMainHandItem();
         ItemStack ReturnableItem=null;
+
 
 
 

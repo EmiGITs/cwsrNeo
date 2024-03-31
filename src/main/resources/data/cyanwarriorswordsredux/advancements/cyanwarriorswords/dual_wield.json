@@ -1,0 +1,26 @@
+{
+  "parent": "cyanwarriorswordsredux:cyanwarriorswords/root",
+  "display": {
+    "icon": {
+      "item": "cwsr:synergy_totem"
+    },
+    "title": {
+      "translate": "advancements.cwsr.dual_wield.title"
+    },
+    "description": {
+      "translate": "advancements.cwsr.dual_wield.desc"
+    },
+    "frame": "task",
+    "show_toast": true,
+    "announce_to_chat": true,
+    "hidden": false
+  },
+  "rewards": {
+    "experience": 65
+  },
+  "criteria": {
+    "dual_wield": {
+      "trigger": "cwsr:dual_wield_ach_trigger"
+    }
+  }
+}

@@ -5,6 +5,7 @@ import com.raptorbk.CyanWarriorSwordsRedux.config.Config;
 import com.raptorbk.CyanWarriorSwordsRedux.config.ItemConfig;
 import com.raptorbk.CyanWarriorSwordsRedux.core.init.EnchantmentInit;
 import com.raptorbk.CyanWarriorSwordsRedux.core.init.ItemInit;
+import com.raptorbk.CyanWarriorSwordsRedux.core.init.TriggerInit;
 import com.raptorbk.CyanWarriorSwordsRedux.data.DataGenerators;
 import net.neoforged.bus.api.IEventBus;
 import net.neoforged.fml.ModList;
@@ -30,6 +31,8 @@ public class CyanWarriorSwordsRedux {
         ItemInit.ITEMS.register(bus);
 
         EnchantmentInit.ENCHANTMENTS.register(bus);
+
+        TriggerInit.TRIGGERS.register(bus);
 
         ModLoadingContext.get().registerConfig(ModConfig.Type.COMMON, Config.COMMON, "cwsr-common.toml");
         ModLoadingContext.get().registerConfig(ModConfig.Type.CLIENT, Config.CLIENT, "cwsr-client.toml");
