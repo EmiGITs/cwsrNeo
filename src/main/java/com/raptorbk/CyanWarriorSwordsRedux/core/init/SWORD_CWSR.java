@@ -168,6 +168,22 @@ public class SWORD_CWSR extends SwordItem {
         return isINH;
     }
 
+
+    public boolean lfActiveSinergyTotem(Player entity){
+        List<ItemStack> listItems = entity.getInventory().items;
+        boolean isACTIVE=false;
+        for (ItemStack temp : listItems) {
+            if(temp.getItem() instanceof ACTIVE_SYNERGY_TOTEM){
+                    isACTIVE=true;
+                break;
+            }
+        }
+        return isACTIVE;
+    }
+
+
+
+
     public boolean checkINH(ItemStack totemItem){
         Map<Enchantment, Integer> xEnc= EnchantmentHelper.getEnchantments(totemItem);
         if(xEnc.containsKey(EnchantmentInit.INH_ENCHANT.get())){
@@ -234,17 +250,24 @@ public class SWORD_CWSR extends SwordItem {
         //Si la espada se encuentra en la mano izquierda pero hay otra en la derecha, la derecha se encarga de todo
 
         if(Objects.equals(BuiltInRegistries.ITEM.getKey(OffHandItem.getItem()), swordCH)   && MainHandItem.getItem() instanceof SWORD_CWSR & !(Objects.equals(BuiltInRegistries.ITEM.getKey(OffHandItem.getItem()),BuiltInRegistries.ITEM.getKey(MainHandItem.getItem())))){
+            System.out.println("SPOOF1");
             return new InteractionResultHolder<>(InteractionResult.SUCCESS, ReturnableItem);
         }
 
         if(firstExec){
             if(!(MainHandItem.getItem() instanceof SWORD_CWSR)){  //Mano izquierda y en la derecha nada u otra cosa
+                System.out.println("SPOOF2");
                 entity.getCooldowns().addCooldown(ReturnableItem.getItem(), CooldownRC);
 
                 return eventRC(world,entity,handIn,ReturnableItem);
             }else if (MainHandItem.getItem() instanceof SWORD_CWSR && OffHandItem.getItem() instanceof SWORD_CWSR){{  //Las dos son espadas cwsr
+                System.out.println("SPOOF3");
                 if(!(entity.getCooldowns().isOnCooldown(OffHandItem.getItem()))){
-                    if(entity.getInventory().contains(ActiveSynergyTotemStack)){
+
+
+                    if(lfActiveSinergyTotem(entity)){
+
+                        System.out.println("SPOOF5");
                         if(!(Objects.equals(BuiltInRegistries.ITEM.getKey(OffHandItem.getItem()),BuiltInRegistries.ITEM.getKey(MainHandItem.getItem())))){
                             if(!blocker){
                                 ((SWORD_CWSR) OffHandItem.getItem()).setDamagePU();
@@ -252,6 +275,7 @@ public class SWORD_CWSR extends SwordItem {
                                 ((SWORD_CWSR) OffHandItem.getItem()).setCD();
                                 entity.getCooldowns().addCooldown(OffHandItem.getItem(), ((SWORD_CWSR) OffHandItem.getItem()).getSwordCD());
                                 ((SWORD_CWSR) OffHandItem.getItem()).eventRC(world, entity, handIn,OffHandItem);
+                                System.out.println("SPOOF4");
                                 unlockDWACH(entity,world);
                             }else{
                                 this.setBlocker(false);

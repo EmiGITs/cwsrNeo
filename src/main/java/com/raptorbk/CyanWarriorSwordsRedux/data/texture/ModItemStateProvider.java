@@ -16,6 +16,7 @@ public class ModItemStateProvider extends ItemModelProvider {
     @Override
     protected void registerModels() {
         item(ItemInit.FIRE_SWORD.get());
+        item(ItemInit.THUNDER_SWORD.get());
 
     }
 
