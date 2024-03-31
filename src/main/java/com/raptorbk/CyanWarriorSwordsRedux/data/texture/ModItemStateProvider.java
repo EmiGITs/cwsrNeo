@@ -17,6 +17,9 @@ public class ModItemStateProvider extends ItemModelProvider {
     protected void registerModels() {
         item(ItemInit.FIRE_SWORD.get());
         item(ItemInit.THUNDER_SWORD.get());
+        item(ItemInit.CYAN_SWORD.get());
+        item(ItemInit.SYNERGY_TOTEM.get());
+        item(ItemInit.ACTIVE_SYNERGY_TOTEM.get());
 
     }
 

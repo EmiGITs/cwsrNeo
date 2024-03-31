@@ -99,7 +99,7 @@ public class THUNDER_SWORD extends SWORD_CWSR {
 
         if(!lfAbilityTotem(entity) && ((entity.getMainHandItem() != entity.getItemInHand(handIn) && entity.getMainHandItem().getItem() instanceof SWORD_CWSR && lfActiveSinergyTotem(entity)) || entity.getMainHandItem() == entity.getItemInHand(handIn) || (entity.getOffhandItem()==entity.getItemInHand(handIn) && !(entity.getMainHandItem().getItem() instanceof SWORD_CWSR)))){
             currentSword.hurtAndBreak(SwordConfig.THUNDER_SWORD_USE_COST.get(),entity,Player -> {
-                //unlockDestroyACH(entity,world);
+                unlockDestroyACH(entity,world);
                 Player.broadcastBreakEvent(EquipmentSlot.MAINHAND);
             });
         }
@@ -148,6 +148,9 @@ public class THUNDER_SWORD extends SWORD_CWSR {
     @Override
     public boolean hurtEnemy(ItemStack stack, LivingEntity target, LivingEntity attacker){
         stack.hurtAndBreak(SwordConfig.ALL_SWORDS_HIT_COST.get(),attacker,Player -> {
+            if(attacker instanceof Player){
+                unlockDestroyACH((Player) attacker,attacker.getCommandSenderWorld());
+            }
             Player.broadcastBreakEvent(EquipmentSlot.MAINHAND);        });
         return true;
     }

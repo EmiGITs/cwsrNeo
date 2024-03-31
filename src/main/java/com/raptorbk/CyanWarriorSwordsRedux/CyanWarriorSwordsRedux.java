@@ -3,6 +3,7 @@ package com.raptorbk.CyanWarriorSwordsRedux;
 
 import com.raptorbk.CyanWarriorSwordsRedux.config.Config;
 import com.raptorbk.CyanWarriorSwordsRedux.config.ItemConfig;
+import com.raptorbk.CyanWarriorSwordsRedux.core.init.CreativeModeTabInit;
 import com.raptorbk.CyanWarriorSwordsRedux.core.init.EnchantmentInit;
 import com.raptorbk.CyanWarriorSwordsRedux.core.init.ItemInit;
 import com.raptorbk.CyanWarriorSwordsRedux.core.init.TriggerInit;
@@ -33,6 +34,8 @@ public class CyanWarriorSwordsRedux {
         EnchantmentInit.ENCHANTMENTS.register(bus);
 
         TriggerInit.TRIGGERS.register(bus);
+
+        CreativeModeTabInit.CREATIVE_MODE_TABS.register(bus);
 
         ModLoadingContext.get().registerConfig(ModConfig.Type.COMMON, Config.COMMON, "cwsr-common.toml");
         ModLoadingContext.get().registerConfig(ModConfig.Type.CLIENT, Config.CLIENT, "cwsr-client.toml");

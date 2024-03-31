@@ -197,6 +197,12 @@ public class SWORD_CWSR extends SwordItem {
         TriggerInit.DWE_TRIGGER.get().trigger(serverPlayer);
     }
 
+    public void unlockDestroyACH(Player entity, Level world){
+        if(!(world instanceof ServerLevel)) return;
+        ServerPlayer serverPlayer= (ServerPlayer) entity;
+        TriggerInit.SD_TRIGGER.get().trigger(serverPlayer);
+    }
+
 
 
     public InteractionResultHolder<ItemStack> callerRC(Level world, Player entity, InteractionHand handIn, ResourceLocation swordCH, int CooldownRC) {

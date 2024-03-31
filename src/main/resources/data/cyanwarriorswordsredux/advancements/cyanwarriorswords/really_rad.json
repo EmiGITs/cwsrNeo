@@ -1,0 +1,27 @@
+{
+  "parent": "cyanwarriorswordsredux:cyanwarriorswords/root",
+  "display": {
+    "icon": {
+      "item": "cwsr:cyan_sword",
+      "nbt": "{Damage:0}"
+    },
+    "title": {
+      "translate": "advancements.cwsr.really_rad.title"
+    },
+    "description": {
+      "translate": "advancements.cwsr.really_rad.desc"
+    },
+    "frame": "task",
+    "show_toast": true,
+    "announce_to_chat": true,
+    "hidden": false
+  },
+  "rewards": {
+    "experience": 65
+  },
+  "criteria": {
+    "really_rad": {
+      "trigger": "cwsr:really_rad_trigger"
+    }
+  }
+}
