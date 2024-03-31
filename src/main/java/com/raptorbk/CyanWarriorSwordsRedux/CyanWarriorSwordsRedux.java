@@ -1,13 +1,18 @@
 package com.raptorbk.CyanWarriorSwordsRedux;
 
 
+import com.raptorbk.CyanWarriorSwordsRedux.config.Config;
+import com.raptorbk.CyanWarriorSwordsRedux.config.ItemConfig;
 import com.raptorbk.CyanWarriorSwordsRedux.core.init.EnchantmentInit;
 import com.raptorbk.CyanWarriorSwordsRedux.core.init.ItemInit;
 import com.raptorbk.CyanWarriorSwordsRedux.data.DataGenerators;
 import net.neoforged.bus.api.IEventBus;
 import net.neoforged.fml.ModList;
+import net.neoforged.fml.ModLoadingContext;
 import net.neoforged.fml.common.Mod;
+import net.neoforged.fml.config.ModConfig;
 import net.neoforged.fml.event.lifecycle.FMLClientSetupEvent;
+import net.neoforged.fml.loading.FMLPaths;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -18,11 +23,21 @@ public class CyanWarriorSwordsRedux {
     public static Logger logger = LoggerFactory.getLogger(CyanWarriorSwordsRedux.class);
     public CyanWarriorSwordsRedux(IEventBus bus){
 
+        if(!ItemConfig.initialized){
+            ItemConfig.load();
+        }
+
         ItemInit.ITEMS.register(bus);
 
         EnchantmentInit.ENCHANTMENTS.register(bus);
 
+        ModLoadingContext.get().registerConfig(ModConfig.Type.COMMON, Config.COMMON, "cwsr-common.toml");
+        ModLoadingContext.get().registerConfig(ModConfig.Type.CLIENT, Config.CLIENT, "cwsr-client.toml");
+
         bus.addListener(DataGenerators::gatherData);
+
+        Config.loadConfig(Config.CLIENT, FMLPaths.CONFIGDIR.get().resolve("cwsr-client.toml").toString());
+        Config.loadConfig(Config.COMMON, FMLPaths.CONFIGDIR.get().resolve("cwsr-common.toml").toString());
 
         bus.addListener(FMLClientSetupEvent.class, (fmlClientSetupEvent -> {
             fmlClientSetupEvent.enqueueWork(() -> {

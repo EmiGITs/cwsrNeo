@@ -1,5 +1,6 @@
 package com.raptorbk.CyanWarriorSwordsRedux.core.init.swords.FireType;
 
+import com.raptorbk.CyanWarriorSwordsRedux.config.SwordConfig.SwordConfig;
 import com.raptorbk.CyanWarriorSwordsRedux.core.init.*;
 import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.network.chat.Component;
@@ -34,7 +35,7 @@ public class FIRE_SWORD extends SWORD_CWSR {
 
 
     public FIRE_SWORD(Tier tier, int attackDamageIn, float attackSpeedIn, Properties builder) {
-        super(tier, attackDamageIn, attackSpeedIn, builder);
+        super(tier, SwordConfig.FIRE_SWORD_DMG.get(), attackSpeedIn, builder);
     }
 
     public static void callEffect(SurroundEffect seffect, Level world, Player entity, InteractionHand handIn, Block blk){
@@ -43,7 +44,7 @@ public class FIRE_SWORD extends SWORD_CWSR {
 
     @Override
     public void setDamagePU() {
-        this.damagePU=5;
+        this.damagePU=SwordConfig.FIRE_SWORD_USE_COST.get();
     }
 
     @Override
@@ -64,7 +65,7 @@ public class FIRE_SWORD extends SWORD_CWSR {
 
     @Override
     public void setCD() {
-        this.swordCD=2;
+        this.swordCD=SwordConfig.FIRE_SWORD_COOLDOWN.get();
     }
 
     public InteractionResultHolder<ItemStack> use(Level world, Player entity, InteractionHand handIn) {
@@ -72,19 +73,19 @@ public class FIRE_SWORD extends SWORD_CWSR {
         ItemStack ActiveSynergyTotemStack = new ItemStack(ItemInit.ACTIVE_SYNERGY_TOTEM.get(),1);
 
         if(!lfAbilityTotem(entity) && ((entity.getMainHandItem() != entity.getItemInHand(handIn) && entity.getMainHandItem().getItem() instanceof SWORD_CWSR && entity.getInventory().contains(ActiveSynergyTotemStack)) || entity.getMainHandItem() == entity.getItemInHand(handIn) || (entity.getOffhandItem()==entity.getItemInHand(handIn) && !(entity.getMainHandItem().getItem() instanceof SWORD_CWSR)))){
-            currentSword.hurtAndBreak(5,entity,Player -> {
+            currentSword.hurtAndBreak(SwordConfig.FIRE_SWORD_USE_COST.get(),entity,Player -> {
                 Player.broadcastBreakEvent(EquipmentSlot.MAINHAND);
             });
         }
 
-        return callerRC(world,entity,handIn,ItemInit.FIRE_SWORD.getId(),2);
+        return callerRC(world,entity,handIn,ItemInit.FIRE_SWORD.getId(),SwordConfig.FIRE_SWORD_COOLDOWN.get());
 
     }
 
     @Override
     public boolean hurtEnemy(ItemStack stack, LivingEntity target, LivingEntity attacker){
-        target.setSecondsOnFire(5);
-        stack.hurtAndBreak(5,attacker,Player -> {
+        target.setSecondsOnFire(SwordConfig.FIRE_SWORD_HIT_SEC.get());
+        stack.hurtAndBreak(SwordConfig.ALL_SWORDS_HIT_COST.get(),attacker,Player -> {
             Player.broadcastBreakEvent(EquipmentSlot.MAINHAND);
         });
         return true;
