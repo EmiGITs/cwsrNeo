@@ -1,0 +1,23 @@
+{
+  "parent": "cyanwarriorswordsredux:cyanwarriorswords/root",
+  "display": {
+    "icon": {
+      "item": "minecraft:mycelium"
+    },
+    "title": {
+      "translate": "advancements.cwsr.best_both.title"
+    },
+    "description": {
+      "translate": "advancements.cwsr.best_both.desc"
+    },
+    "frame": "task",
+    "show_toast": true,
+    "announce_to_chat": true,
+    "hidden": false
+  },
+  "criteria": {
+    "really_rad": {
+      "trigger": "cwsr:best_both_trigger"
+    }
+  }
+}

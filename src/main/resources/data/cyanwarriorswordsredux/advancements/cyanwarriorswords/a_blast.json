@@ -1,0 +1,26 @@
+{
+  "parent": "cyanwarriorswordsredux:cyanwarriorswords/root",
+  "display": {
+    "icon": {
+      "item": "minecraft:tnt"
+    },
+    "title": {
+      "translate": "advancements.cwsr.a_blast.title"
+    },
+    "description": {
+      "translate": "advancements.cwsr.a_blast.desc"
+    },
+    "frame": "task",
+    "show_toast": true,
+    "announce_to_chat": true,
+    "hidden": false
+  },
+  "rewards": {
+    "experience": 65
+  },
+  "criteria": {
+    "really_rad": {
+      "trigger": "cwsr:a_blast_trigger"
+    }
+  }
+}

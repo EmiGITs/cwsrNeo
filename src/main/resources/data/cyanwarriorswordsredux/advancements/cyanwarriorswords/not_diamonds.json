@@ -1,0 +1,37 @@
+{
+  "parent": "cyanwarriorswordsredux:cyanwarriorswords/root",
+  "display": {
+    "icon": {
+      "item": "minecraft:diamond"
+    },
+    "title": {
+      "translate": "advancements.cwsr.not_diamonds.title"
+    },
+    "description": {
+      "translate": "advancements.cwsr.not_diamonds.desc"
+    },
+    "frame": "task",
+    "show_toast": true,
+    "announce_to_chat": true,
+    "hidden": false
+  },
+  "criteria": {
+    "cyan_sword": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "cwsr:cyan_sword"
+            ]
+          }
+        ]
+      }
+    }
+  },
+  "requirements": [
+    [
+      "cyan_sword"
+    ]
+  ]
+}

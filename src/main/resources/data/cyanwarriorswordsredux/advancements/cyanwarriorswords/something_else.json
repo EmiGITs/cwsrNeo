@@ -1,0 +1,24 @@
+{
+  "parent": "cyanwarriorswordsredux:cyanwarriorswords/root",
+  "display": {
+    "icon": {
+      "item": "minecraft:iron_sword",
+      "nbt": "{Damage:0}"
+    },
+    "title": {
+      "translate": "advancements.cwsr.something_else.title"
+    },
+    "description": {
+      "translate": "advancements.cwsr.something_else.desc"
+    },
+    "frame": "task",
+    "show_toast": true,
+    "announce_to_chat": true,
+    "hidden": false
+  },
+  "criteria": {
+    "really_rad": {
+      "trigger": "cwsr:something_else_trigger"
+    }
+  }
+}

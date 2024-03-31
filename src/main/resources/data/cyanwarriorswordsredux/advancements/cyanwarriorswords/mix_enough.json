@@ -1,0 +1,50 @@
+{
+  "parent": "cyanwarriorswordsredux:cyanwarriorswords/root",
+  "display": {
+    "icon": {
+      "item": "minecraft:cyan_glazed_terracotta"
+    },
+    "title": {
+      "translate": "advancements.cwsr.mix_enough.title"
+    },
+    "description": {
+      "translate": "advancements.cwsr.mix_enough.desc"
+    },
+    "frame": "task",
+    "show_toast": true,
+    "announce_to_chat": true,
+    "hidden": false
+  },
+  "criteria": {
+    "tri_ender": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "cwsr:tri_ender"
+            ]
+          }
+        ]
+      }
+    },
+    "atlantis_sword": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "cwsr:atlantis_sword"
+            ]
+          }
+        ]
+      }
+    }
+  },
+  "requirements": [
+    [
+      "tri_ender",
+      "atlantis_sword"
+    ]
+  ]
+}

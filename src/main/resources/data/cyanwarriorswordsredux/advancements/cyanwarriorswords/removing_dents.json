@@ -1,0 +1,24 @@
+{
+  "parent": "cyanwarriorswordsredux:cyanwarriorswords/root",
+  "display": {
+    "icon": {
+      "item": "cwsr:transmutation_furnace",
+      "nbt": "{Damage:0}"
+    },
+    "title": {
+      "translate": "advancements.cwsr.removing_dents.title"
+    },
+    "description": {
+      "translate": "advancements.cwsr.removing_dents.desc"
+    },
+    "frame": "task",
+    "show_toast": true,
+    "announce_to_chat": true,
+    "hidden": false
+  },
+  "criteria": {
+    "really_rad": {
+      "trigger": "cwsr:removing_dents_trigger"
+    }
+  }
+}
