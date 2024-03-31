@@ -1,4 +1,4 @@
-package com.raptorbk.CyanWarriorSwordsRedux.core.init;
+package com.raptorbk.CyanWarriorSwordsRedux.core.init.SwordHabilities;
 
 import net.minecraft.core.BlockPos;
 import net.minecraft.world.InteractionHand;

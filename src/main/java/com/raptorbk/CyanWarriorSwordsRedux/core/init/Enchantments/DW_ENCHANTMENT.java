@@ -1,4 +1,4 @@
-package com.raptorbk.CyanWarriorSwordsRedux.core.init;
+package com.raptorbk.CyanWarriorSwordsRedux.core.init.Enchantments;
 
 import net.minecraft.world.entity.EquipmentSlot;
 import net.minecraft.world.item.enchantment.Enchantment;

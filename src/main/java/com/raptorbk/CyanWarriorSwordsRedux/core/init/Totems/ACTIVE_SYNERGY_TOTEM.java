@@ -1,5 +1,7 @@
-package com.raptorbk.CyanWarriorSwordsRedux.core.init;
+package com.raptorbk.CyanWarriorSwordsRedux.core.init.Totems;
 
+import com.raptorbk.CyanWarriorSwordsRedux.core.init.EnchantmentInit;
+import com.raptorbk.CyanWarriorSwordsRedux.core.init.ItemInit;
 import net.minecraft.network.chat.Component;
 
 import net.minecraft.world.InteractionHand;
@@ -19,16 +21,17 @@ import javax.annotation.Nullable;
 import java.util.List;
 import java.util.Map;
 
-public class SYNERGY_TOTEM extends Item {
+public class ACTIVE_SYNERGY_TOTEM extends Item {
 
 
-    public SYNERGY_TOTEM(Properties pProperties) {
+    public ACTIVE_SYNERGY_TOTEM(Properties pProperties) {
         super(pProperties);
     }
 
     public InteractionResultHolder<ItemStack> use(Level world, Player entity, InteractionHand handIn) {
         ItemStack x=entity.getItemInHand(handIn);
         Map<Enchantment, Integer> xEnc= EnchantmentHelper.getEnchantments(x);
+
         if(entity.isCrouching()){
             if(xEnc.containsKey(EnchantmentInit.INH_ENCHANT.get())){
                 xEnc.remove(EnchantmentInit.INH_ENCHANT.get());
@@ -49,18 +52,16 @@ public class SYNERGY_TOTEM extends Item {
             return new InteractionResultHolder<>(InteractionResult.SUCCESS, x);
         }
 
-        ItemStack active_totemStack = new ItemStack(ItemInit.ACTIVE_SYNERGY_TOTEM.get(),1);
-        active_totemStack.enchant(EnchantmentInit.DW_ENCHANT.get(),1);
+        ItemStack totemStack = new ItemStack(ItemInit.SYNERGY_TOTEM.get(),1);
         if(xEnc.containsKey(EnchantmentInit.INH_ENCHANT.get())){
-            active_totemStack.enchant(EnchantmentInit.INH_ENCHANT.get(),1);
+            totemStack.enchant(EnchantmentInit.INH_ENCHANT.get(),1);
         }
 
-        Component chatMessage=Component.translatable("chat.cwsr.usage.activation.dw");
+        Component chatMessage=Component.translatable("chat.cwsr.usage.deactivation.dw");
         if(!world.isClientSide()) {
             entity.sendSystemMessage(chatMessage);
         }
-
-        return new InteractionResultHolder<>(InteractionResult.SUCCESS, active_totemStack);
+        return new InteractionResultHolder<>(InteractionResult.SUCCESS, totemStack);
     }
 
 
@@ -68,5 +69,7 @@ public class SYNERGY_TOTEM extends Item {
     public void appendHoverText(ItemStack stack, @Nullable Level worldIn, List<Component> tooltip, TooltipFlag flagIn) {
         tooltip.add(Component.translatable("tooltip.cwsr.synergy"));
     }
+
+
 
 }

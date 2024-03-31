@@ -4,7 +4,7 @@ package com.raptorbk.CyanWarriorSwordsRedux.core.init.swords.ThunderType;
 import com.raptorbk.CyanWarriorSwordsRedux.config.SwordConfig.SwordConfig;
 import com.raptorbk.CyanWarriorSwordsRedux.core.init.ItemInit;
 import com.raptorbk.CyanWarriorSwordsRedux.core.init.SWORD_CWSR;
-import com.raptorbk.CyanWarriorSwordsRedux.core.init.SurroundEffect;
+import com.raptorbk.CyanWarriorSwordsRedux.core.init.SwordHabilities.SurroundEffect;
 import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.network.chat.Component;
 
@@ -24,9 +24,7 @@ import net.minecraft.world.level.block.Block;
 import net.minecraft.world.entity.player.Player;
 
 import net.minecraft.world.item.Tier;
-import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
-import net.minecraft.world.item.crafting.Ingredient;
 
 import net.minecraft.util.*;
 

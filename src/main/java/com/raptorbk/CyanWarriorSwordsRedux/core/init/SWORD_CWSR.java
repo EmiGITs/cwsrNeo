@@ -1,12 +1,9 @@
 package com.raptorbk.CyanWarriorSwordsRedux.core.init;
 
 
-import com.raptorbk.CyanWarriorSwordsRedux.customadv.Dualwieldachtrigger;
-import net.minecraft.advancements.Advancement;
-import net.minecraft.advancements.AdvancementProgress;
-import net.minecraft.advancements.CriteriaTriggers;
-import net.minecraft.advancements.Criterion;
-import net.minecraft.advancements.critereon.ImpossibleTrigger;
+import com.raptorbk.CyanWarriorSwordsRedux.core.init.Totems.ABILITY_TOTEM;
+import com.raptorbk.CyanWarriorSwordsRedux.core.init.Totems.ACTIVE_SYNERGY_TOTEM;
+import com.raptorbk.CyanWarriorSwordsRedux.core.init.Totems.SYNERGY_TOTEM;
 import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.server.level.ServerLevel;
@@ -29,7 +26,6 @@ import net.minecraft.world.item.SwordItem;
 
 import net.minecraft.world.item.enchantment.EnchantmentHelper;
 import net.minecraft.world.level.Level;
-import net.neoforged.neoforge.registries.NeoForgeRegistries;
 
 
 import java.util.List;

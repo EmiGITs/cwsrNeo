@@ -2,6 +2,8 @@ package com.raptorbk.CyanWarriorSwordsRedux.core.init.swords.FireType;
 
 import com.raptorbk.CyanWarriorSwordsRedux.config.SwordConfig.SwordConfig;
 import com.raptorbk.CyanWarriorSwordsRedux.core.init.*;
+import com.raptorbk.CyanWarriorSwordsRedux.core.init.SwordHabilities.ExecuteSeffect;
+import com.raptorbk.CyanWarriorSwordsRedux.core.init.SwordHabilities.SurroundEffect;
 import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.network.chat.Component;
 
@@ -21,10 +23,7 @@ import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.player.Player;
 
 import net.minecraft.world.item.Tier;
-import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
-import net.minecraft.world.item.crafting.Ingredient;
-import net.neoforged.neoforge.common.SimpleTier;
 
 
 import javax.annotation.Nullable;

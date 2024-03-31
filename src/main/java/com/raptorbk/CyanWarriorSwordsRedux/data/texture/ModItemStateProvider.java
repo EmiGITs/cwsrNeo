@@ -24,7 +24,7 @@ public class ModItemStateProvider extends ItemModelProvider {
     private void item(Item item) {
         String name = NameUtility.getItemName(item);
         getBuilder(name)
-                .parent(getExistingFile(mcLoc("item/generated")))
+                .parent(getExistingFile(mcLoc("item/handheld")))
                 .texture("layer0", "item/" + name);
     }
 }

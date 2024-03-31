@@ -1,12 +1,11 @@
 package com.raptorbk.CyanWarriorSwordsRedux.core.init;
 
 import com.raptorbk.CyanWarriorSwordsRedux.CyanWarriorSwordsRedux;
+import com.raptorbk.CyanWarriorSwordsRedux.core.init.Enchantments.DW_ENCHANTMENT;
+import com.raptorbk.CyanWarriorSwordsRedux.core.init.Enchantments.INH_ENCHANTMENT;
 import net.minecraft.core.registries.Registries;
-import net.minecraft.world.item.Item;
 import net.minecraft.world.item.enchantment.Enchantment;
-import net.neoforged.neoforge.registries.DeferredItem;
 import net.neoforged.neoforge.registries.DeferredRegister;
-import net.neoforged.neoforge.registries.NeoForgeRegistries;
 
 import java.util.function.Supplier;
 

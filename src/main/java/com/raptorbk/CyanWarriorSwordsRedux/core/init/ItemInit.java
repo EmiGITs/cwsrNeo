@@ -1,10 +1,11 @@
 package com.raptorbk.CyanWarriorSwordsRedux.core.init;
 
 import com.raptorbk.CyanWarriorSwordsRedux.CyanWarriorSwordsRedux;
+import com.raptorbk.CyanWarriorSwordsRedux.core.init.Totems.ACTIVE_SYNERGY_TOTEM;
+import com.raptorbk.CyanWarriorSwordsRedux.core.init.Totems.SYNERGY_TOTEM;
 import com.raptorbk.CyanWarriorSwordsRedux.core.init.swords.FireType.FIRE_SWORD;
 import com.raptorbk.CyanWarriorSwordsRedux.core.init.swords.ThunderType.THUNDER_SWORD;
 import net.minecraft.world.item.Item;
-import net.minecraft.world.item.SwordItem;
 import net.neoforged.neoforge.registries.DeferredItem;
 import net.neoforged.neoforge.registries.DeferredRegister;
 

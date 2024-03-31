@@ -1,6 +1,7 @@
-package com.raptorbk.CyanWarriorSwordsRedux.core.init;
+package com.raptorbk.CyanWarriorSwordsRedux.core.init.Totems;
 
 
+import com.raptorbk.CyanWarriorSwordsRedux.core.init.EnchantmentInit;
 import net.minecraft.network.chat.Component;
 
 import net.minecraft.world.InteractionHand;
