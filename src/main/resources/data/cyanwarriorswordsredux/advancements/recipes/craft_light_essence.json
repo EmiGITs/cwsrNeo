@@ -1,0 +1,30 @@
+{
+  "parent": "minecraft:recipes/root",
+  "requirements": [
+    [
+      "has_item"
+    ]
+  ],
+  "criteria": {
+    "has_item": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "item": "cwsr:light_essence"
+          }
+        ]
+      }
+    }
+  },
+  "rewards": {
+    "recipes": [
+      "cyanwarriorswordsredux:swords/light/light_sword_shapeless",
+      "cyanwarriorswordsredux:swords/light/light_nether_shapeless",
+      "cyanwarriorswordsredux:essences/light_essence_smelt_o2",
+      "cyanwarriorswordsredux:essences/mixed_essence",
+      "cyanwarriorswordsredux:swords/mixing/atlantis_sword",
+      "cyanwarriorswordsredux:swords/mixing/time_sword"
+    ]
+  }
+}

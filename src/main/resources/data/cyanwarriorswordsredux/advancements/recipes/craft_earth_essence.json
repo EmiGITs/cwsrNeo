@@ -1,0 +1,31 @@
+{
+  "parent": "minecraft:recipes/root",
+  "requirements": [
+    [
+      "has_item"
+    ]
+  ],
+  "criteria": {
+    "has_item": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "item": "cwsr:dark_essence"
+          }
+        ]
+      }
+    }
+  },
+  "rewards": {
+    "recipes": [
+      "cyanwarriorswordsredux:swords/earth/earth_sword_shapeless",
+      "cyanwarriorswordsredux:swords/earth/wild_nature_shapeless",
+      "cyanwarriorswordsredux:essences/earth_essence_smelt_o2",
+      "cyanwarriorswordsredux:essences/mixed_essence",
+      "cyanwarriorswordsredux:swords/mixing/peaceful_nature",
+      "cyanwarriorswordsredux:swords/mixing/wind_blast",
+      "cyanwarriorswordsredux:swords/mixing/wind_boom"
+    ]
+  }
+}

@@ -1,0 +1,34 @@
+{
+  "parent": "minecraft:recipes/root",
+  "requirements": [
+    [
+      "has_item"
+    ]
+  ],
+  "criteria": {
+    "has_item": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "item": "cwsr:sword_handle"
+          }
+        ]
+      }
+    }
+  },
+  "rewards": {
+    "recipes": [
+      "cyanwarriorswordsredux:swords/beast/beast_sword",
+      "cyanwarriorswordsredux:swords/dark/dark_sword",
+      "cyanwarriorswordsredux:swords/earth/earth_sword",
+      "cyanwarriorswordsredux:swords/ender/ender_sword",
+      "cyanwarriorswordsredux:swords/fire/fire_sword",
+      "cyanwarriorswordsredux:swords/light/light_sword",
+      "cyanwarriorswordsredux:swords/thunder/thunder_sword",
+      "cyanwarriorswordsredux:swords/water/water_sword",
+      "cyanwarriorswordsredux:swords/wind/wind_sword",
+      "cyanwarriorswordsredux:items/ability_totem"
+    ]
+  }
+}

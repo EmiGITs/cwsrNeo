@@ -1,0 +1,26 @@
+{
+  "parent": "minecraft:recipes/root",
+  "requirements": [
+    [
+      "has_item"
+    ]
+  ],
+  "criteria": {
+    "has_item": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "item": "cwsr:mixed_essence"
+          }
+        ]
+      }
+    }
+  },
+  "rewards": {
+    "recipes": [
+      "cyanwarriorswordsredux:swords/cyan/cyan_sword",
+      "cyanwarriorswordsredux:items/synergy_totem"
+    ]
+  }
+}

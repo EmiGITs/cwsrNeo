@@ -1,0 +1,31 @@
+{
+  "parent": "minecraft:recipes/root",
+  "requirements": [
+    [
+      "has_item"
+    ]
+  ],
+  "criteria": {
+    "has_item": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "item": "cwsr:fire_essence"
+          }
+        ]
+      }
+    }
+  },
+  "rewards": {
+    "recipes": [
+      "cyanwarriorswordsredux:swords/fire/fire_sword_shapeless",
+      "cyanwarriorswordsredux:swords/fire/combustion_sword_shapeless",
+      "cyanwarriorswordsredux:essences/fire_essence_smelt_o2",
+      "cyanwarriorswordsredux:essences/mixed_essence",
+      "cyanwarriorswordsredux:swords/mixing/ender_fire",
+      "cyanwarriorswordsredux:swords/mixing/meteor_sword",
+      "cyanwarriorswordsredux:swords/mixing/steam_sword"
+    ]
+  }
+}

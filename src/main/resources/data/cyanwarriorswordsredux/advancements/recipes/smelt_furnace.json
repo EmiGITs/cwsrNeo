@@ -1,0 +1,33 @@
+{
+  "parent": "minecraft:recipes/root",
+  "requirements": [
+    [
+      "has_item"
+    ]
+  ],
+  "criteria": {
+    "has_item": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "item": "cwsr:transmutation_furnace"
+          }
+        ]
+      }
+    }
+  },
+  "rewards": {
+    "recipes": [
+      "cyanwarriorswordsredux:essences/beast_essence_smelt_o1",
+      "cyanwarriorswordsredux:essences/dark_essence_smelt_o1",
+      "cyanwarriorswordsredux:essences/earth_essence_smelt_o1",
+      "cyanwarriorswordsredux:essences/ender_essence_smelt_o1",
+      "cyanwarriorswordsredux:essences/fire_essence_smelt_o1",
+      "cyanwarriorswordsredux:essences/light_essence_smelt_o1",
+      "cyanwarriorswordsredux:essences/thunder_essence_smelt_o1",
+      "cyanwarriorswordsredux:essences/water_essence_smelt_o1",
+      "cyanwarriorswordsredux:essences/wind_essence_smelt_o1"
+    ]
+  }
+}

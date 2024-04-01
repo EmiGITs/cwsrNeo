@@ -1,0 +1,28 @@
+{
+  "parent": "minecraft:recipes/root",
+  "requirements": [
+    [
+      "has_item"
+    ]
+  ],
+  "criteria": {
+    "has_item": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "item": "cwsr:beast_essence"
+          }
+        ]
+      }
+    }
+  },
+  "rewards": {
+    "recipes": [
+      "cyanwarriorswordsredux:swords/beast/beast_sword_shapeless",
+      "cyanwarriorswordsredux:swords/beast/golem_sword_shapeless",
+      "cyanwarriorswordsredux:essences/beast_essence_smelt_o2",
+      "cyanwarriorswordsredux:essences/mixed_essence"
+    ]
+  }
+}

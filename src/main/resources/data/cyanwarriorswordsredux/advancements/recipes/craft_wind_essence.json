@@ -1,0 +1,32 @@
+{
+  "parent": "minecraft:recipes/root",
+  "requirements": [
+    [
+      "has_item"
+    ]
+  ],
+  "criteria": {
+    "has_item": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "item": "cwsr:wind_essence"
+          }
+        ]
+      }
+    }
+  },
+  "rewards": {
+    "recipes": [
+      "cyanwarriorswordsredux:swords/wind/wind_sword_shapeless",
+      "cyanwarriorswordsredux:swords/wind/wind_impulse_shapeless",
+      "cyanwarriorswordsredux:essences/wind_essence_smelt_o2",
+      "cyanwarriorswordsredux:essences/mixed_essence",
+      "cyanwarriorswordsredux:swords/mixing/ender_wind",
+      "cyanwarriorswordsredux:swords/mixing/thunderstorm_sword",
+      "cyanwarriorswordsredux:swords/mixing/wind_blast",
+      "cyanwarriorswordsredux:swords/mixing/wind_boom"
+    ]
+  }
+}
