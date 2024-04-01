@@ -25,6 +25,35 @@ public class ModItemStateProvider extends ItemModelProvider {
         item(ItemInit.GOLEM_SWORD.get());
         item(ItemInit.DARK_NETHER.get());
 
+
+        //TEST ON FORWARD
+        item(ItemInit.DARK_SWORD.get());
+        item(ItemInit.EARTH_SWORD.get());
+        item(ItemInit.WILD_NATURE.get());
+        item(ItemInit.WATER_SWORD.get());
+        item(ItemInit.METEOR_SWORD.get());
+        item(ItemInit.METEORIC_THUNDERSTORM.get());
+        item(ItemInit.ENDER_WIND.get());
+        item(ItemInit.ENDER_PORTAL.get());
+        item(ItemInit.ENDER_SWORD.get());
+        item(ItemInit.COMBUSTION_SWORD.get());
+        item(ItemInit.LIGHT_NETHER.get());
+        item(ItemInit.LIGHT_SWORD.get());
+        item(ItemInit.ATLANTIS_SWORD.get());
+        item(ItemInit.ENDER_FIRE.get());
+        item(ItemInit.ENDER_THUNDER.get());
+        item(ItemInit.PEACEFUL_NATURE.get());
+        item(ItemInit.STEAM_SWORD.get());
+        item(ItemInit.THUNDERSTORM_SWORD.get());
+        item(ItemInit.TIME_SWORD.get());
+        item(ItemInit.TRI_ENDER.get());
+        item(ItemInit.WIND_BLAST.get());
+        item(ItemInit.WIND_BOOM.get());
+        item(ItemInit.THUNDER_SHOCK.get());
+        item(ItemInit.ICE_SWORD.get());
+        item(ItemInit.WIND_IMPULSE.get());
+        item(ItemInit.WIND_SWORD.get());
+
     }
 
 
