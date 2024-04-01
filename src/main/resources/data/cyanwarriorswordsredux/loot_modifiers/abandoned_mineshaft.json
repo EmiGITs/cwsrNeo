@@ -1,0 +1,17 @@
+{
+  "type": "cwsr:roll_extra_tables",
+  "conditions": [
+    {
+      "condition": "minecraft:any_of",
+      "terms": [
+        {
+          "condition": "neoforge:loot_table_id",
+          "loot_table_id": "minecraft:chests/abandoned_mineshaft"
+        }
+      ]
+    }
+  ],
+  "tables": [
+    "cyanwarriorswordsredux:misc/abandoned_mineshaft"
+  ]
+}

@@ -3,10 +3,7 @@ package com.raptorbk.CyanWarriorSwordsRedux;
 
 import com.raptorbk.CyanWarriorSwordsRedux.config.Config;
 import com.raptorbk.CyanWarriorSwordsRedux.config.ItemConfig;
-import com.raptorbk.CyanWarriorSwordsRedux.core.init.CreativeModeTabInit;
-import com.raptorbk.CyanWarriorSwordsRedux.core.init.EnchantmentInit;
-import com.raptorbk.CyanWarriorSwordsRedux.core.init.ItemInit;
-import com.raptorbk.CyanWarriorSwordsRedux.core.init.TriggerInit;
+import com.raptorbk.CyanWarriorSwordsRedux.core.init.*;
 import com.raptorbk.CyanWarriorSwordsRedux.data.DataGenerators;
 import net.neoforged.bus.api.IEventBus;
 import net.neoforged.fml.ModList;
@@ -34,6 +31,8 @@ public class CyanWarriorSwordsRedux {
         EnchantmentInit.ENCHANTMENTS.register(bus);
 
         TriggerInit.TRIGGERS.register(bus);
+
+        LootModifiersInit.LOOT_MODIFIERS.register(bus);
 
         CreativeModeTabInit.CREATIVE_MODE_TABS.register(bus);
 
