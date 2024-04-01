@@ -95,7 +95,7 @@ public class METEORIC_THUNDERSTORM extends METEOR_CLASS_SWORD {
         LargeFireball.zPower=vec3.z;
 
         ItemStack x = new ItemStack(ItemInit.ACTIVE_SYNERGY_TOTEM.get(),1);
-        if(entity.getInventory().contains(x)){
+        if(lfActiveSinergyTotem(entity)){
             if(entity.getOffhandItem().getItem() instanceof METEOR_CLASS_SWORD && entity.getMainHandItem().getItem() instanceof METEOR_CLASS_SWORD){
                 if(entity.getOffhandItem().getItem() instanceof METEORIC_THUNDERSTORM){
                     this.setDelayMeteor(true);
@@ -147,7 +147,7 @@ public class METEORIC_THUNDERSTORM extends METEOR_CLASS_SWORD {
         ItemStack currentSword = entity.getItemInHand(handIn);
         ItemStack ActiveSynergyTotemStack = new ItemStack(ItemInit.ACTIVE_SYNERGY_TOTEM.get(),1);
 
-        if(!lfAbilityTotem(entity) && ((entity.getMainHandItem() != entity.getItemInHand(handIn) && entity.getMainHandItem().getItem() instanceof SWORD_CWSR && entity.getInventory().contains(ActiveSynergyTotemStack)) || entity.getMainHandItem() == entity.getItemInHand(handIn) || (entity.getOffhandItem()==entity.getItemInHand(handIn) && !(entity.getMainHandItem().getItem() instanceof SWORD_CWSR)))){
+        if(!lfAbilityTotem(entity) && ((entity.getMainHandItem() != entity.getItemInHand(handIn) && entity.getMainHandItem().getItem() instanceof SWORD_CWSR && lfActiveSinergyTotem(entity)) || entity.getMainHandItem() == entity.getItemInHand(handIn) || (entity.getOffhandItem()==entity.getItemInHand(handIn) && !(entity.getMainHandItem().getItem() instanceof SWORD_CWSR)))){
             currentSword.hurtAndBreak(SwordConfig.METEORIC_THUNDERSTORM_USE_COST.get(),entity,Player -> {
                 unlockDestroyACH(entity,world);
                 Player.broadcastBreakEvent(EquipmentSlot.MAINHAND);

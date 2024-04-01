@@ -111,7 +111,7 @@ public class ENDER_THUNDER extends ENDER_CLASS_SWORD {
             enderpearlentity.setItem(itemstack);
             enderpearlentity.shootFromRotation(entity, entity.getXRot(), entity.getYRot(), 0.0F, 1.5F, 1.0F);
             ItemStack x = new ItemStack(ItemInit.ACTIVE_SYNERGY_TOTEM.get(),1);
-            if(entity.getInventory().contains(x)){
+            if(lfActiveSinergyTotem(entity)){
                 if(entity.getOffhandItem().getItem() instanceof ENDER_CLASS_SWORD && entity.getMainHandItem().getItem() instanceof ENDER_CLASS_SWORD){
                     if(entity.getOffhandItem().getItem() instanceof ENDER_THUNDER){
                         world.addFreshEntity(enderpearlentity);
@@ -159,7 +159,7 @@ public class ENDER_THUNDER extends ENDER_CLASS_SWORD {
         ItemStack ogSword = entity.getItemInHand(handIn);
         ItemStack ActiveSynergyTotemStack = new ItemStack(ItemInit.ACTIVE_SYNERGY_TOTEM.get(),1);
 
-        if(!lfAbilityTotem(entity) && ((entity.getMainHandItem() != entity.getItemInHand(handIn) && entity.getMainHandItem().getItem() instanceof SWORD_CWSR && entity.getInventory().contains(ActiveSynergyTotemStack)) || entity.getMainHandItem() == entity.getItemInHand(handIn) || (entity.getOffhandItem()==entity.getItemInHand(handIn) && !(entity.getMainHandItem().getItem() instanceof SWORD_CWSR)))){
+        if(!lfAbilityTotem(entity) && ((entity.getMainHandItem() != entity.getItemInHand(handIn) && entity.getMainHandItem().getItem() instanceof SWORD_CWSR && lfActiveSinergyTotem(entity)) || entity.getMainHandItem() == entity.getItemInHand(handIn) || (entity.getOffhandItem()==entity.getItemInHand(handIn) && !(entity.getMainHandItem().getItem() instanceof SWORD_CWSR)))){
             ogSword.hurtAndBreak(SwordConfig.ENDER_THUNDER_USE_COST.get(),entity,Player -> {
                 unlockDestroyACH(entity,world);
                 Player.broadcastBreakEvent(EquipmentSlot.MAINHAND);
