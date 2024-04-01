@@ -7,6 +7,7 @@ import com.raptorbk.CyanWarriorSwordsRedux.core.init.Totems.SYNERGY_TOTEM;
 import com.raptorbk.CyanWarriorSwordsRedux.core.init.swords.BeastType.BEAST_SWORD;
 import com.raptorbk.CyanWarriorSwordsRedux.core.init.swords.BeastType.GOLEM_SWORD;
 import com.raptorbk.CyanWarriorSwordsRedux.core.init.swords.CyanType.CYAN_SWORD;
+import com.raptorbk.CyanWarriorSwordsRedux.core.init.swords.DarkType.DARK_NETHER;
 import com.raptorbk.CyanWarriorSwordsRedux.core.init.swords.FireType.FIRE_SWORD;
 import com.raptorbk.CyanWarriorSwordsRedux.core.init.swords.ThunderType.THUNDER_SWORD;
 import net.minecraft.world.item.Item;
@@ -30,5 +31,6 @@ public class ItemInit {
     public static final DeferredItem<Item> BEAST_SWORD = ITEMS.register("beast_sword", () -> new BEAST_SWORD(-2.4f, new Item.Properties().stacksTo(1)));
     public static final DeferredItem<Item> GOLEM_SWORD = ITEMS.register("golem_sword", () -> new GOLEM_SWORD(-2.4f, new Item.Properties().stacksTo(1)));
 
+    public static final DeferredItem<Item> DARK_NETHER = ITEMS.register("dark_nether", () -> new DARK_NETHER(-2.4f, new Item.Properties().stacksTo(1)));
 
 }

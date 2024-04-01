@@ -46,7 +46,7 @@ public class GOLEM_SWORD extends SWORD_CWSR {
             Ingredient.of(Tags.Items.ORES_DIAMOND));
 
     public GOLEM_SWORD(float attackSpeedIn, Properties builder) {
-        super(tierIn, SwordConfig.GOLEM_SWORD_DMG.get(), -2.4F, new Item.Properties());
+        super(tierIn, SwordConfig.GOLEM_SWORD_DMG.get(), attackSpeedIn, new Item.Properties());
     }
 
     @Override
