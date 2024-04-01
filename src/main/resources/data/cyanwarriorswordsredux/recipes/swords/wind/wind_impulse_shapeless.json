@@ -1,0 +1,20 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "group":"cwsr:wind_impulse",
+  "ingredients": [
+    {
+      "item": "cwsr:wind_sword"
+    },
+    {
+      "item": "cwsr:wind_essence"
+    },
+    {
+      "item": "minecraft:rabbit_foot"
+    }
+  ],
+  "result":
+  {
+    "item": "cwsr:wind_impulse",
+    "count": 1
+  }
+}

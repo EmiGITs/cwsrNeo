@@ -1,0 +1,30 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "group":"cwsr:combustion_sword",
+  "pattern":
+  [
+    "pbp",
+    "bfb",
+    "pbp"
+  ],
+  "key":
+  {
+    "f":
+    {
+      "item": "cwsr:fire_sword"
+    },
+    "p":
+    {
+      "item": "minecraft:blaze_powder"
+    },
+    "b":
+    {
+      "item": "minecraft:magma_block"
+    }
+  },
+  "result":
+  {
+    "item": "cwsr:combustion_sword",
+    "count": 1
+  }
+}

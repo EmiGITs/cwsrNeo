@@ -1,0 +1,20 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "group":"cwsr:wild_nature",
+  "ingredients": [
+    {
+      "item": "cwsr:earth_sword"
+    },
+    {
+      "item": "cwsr:earth_essence"
+    },
+    {
+      "item": "minecraft:cactus"
+    }
+  ],
+  "result":
+  {
+    "item": "cwsr:wild_nature",
+    "count": 1
+  }
+}

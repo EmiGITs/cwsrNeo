@@ -1,0 +1,30 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "group":"cwsr:light_nether",
+  "pattern":
+  [
+    " x ",
+    "dyd",
+    " d "
+  ],
+  "key":
+  {
+    "x":
+    {
+      "item": "minecraft:golden_apple"
+    },
+    "d":
+    {
+      "item": "minecraft:glowstone"
+    },
+    "y":
+    {
+      "item": "cwsr:light_sword"
+    }
+  },
+  "result":
+  {
+    "item": "cwsr:light_nether",
+    "count": 1
+  }
+}

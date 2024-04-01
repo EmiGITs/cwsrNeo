@@ -1,0 +1,20 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "group":"cwsr:dark_nether",
+  "ingredients": [
+    {
+      "item": "cwsr:dark_sword"
+    },
+    {
+      "item": "cwsr:dark_essence"
+    },
+    {
+      "item": "minecraft:soul_sand"
+    }
+  ],
+  "result":
+  {
+    "item": "cwsr:dark_nether",
+    "count": 1
+  }
+}

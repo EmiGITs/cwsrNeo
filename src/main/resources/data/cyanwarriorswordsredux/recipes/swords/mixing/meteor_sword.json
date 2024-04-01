@@ -1,0 +1,34 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "group":"cwsr:meteor_sword",
+  "pattern":
+  [
+    "ayb",
+    "ayb",
+    " x "
+  ],
+  "key":
+  {
+    "x":
+    {
+      "item": "cwsr:sword_handle"
+    },
+    "b":
+    {
+      "item": "cwsr:dark_essence"
+    },
+    "a":
+    {
+      "item": "cwsr:fire_essence"
+    },
+    "y":
+    {
+      "item": "minecraft:iron_ingot"
+    }
+  },
+  "result":
+  {
+    "item": "cwsr:meteor_sword",
+    "count": 1
+  }
+}

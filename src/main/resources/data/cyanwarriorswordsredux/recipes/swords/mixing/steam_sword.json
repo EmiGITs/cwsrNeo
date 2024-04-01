@@ -1,0 +1,34 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "group":"cwsr:steam_sword",
+  "pattern":
+  [
+    " x ",
+    "yxd",
+    " c "
+  ],
+  "key":
+  {
+    "x":
+    {
+      "item": "minecraft:iron_ingot"
+    },
+    "y":
+    {
+      "item": "cwsr:fire_essence"
+    },
+    "d":
+    {
+      "item": "cwsr:water_essence"
+    },
+    "c":
+    {
+      "item": "cwsr:sword_handle"
+    }
+  },
+  "result":
+  {
+    "item": "cwsr:steam_sword",
+    "count": 1
+  }
+}

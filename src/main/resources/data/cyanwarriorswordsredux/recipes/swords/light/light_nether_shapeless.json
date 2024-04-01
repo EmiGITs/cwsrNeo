@@ -1,0 +1,20 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "group":"cwsr:light_nether",
+  "ingredients": [
+    {
+      "item": "cwsr:light_sword"
+    },
+    {
+      "item": "cwsr:light_essence"
+    },
+    {
+      "item": "minecraft:golden_apple"
+    }
+  ],
+  "result":
+  {
+    "item": "cwsr:light_nether",
+    "count": 1
+  }
+}

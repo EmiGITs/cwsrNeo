@@ -1,0 +1,20 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "group":"cwsr:golem_sword",
+  "ingredients": [
+    {
+      "item": "cwsr:beast_sword"
+    },
+    {
+      "item": "cwsr:beast_essence"
+    },
+    {
+      "item": "minecraft:observer"
+    }
+  ],
+  "result":
+  {
+    "item": "cwsr:golem_sword",
+    "count": 1
+  }
+}

@@ -1,0 +1,34 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "group":"cwsr:wind_blast",
+  "pattern":
+  [
+    "ayb",
+    "bya",
+    " x "
+  ],
+  "key":
+  {
+    "x":
+    {
+      "item": "cwsr:sword_handle"
+    },
+    "b":
+    {
+      "item": "cwsr:earth_essence"
+    },
+    "a":
+    {
+      "item": "cwsr:wind_essence"
+    },
+    "y":
+    {
+      "item": "minecraft:iron_ingot"
+    }
+  },
+  "result":
+  {
+    "item": "cwsr:wind_blast",
+    "count": 1
+  }
+}

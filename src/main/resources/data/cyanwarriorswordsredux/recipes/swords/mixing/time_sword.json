@@ -1,0 +1,34 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "group":"cwsr:time_sword",
+  "pattern":
+  [
+    " x ",
+    "yxd",
+    " c "
+  ],
+  "key":
+  {
+    "x":
+    {
+      "item": "minecraft:iron_ingot"
+    },
+    "y":
+    {
+      "item": "cwsr:dark_essence"
+    },
+    "d":
+    {
+      "item": "cwsr:light_essence"
+    },
+    "c":
+    {
+      "item": "cwsr:sword_handle"
+    }
+  },
+  "result":
+  {
+    "item": "cwsr:time_sword",
+    "count": 1
+  }
+}

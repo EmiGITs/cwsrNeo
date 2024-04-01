@@ -1,0 +1,17 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "group":"cwsr:thunder_sword",
+  "ingredients": [
+    {
+      "item": "cwsr:sword_handle"
+    },
+    {
+      "item": "cwsr:thunder_essence"
+    }
+  ],
+  "result":
+  {
+    "item": "cwsr:thunder_sword",
+    "count": 1
+  }
+}

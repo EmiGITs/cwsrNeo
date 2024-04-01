@@ -1,0 +1,30 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "group":"cwsr:ice_sword",
+  "pattern":
+  [
+    "xdx",
+    "dyd",
+    "xdx"
+  ],
+  "key":
+  {
+    "x":
+    {
+      "item": "minecraft:ice"
+    },
+    "d":
+    {
+      "item": "minecraft:ghast_tear"
+    },
+    "y":
+    {
+      "item": "cwsr:water_sword"
+    }
+  },
+  "result":
+  {
+    "item": "cwsr:ice_sword",
+    "count": 1
+  }
+}

@@ -1,0 +1,38 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "group":"cwsr:golem_sword",
+  "pattern":
+  [
+    "coc",
+    "xyx",
+    "czc"
+  ],
+  "key":
+  {
+    "x":
+    {
+      "item": "minecraft:piston"
+    },
+    "o":
+    {
+      "item": "minecraft:observer"
+    },
+    "z":
+    {
+      "item": "minecraft:minecart"
+    },
+    "c":
+    {
+      "item": "minecraft:iron_block"
+    },
+    "y":
+    {
+      "item": "cwsr:beast_sword"
+    }
+  },
+  "result":
+  {
+    "item": "cwsr:golem_sword",
+    "count": 1
+  }
+}

@@ -1,0 +1,17 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "group":"cwsr:earth_sword",
+  "ingredients": [
+    {
+      "item": "cwsr:sword_handle"
+    },
+    {
+      "item": "cwsr:earth_essence"
+    }
+  ],
+  "result":
+  {
+    "item": "cwsr:earth_sword",
+    "count": 1
+  }
+}

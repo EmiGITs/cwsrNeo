@@ -1,0 +1,30 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "group":"cwsr:ender_portal",
+  "pattern":
+  [
+    "cxc",
+    "xyx",
+    "cxc"
+  ],
+  "key":
+  {
+    "x":
+    {
+      "item": "minecraft:blaze_powder"
+    },
+    "c":
+    {
+      "item": "minecraft:ender_eye"
+    },
+    "y":
+    {
+      "item": "cwsr:ender_sword"
+    }
+  },
+  "result":
+  {
+    "item": "cwsr:ender_portal",
+    "count": 1
+  }
+}

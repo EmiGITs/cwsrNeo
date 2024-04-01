@@ -1,0 +1,17 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "group":"cwsr:ender_sword",
+  "ingredients": [
+    {
+      "item": "cwsr:sword_handle"
+    },
+    {
+      "item": "cwsr:ender_essence"
+    }
+  ],
+  "result":
+  {
+    "item": "cwsr:ender_sword",
+    "count": 1
+  }
+}

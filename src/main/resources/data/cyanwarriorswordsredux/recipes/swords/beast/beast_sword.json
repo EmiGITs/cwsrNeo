@@ -1,0 +1,30 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "group":"cwsr:beast_sword",
+  "pattern":
+  [
+    "dxd",
+    "dxd",
+    " y "
+  ],
+  "key":
+  {
+    "x":
+    {
+      "item": "minecraft:iron_ingot"
+    },
+    "d":
+    {
+      "item": "minecraft:bone"
+    },
+    "y":
+    {
+      "item": "cwsr:sword_handle"
+    }
+  },
+  "result":
+  {
+    "item": "cwsr:beast_sword",
+    "count": 1
+  }
+}

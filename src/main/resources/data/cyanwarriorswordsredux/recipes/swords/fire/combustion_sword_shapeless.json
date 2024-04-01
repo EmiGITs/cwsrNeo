@@ -1,0 +1,20 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "group":"cwsr:combustion_sword",
+  "ingredients": [
+    {
+      "item": "cwsr:fire_sword"
+    },
+    {
+      "item": "cwsr:fire_essence"
+    },
+    {
+      "item": "minecraft:magma_block"
+    }
+  ],
+  "result":
+  {
+    "item": "cwsr:combustion_sword",
+    "count": 1
+  }
+}

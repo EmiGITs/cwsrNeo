@@ -1,0 +1,30 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "group":"cwsr:dark_nether",
+  "pattern":
+  [
+    " x ",
+    "dyd",
+    " d "
+  ],
+  "key":
+  {
+    "x":
+    {
+      "item": "minecraft:wither_skeleton_skull"
+    },
+    "d":
+    {
+      "item": "minecraft:obsidian"
+    },
+    "y":
+    {
+      "item": "cwsr:dark_sword"
+    }
+  },
+  "result":
+  {
+    "item": "cwsr:dark_nether",
+    "count": 1
+  }
+}

@@ -1,0 +1,17 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "group":"cwsr:light_sword",
+  "ingredients": [
+    {
+      "item": "cwsr:sword_handle"
+    },
+    {
+      "item": "cwsr:light_essence"
+    }
+  ],
+  "result":
+  {
+    "item": "cwsr:light_sword",
+    "count": 1
+  }
+}

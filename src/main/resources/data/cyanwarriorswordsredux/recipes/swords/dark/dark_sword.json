@@ -1,0 +1,30 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "group":"cwsr:dark_sword",
+  "pattern":
+  [
+    "dxd",
+    "dxd",
+    " y "
+  ],
+  "key":
+  {
+    "x":
+    {
+      "item": "minecraft:iron_ingot"
+    },
+    "d":
+    {
+      "item": "minecraft:obsidian"
+    },
+    "y":
+    {
+      "item": "cwsr:sword_handle"
+    }
+  },
+  "result":
+  {
+    "item": "cwsr:dark_sword",
+    "count": 1
+  }
+}

@@ -1,0 +1,38 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "group":"cwsr:meteoric_thunderstorm",
+  "pattern":
+  [
+    "zxz",
+    "yxd",
+    "zcz"
+  ],
+  "key":
+  {
+    "x":
+    {
+      "item": "minecraft:diamond"
+    },
+    "z":
+    {
+      "item": "minecraft:blaze_powder"
+    },
+    "y":
+    {
+      "item": "cwsr:meteor_sword"
+    },
+    "d":
+    {
+      "item": "cwsr:thunderstorm_sword"
+    },
+    "c":
+    {
+      "item": "cwsr:sword_handle"
+    }
+  },
+  "result":
+  {
+    "item": "cwsr:meteoric_thunderstorm",
+    "count": 1
+  }
+}

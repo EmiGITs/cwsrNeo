@@ -1,0 +1,20 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "group":"cwsr:thunder_shock",
+  "ingredients": [
+    {
+      "item": "cwsr:thunder_sword"
+    },
+    {
+      "item": "cwsr:thunder_essence"
+    },
+    {
+      "item": "minecraft:redstone_block"
+    }
+  ],
+  "result":
+  {
+    "item": "cwsr:thunder_shock",
+    "count": 1
+  }
+}

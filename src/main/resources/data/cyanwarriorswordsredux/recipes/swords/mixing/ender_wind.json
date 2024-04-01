@@ -1,0 +1,34 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "group":"cwsr:ender_wind",
+  "pattern":
+  [
+    " y ",
+    "ayb",
+    " x "
+  ],
+  "key":
+  {
+    "x":
+    {
+      "item": "cwsr:sword_handle"
+    },
+    "a":
+    {
+      "item": "cwsr:ender_essence"
+    },
+    "b":
+    {
+      "item": "cwsr:wind_essence"
+    },
+    "y":
+    {
+      "item": "minecraft:iron_ingot"
+    }
+  },
+  "result":
+  {
+    "item": "cwsr:ender_wind",
+    "count": 1
+  }
+}

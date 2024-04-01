@@ -1,0 +1,20 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "group":"cwsr:ice_sword",
+  "ingredients": [
+    {
+      "item": "cwsr:water_sword"
+    },
+    {
+      "item": "cwsr:water_essence"
+    },
+    {
+      "item": "minecraft:ice"
+    }
+  ],
+  "result":
+  {
+    "item": "cwsr:ice_sword",
+    "count": 1
+  }
+}

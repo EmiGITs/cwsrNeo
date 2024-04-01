@@ -1,0 +1,17 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "group":"cwsr:dark_sword",
+  "ingredients": [
+    {
+      "item": "cwsr:sword_handle"
+    },
+    {
+      "item": "cwsr:dark_essence"
+    }
+  ],
+  "result":
+  {
+    "item": "cwsr:dark_sword",
+    "count": 1
+  }
+}

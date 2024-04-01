@@ -1,0 +1,34 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "group":"cwsr:wind_boom",
+  "pattern":
+  [
+    "dyc",
+    "dyc",
+    " x "
+  ],
+  "key":
+  {
+    "x":
+    {
+      "item": "cwsr:sword_handle"
+    },
+    "c":
+    {
+      "item": "cwsr:wind_essence"
+    },
+    "d":
+    {
+      "item": "cwsr:earth_essence"
+    },
+    "y":
+    {
+      "item": "minecraft:iron_ingot"
+    }
+  },
+  "result":
+  {
+    "item": "cwsr:wind_boom",
+    "count": 1
+  }
+}

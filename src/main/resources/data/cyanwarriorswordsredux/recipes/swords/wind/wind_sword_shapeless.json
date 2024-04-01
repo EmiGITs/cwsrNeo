@@ -1,0 +1,17 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "group":"cwsr:wind_sword",
+  "ingredients": [
+    {
+      "item": "cwsr:sword_handle"
+    },
+    {
+      "item": "cwsr:wind_essence"
+    }
+  ],
+  "result":
+  {
+    "item": "cwsr:wind_sword",
+    "count": 1
+  }
+}

@@ -1,0 +1,20 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "group":"cwsr:ender_portal",
+  "ingredients": [
+    {
+      "item": "cwsr:ender_sword"
+    },
+    {
+      "item": "cwsr:ender_essence"
+    },
+    {
+      "item": "minecraft:ender_eye"
+    }
+  ],
+  "result":
+  {
+    "item": "cwsr:ender_portal",
+    "count": 1
+  }
+}

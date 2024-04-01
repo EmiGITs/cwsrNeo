@@ -1,0 +1,34 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "group":"cwsr:peaceful_nature",
+  "pattern":
+  [
+    " x ",
+    "yxd",
+    " c "
+  ],
+  "key":
+  {
+    "x":
+    {
+      "item": "minecraft:iron_ingot"
+    },
+    "y":
+    {
+      "item": "cwsr:earth_essence"
+    },
+    "d":
+    {
+      "item": "cwsr:water_essence"
+    },
+    "c":
+    {
+      "item": "cwsr:sword_handle"
+    }
+  },
+  "result":
+  {
+    "item": "cwsr:peaceful_nature",
+    "count": 1
+  }
+}

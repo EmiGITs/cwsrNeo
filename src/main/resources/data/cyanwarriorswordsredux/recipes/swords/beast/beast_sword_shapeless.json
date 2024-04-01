@@ -1,0 +1,17 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "group":"cwsr:beast_sword",
+  "ingredients": [
+    {
+      "item": "cwsr:sword_handle"
+    },
+    {
+      "item": "cwsr:beast_essence"
+    }
+  ],
+  "result":
+  {
+    "item": "cwsr:beast_sword",
+    "count": 1
+  }
+}

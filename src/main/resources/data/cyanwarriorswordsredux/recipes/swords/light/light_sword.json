@@ -1,0 +1,30 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "group":"cwsr:light_sword",
+  "pattern":
+  [
+    "dxd",
+    "dxd",
+    " y "
+  ],
+  "key":
+  {
+    "x":
+    {
+      "item": "minecraft:iron_ingot"
+    },
+    "d":
+    {
+      "item": "minecraft:glowstone_dust"
+    },
+    "y":
+    {
+      "item": "cwsr:sword_handle"
+    }
+  },
+  "result":
+  {
+    "item": "cwsr:light_sword",
+    "count": 1
+  }
+}

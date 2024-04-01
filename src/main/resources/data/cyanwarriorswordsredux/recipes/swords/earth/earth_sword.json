@@ -1,0 +1,30 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "group":"cwsr:earth_sword",
+  "pattern":
+  [
+    "dxd",
+    "dxd",
+    " y "
+  ],
+  "key":
+  {
+    "x":
+    {
+      "item": "minecraft:iron_ingot"
+    },
+    "d":
+    {
+      "item": "minecraft:dirt"
+    },
+    "y":
+    {
+      "item": "cwsr:sword_handle"
+    }
+  },
+  "result":
+  {
+    "item": "cwsr:earth_sword",
+    "count": 1
+  }
+}

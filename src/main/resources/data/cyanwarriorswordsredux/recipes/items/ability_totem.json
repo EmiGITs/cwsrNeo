@@ -1,0 +1,29 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern":
+  [
+    "oeo",
+    "eme",
+    "oeo"
+  ],
+  "key":
+  {
+    "e":
+    {
+      "item": "minecraft:diamond"
+    },
+    "m":
+    {
+      "item": "cwsr:sword_handle"
+    },
+    "o":
+    {
+      "item": "minecraft:lapis_lazuli"
+    }
+  },
+  "result":
+  {
+    "item": "cwsr:ability_totem",
+    "count": 1
+  }
+}

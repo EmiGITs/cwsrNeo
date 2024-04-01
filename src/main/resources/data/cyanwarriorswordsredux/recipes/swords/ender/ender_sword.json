@@ -1,0 +1,30 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "group":"cwsr:ender_sword",
+  "pattern":
+  [
+    "dxd",
+    "dxd",
+    " y "
+  ],
+  "key":
+  {
+    "x":
+    {
+      "item": "minecraft:iron_ingot"
+    },
+    "d":
+    {
+      "item": "minecraft:ender_pearl"
+    },
+    "y":
+    {
+      "item": "cwsr:sword_handle"
+    }
+  },
+  "result":
+  {
+    "item": "cwsr:ender_sword",
+    "count": 1
+  }
+}

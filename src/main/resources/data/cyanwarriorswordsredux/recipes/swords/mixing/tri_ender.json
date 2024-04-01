@@ -1,0 +1,42 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "group":"cwsr:tri_ender",
+  "pattern":
+  [
+    "pzp",
+    "dxy",
+    "pcp"
+  ],
+  "key":
+  {
+    "z":
+    {
+      "item": "minecraft:ender_eye"
+    },
+    "p":
+    {
+      "item": "minecraft:blaze_powder"
+    },
+    "x":
+    {
+      "item": "cwsr:ender_fire"
+    },
+    "y":
+    {
+      "item": "cwsr:ender_thunder"
+    },
+    "d":
+    {
+      "item": "cwsr:ender_wind"
+    },
+    "c":
+    {
+      "item": "cwsr:sword_handle"
+    }
+  },
+  "result":
+  {
+    "item": "cwsr:tri_ender",
+    "count": 1
+  }
+}

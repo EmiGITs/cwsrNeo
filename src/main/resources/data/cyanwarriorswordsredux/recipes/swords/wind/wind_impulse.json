@@ -1,0 +1,30 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "group":"cwsr:wind_impulse",
+  "pattern":
+  [
+    "xdx",
+    "dyd",
+    "xdx"
+  ],
+  "key":
+  {
+    "x":
+    {
+      "item": "minecraft:feather"
+    },
+    "y":
+    {
+      "item": "cwsr:wind_sword"
+    },
+    "d":
+    {
+      "item": "minecraft:rabbit_foot"
+    }
+  },
+  "result":
+  {
+    "item": "cwsr:wind_impulse",
+    "count": 1
+  }
+}

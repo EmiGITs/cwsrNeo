@@ -1,0 +1,37 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "ingredients": [
+    {
+      "item": "cwsr:fire_essence"
+    },
+    {
+      "item": "cwsr:beast_essence"
+    },
+    {
+      "item": "cwsr:dark_essence"
+    },
+    {
+      "item": "cwsr:earth_essence"
+    },
+    {
+      "item": "cwsr:ender_essence"
+    },
+    {
+      "item": "cwsr:light_essence"
+    },
+    {
+      "item": "cwsr:thunder_essence"
+    },
+    {
+      "item": "cwsr:water_essence"
+    },
+    {
+      "item": "cwsr:wind_essence"
+    }
+  ],
+  "result":
+  {
+    "item": "cwsr:mixed_essence",
+    "count": 1
+  }
+}

@@ -1,0 +1,26 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "group":"cwsr:thunder_shock",
+  "pattern":
+  [
+    "ddd",
+    "dyd",
+    "ddd"
+  ],
+  "key":
+  {
+    "y":
+    {
+      "item": "cwsr:thunder_sword"
+    },
+    "d":
+    {
+      "item": "minecraft:redstone_block"
+    }
+  },
+  "result":
+  {
+    "item": "cwsr:thunder_shock",
+    "count": 1
+  }
+}

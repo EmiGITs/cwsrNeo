@@ -1,0 +1,30 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "group":"cwsr:cyan_sword",
+  "pattern":
+  [
+    "dmd",
+    "dmd",
+    " s "
+  ],
+  "key":
+  {
+    "d":
+    {
+      "item": "minecraft:diamond"
+    },
+    "s":
+    {
+      "item": "cwsr:sword_handle"
+    },
+    "m":
+    {
+      "item": "cwsr:mixed_essence"
+    }
+  },
+  "result":
+  {
+    "item": "cwsr:cyan_sword",
+    "count": 1
+  }
+}

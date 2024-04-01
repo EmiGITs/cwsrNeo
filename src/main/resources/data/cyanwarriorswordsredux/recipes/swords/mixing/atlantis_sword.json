@@ -1,0 +1,46 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "group":"cwsr:atlantis_sword",
+  "pattern":
+  [
+    "mwm",
+    "lct",
+    "psp"
+  ],
+  "key":
+  {
+    "p":
+    {
+      "item": "minecraft:prismarine"
+    },
+    "w":
+    {
+      "item": "cwsr:water_essence"
+    },
+    "l":
+    {
+      "item": "cwsr:light_essence"
+    },
+    "m":
+    {
+      "item": "minecraft:sea_lantern"
+    },
+    "c":
+    {
+      "item": "minecraft:conduit"
+    },
+    "t":
+    {
+      "item": "cwsr:thunder_essence"
+    },
+    "s":
+    {
+      "item": "cwsr:sword_handle"
+    }
+  },
+  "result":
+  {
+    "item": "cwsr:atlantis_sword",
+    "count": 1
+  }
+}

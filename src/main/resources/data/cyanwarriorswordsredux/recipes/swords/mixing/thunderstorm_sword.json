@@ -1,0 +1,34 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "group":"cwsr:thunderstorm_sword",
+  "pattern":
+  [
+    "yxd",
+    "yxd",
+    " c "
+  ],
+  "key":
+  {
+    "x":
+    {
+      "item": "minecraft:iron_ingot"
+    },
+    "y":
+    {
+      "item": "cwsr:thunder_essence"
+    },
+    "d":
+    {
+      "item": "cwsr:wind_essence"
+    },
+    "c":
+    {
+      "item": "cwsr:sword_handle"
+    }
+  },
+  "result":
+  {
+    "item": "cwsr:thunderstorm_sword",
+    "count": 1
+  }
+}
