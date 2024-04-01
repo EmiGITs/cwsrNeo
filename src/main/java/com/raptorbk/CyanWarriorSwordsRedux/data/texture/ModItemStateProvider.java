@@ -21,6 +21,7 @@ public class ModItemStateProvider extends ItemModelProvider {
         item(ItemInit.SYNERGY_TOTEM.get());
         item(ItemInit.ACTIVE_SYNERGY_TOTEM.get());
         item(ItemInit.ABILITY_TOTEM.get());
+        item(ItemInit.BEAST_SWORD.get());
 
     }
 

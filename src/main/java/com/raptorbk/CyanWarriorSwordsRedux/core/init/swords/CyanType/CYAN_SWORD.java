@@ -11,6 +11,7 @@ import net.minecraft.network.chat.Component;
 
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.server.level.ServerPlayer;
+import net.minecraft.tags.BlockTags;
 import net.minecraft.world.InteractionHand;
 import net.minecraft.world.InteractionResult;
 import net.minecraft.world.InteractionResultHolder;
@@ -29,6 +30,8 @@ import net.minecraft.world.item.Tier;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.crafting.Ingredient;
+import net.neoforged.neoforge.common.SimpleTier;
+import net.neoforged.neoforge.common.Tags;
 
 import javax.annotation.Nullable;
 import java.util.List;
@@ -36,9 +39,12 @@ import java.util.List;
 
 public class CYAN_SWORD extends SWORD_CWSR {
 
+    public static SimpleTier tierIn = new SimpleTier(3, SwordConfig.CYAN_SWORD_DUR.get(), 0.0f, 4.0f, 10, BlockTags.NEEDS_DIAMOND_TOOL, () ->
+            Ingredient.of(Tags.Items.ORES_DIAMOND));
 
-    public CYAN_SWORD(Tier tier, int attackDamageIn, float attackSpeedIn, Properties builder) {
-            super(tier, SwordConfig.CYAN_SWORD_DMG.get(), attackSpeedIn, builder);
+
+    public CYAN_SWORD( float attackSpeedIn, Properties builder) {
+            super(tierIn, SwordConfig.CYAN_SWORD_DMG.get(), attackSpeedIn, builder);
     }
 
     public static void callEffect(SurroundEffect seffect, Level world, Player entity, InteractionHand handIn, Block blk){

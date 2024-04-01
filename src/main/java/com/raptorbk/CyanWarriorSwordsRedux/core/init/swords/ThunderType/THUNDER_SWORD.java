@@ -11,6 +11,7 @@ import net.minecraft.network.chat.Component;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.sounds.SoundEvents;
 import net.minecraft.sounds.SoundSource;
+import net.minecraft.tags.BlockTags;
 import net.minecraft.world.InteractionHand;
 import net.minecraft.world.InteractionResult;
 import net.minecraft.world.InteractionResultHolder;
@@ -18,6 +19,7 @@ import net.minecraft.world.effect.MobEffectInstance;
 import net.minecraft.world.effect.MobEffects;
 import net.minecraft.world.entity.*;
 import net.minecraft.world.item.TooltipFlag;
+import net.minecraft.world.item.crafting.Ingredient;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.Block;
 
@@ -27,6 +29,8 @@ import net.minecraft.world.item.Tier;
 import net.minecraft.world.item.ItemStack;
 
 import net.minecraft.util.*;
+import net.neoforged.neoforge.common.SimpleTier;
+import net.neoforged.neoforge.common.Tags;
 
 
 import javax.annotation.Nullable;
@@ -35,9 +39,12 @@ import java.util.Objects;
 
 public class THUNDER_SWORD extends SWORD_CWSR {
 
+    public static SimpleTier tierIn = new SimpleTier(3, SwordConfig.THUNDER_SWORD_DUR.get(), 0.0f, 4.0f, 10, BlockTags.NEEDS_DIAMOND_TOOL, () ->
+            Ingredient.of(Tags.Items.ORES_DIAMOND));
 
-    public THUNDER_SWORD(Tier tier, int attackDamageIn, float attackSpeedIn, Properties builder) {
-        super(tier, SwordConfig.THUNDER_SWORD_DMG.get(), attackSpeedIn, builder);
+
+    public THUNDER_SWORD( float attackSpeedIn, Properties builder) {
+        super(tierIn, SwordConfig.THUNDER_SWORD_DMG.get(), attackSpeedIn, builder);
     }
 
     public static void callEffect(SurroundEffect seffect, Level world, Player entity, InteractionHand handIn, Block blk){
