@@ -1,9 +1,7 @@
 package com.raptorbk.CyanWarriorSwordsRedux.core.init;
 
 import com.raptorbk.CyanWarriorSwordsRedux.CyanWarriorSwordsRedux;
-import com.raptorbk.CyanWarriorSwordsRedux.customadv.Dualwieldachtrigger;
-import com.raptorbk.CyanWarriorSwordsRedux.customadv.Reallyradtrigger;
-import com.raptorbk.CyanWarriorSwordsRedux.customadv.Sworddestroyedtrigger;
+import com.raptorbk.CyanWarriorSwordsRedux.customadv.*;
 import net.minecraft.advancements.CriterionTrigger;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.world.item.enchantment.Enchantment;
@@ -19,5 +17,10 @@ public class TriggerInit {
     public static final DeferredHolder<CriterionTrigger<?>, Sworddestroyedtrigger> SD_TRIGGER= TRIGGERS.register("sword_destroyed_trigger", Sworddestroyedtrigger::new);
 
     public static final DeferredHolder<CriterionTrigger<?>, Reallyradtrigger> RR_TRIGGER= TRIGGERS.register("really_rad_trigger", Reallyradtrigger::new);
+
+    public static final DeferredHolder<CriterionTrigger<?>, Somethingelsetrigger> SE_TRIGGER= TRIGGERS.register("something_else_trigger", Somethingelsetrigger::new);
+
+    public static final DeferredHolder<CriterionTrigger<?>, Themoretrigger> TM_TRIGGER= TRIGGERS.register("the_more_trigger", Themoretrigger::new);
+
 
 }
