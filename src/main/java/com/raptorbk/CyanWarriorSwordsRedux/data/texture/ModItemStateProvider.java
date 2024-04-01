@@ -24,9 +24,6 @@ public class ModItemStateProvider extends ItemModelProvider {
         item(ItemInit.BEAST_SWORD.get());
         item(ItemInit.GOLEM_SWORD.get());
         item(ItemInit.DARK_NETHER.get());
-
-
-        //TEST ON FORWARD
         item(ItemInit.DARK_SWORD.get());
         item(ItemInit.EARTH_SWORD.get());
         item(ItemInit.WILD_NATURE.get());
@@ -53,6 +50,24 @@ public class ModItemStateProvider extends ItemModelProvider {
         item(ItemInit.ICE_SWORD.get());
         item(ItemInit.WIND_IMPULSE.get());
         item(ItemInit.WIND_SWORD.get());
+
+        //ITEMS
+
+        item(ItemInit.SWORD_HANDLE.get());
+
+        //ESSENCE
+        item(ItemInit.BEAST_ESSENCE.get());
+        item(ItemInit.DARK_ESSENCE.get());
+        item(ItemInit.EARTH_ESSENCE.get());
+        item(ItemInit.ENDER_ESSENCE.get());
+        item(ItemInit.FIRE_ESSENCE.get());
+        item(ItemInit.LIGHT_ESSENCE.get());
+        item(ItemInit.MIXED_ESSENCE.get());
+        item(ItemInit.THUNDER_ESSENCE.get());
+        item(ItemInit.WATER_ESSENCE.get());
+        item(ItemInit.WIND_ESSENCE.get());
+
+
 
     }
 

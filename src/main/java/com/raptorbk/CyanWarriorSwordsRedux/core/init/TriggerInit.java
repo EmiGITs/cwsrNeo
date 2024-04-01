@@ -24,5 +24,8 @@ public class TriggerInit {
 
     public static final DeferredHolder<CriterionTrigger<?>, Ablasttrigger> AB_TRIGGER= TRIGGERS.register("a_blast_trigger", Ablasttrigger::new);
 
+    public static final DeferredHolder<CriterionTrigger<?>, Removingdentstrigger> RD_TRIGGER= TRIGGERS.register("removing_dents_trigger", Removingdentstrigger::new);
+
+
 
 }

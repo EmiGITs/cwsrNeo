@@ -4,6 +4,8 @@ import com.raptorbk.CyanWarriorSwordsRedux.CyanWarriorSwordsRedux;
 import com.raptorbk.CyanWarriorSwordsRedux.core.init.Totems.ABILITY_TOTEM;
 import com.raptorbk.CyanWarriorSwordsRedux.core.init.Totems.ACTIVE_SYNERGY_TOTEM;
 import com.raptorbk.CyanWarriorSwordsRedux.core.init.Totems.SYNERGY_TOTEM;
+import com.raptorbk.CyanWarriorSwordsRedux.core.init.essences.*;
+import com.raptorbk.CyanWarriorSwordsRedux.core.init.items.SwordHandle;
 import com.raptorbk.CyanWarriorSwordsRedux.core.init.swords.BeastType.BEAST_SWORD;
 import com.raptorbk.CyanWarriorSwordsRedux.core.init.swords.BeastType.GOLEM_SWORD;
 import com.raptorbk.CyanWarriorSwordsRedux.core.init.swords.CyanType.CYAN_SWORD;
@@ -32,6 +34,7 @@ import net.neoforged.neoforge.registries.DeferredRegister;
 public class ItemInit {
     public static final DeferredRegister.Items ITEMS = DeferredRegister.createItems(CyanWarriorSwordsRedux.MOD_ID);
 
+    public static final DeferredItem<Item> SWORD_HANDLE = ITEMS.register("sword_handle", SwordHandle::new);
     public static final DeferredItem<Item> SYNERGY_TOTEM = ITEMS.register("synergy_totem", () -> new SYNERGY_TOTEM(new Item.Properties()));
 
     public static final DeferredItem<Item> ACTIVE_SYNERGY_TOTEM = ITEMS.register("active_synergy_totem", () -> new ACTIVE_SYNERGY_TOTEM(new Item.Properties()));
@@ -99,5 +102,27 @@ public class ItemInit {
     public static final DeferredItem<Item> WIND_IMPULSE = ITEMS.register("wind_impulse", () -> new WIND_IMPULSE(-2.4f, new Item.Properties().stacksTo(1)));
 
     public static final DeferredItem<Item> WIND_SWORD = ITEMS.register("wind_sword", () -> new WIND_SWORD(-2.4f, new Item.Properties().stacksTo(1)));
+
+    //ESSENCES
+    public static final DeferredItem<Item> BEAST_ESSENCE = ITEMS.register("beast_essence", BeastEssence::new);
+
+    public static final DeferredItem<Item> DARK_ESSENCE = ITEMS.register("dark_essence", DarkEssence::new);
+
+    public static final DeferredItem<Item> EARTH_ESSENCE = ITEMS.register("earth_essence", EarthEssence::new);
+
+    public static final DeferredItem<Item> ENDER_ESSENCE = ITEMS.register("ender_essence", EnderEssence::new);
+
+    public static final DeferredItem<Item> FIRE_ESSENCE = ITEMS.register("fire_essence", FireEssence::new);
+
+    public static final DeferredItem<Item> LIGHT_ESSENCE = ITEMS.register("light_essence", LightEssence::new);
+
+    public static final DeferredItem<Item> MIXED_ESSENCE = ITEMS.register("mixed_essence", MixedEssence::new);
+
+    public static final DeferredItem<Item> THUNDER_ESSENCE = ITEMS.register("thunder_essence", ThunderEssence::new);
+
+    public static final DeferredItem<Item> WATER_ESSENCE = ITEMS.register("water_essence", WaterEssence::new);
+
+    public static final DeferredItem<Item> WIND_ESSENCE = ITEMS.register("wind_essence", WindEssence::new);
+
 
 }
