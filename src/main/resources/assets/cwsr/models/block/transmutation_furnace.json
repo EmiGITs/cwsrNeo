@@ -1,0 +1,10 @@
+{
+  "parent": "minecraft:block/orientable",
+  "textures": {
+    "top": "cwsr:block/transmutation_furnace_top",
+    "front": "cwsr:block/transmutation_furnace_front",
+    "side": "cwsr:block/transmutation_furnace_side",
+    "back": "cwsr:block/transmutation_furnace_side",
+    "bottom": "cwsr:block/transmutation_furnace_top"
+  }
+}

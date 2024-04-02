@@ -49,6 +49,10 @@ public class CyanWarriorSwordsRedux {
             ItemConfig.load();
         }
 
+        BlockEntityTypeInit.BLOCK_ENTITY_TYPES.register(bus);
+
+        BlockInit.BLOCKS.register(bus);
+
         RecipeTypeInit.RECIPE_TYPES.register(bus);
 
         SerializerInit.RECIPE_SERIALIZERS.register(bus);

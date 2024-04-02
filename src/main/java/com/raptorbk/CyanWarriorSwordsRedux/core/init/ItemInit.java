@@ -27,12 +27,15 @@ import com.raptorbk.CyanWarriorSwordsRedux.core.init.swords.WaterType.ICE_SWORD;
 import com.raptorbk.CyanWarriorSwordsRedux.core.init.swords.WaterType.WATER_SWORD;
 import com.raptorbk.CyanWarriorSwordsRedux.core.init.swords.WindType.WIND_IMPULSE;
 import com.raptorbk.CyanWarriorSwordsRedux.core.init.swords.WindType.WIND_SWORD;
+import net.minecraft.world.item.BlockItem;
 import net.minecraft.world.item.Item;
 import net.neoforged.neoforge.registries.DeferredItem;
 import net.neoforged.neoforge.registries.DeferredRegister;
 
 public class ItemInit {
     public static final DeferredRegister.Items ITEMS = DeferredRegister.createItems(CyanWarriorSwordsRedux.MOD_ID);
+
+    public static final DeferredItem<BlockItem> TRANSMUTATION_FURNACE = ITEMS.registerSimpleBlockItem(BlockInit.TRANSMUTATION_FURNACE_BLOCK, new Item.Properties());
 
     public static final DeferredItem<Item> SWORD_HANDLE = ITEMS.register("sword_handle", SwordHandle::new);
     public static final DeferredItem<Item> SYNERGY_TOTEM = ITEMS.register("synergy_totem", () -> new SYNERGY_TOTEM(new Item.Properties()));
