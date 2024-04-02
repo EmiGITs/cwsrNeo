@@ -76,9 +76,12 @@ public abstract class AbstractTransmutationFurnaceBlock extends BaseEntityBlock 
 
     @Override
     public void onRemove(BlockState pState, Level pLevel, BlockPos pPos, BlockState pNewState, boolean pIsMoving) {
+
         if (!pState.is(pNewState.getBlock())) {
+
             BlockEntity blockentity = pLevel.getBlockEntity(pPos);
             if (blockentity instanceof AbstractTransmutationFurnaceBlockEntity) {
+
                 if (pLevel instanceof ServerLevel) {
                     Containers.dropContents(pLevel, pPos, (AbstractTransmutationFurnaceBlockEntity)blockentity);
                     ((AbstractTransmutationFurnaceBlockEntity)blockentity).getRecipesToAwardAndPopExperience((ServerLevel)pLevel, Vec3.atCenterOf(pPos));

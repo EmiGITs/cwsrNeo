@@ -2,6 +2,7 @@ package com.raptorbk.CyanWarriorSwordsRedux.core.init.TransmutationFurnace;
 
 import com.google.common.collect.Lists;
 import com.google.common.collect.Maps;
+import com.raptorbk.CyanWarriorSwordsRedux.recipes.TransmutationRecipe;
 import it.unimi.dsi.fastutil.objects.Object2IntOpenHashMap;
 import it.unimi.dsi.fastutil.objects.Object2IntMap.Entry;
 import java.util.List;
@@ -34,7 +35,6 @@ import net.minecraft.world.inventory.StackedContentsCompatible;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.Items;
-import net.minecraft.world.item.crafting.AbstractCookingRecipe;
 import net.minecraft.world.item.crafting.RecipeHolder;
 import net.minecraft.world.item.crafting.RecipeManager;
 import net.minecraft.world.item.crafting.RecipeType;
@@ -62,7 +62,7 @@ public abstract class AbstractTransmutationFurnaceBlockEntity extends BaseContai
     public static final int NUM_DATA_VALUES = 4;
     public static final int BURN_TIME_STANDARD = 200;
     public static final int BURN_COOL_SPEED = 2;
-    private final RecipeType<? extends AbstractCookingRecipe> recipeType;
+    private final RecipeType<? extends TransmutationRecipe> recipeType;
     protected NonNullList<ItemStack> items = NonNullList.withSize(3, ItemStack.EMPTY);
     int litTime;
     int litDuration;
@@ -108,13 +108,13 @@ public abstract class AbstractTransmutationFurnaceBlockEntity extends BaseContai
         }
     };
     private final Object2IntOpenHashMap<ResourceLocation> recipesUsed = new Object2IntOpenHashMap<>();
-    private final RecipeManager.CachedCheck<Container, ? extends AbstractCookingRecipe> quickCheck;
+    private final RecipeManager.CachedCheck<Container, ? extends TransmutationRecipe> quickCheck;
 
     protected AbstractTransmutationFurnaceBlockEntity(
-            DeferredHolder<BlockEntityType<?>, BlockEntityType<TransmutationFurnaceBlockEntity>> pType, BlockPos pPos, BlockState pBlockState, RecipeType<? extends AbstractCookingRecipe> pRecipeType
+            DeferredHolder<BlockEntityType<?>, BlockEntityType<TransmutationFurnaceBlockEntity>> pType, BlockPos pPos, BlockState pBlockState, RecipeType<TransmutationRecipe> pRecipeType
     ) {
         super(pType.get(), pPos, pBlockState);
-        this.quickCheck = RecipeManager.createCheck((RecipeType<AbstractCookingRecipe>)pRecipeType);
+        this.quickCheck = RecipeManager.createCheck(pRecipeType);
         this.recipeType = pRecipeType;
     }
 
@@ -521,11 +521,12 @@ public abstract class AbstractTransmutationFurnaceBlockEntity extends BaseContai
 
     public List<RecipeHolder<?>> getRecipesToAwardAndPopExperience(ServerLevel pLevel, Vec3 pPopVec) {
         List<RecipeHolder<?>> list = Lists.newArrayList();
+        System.out.println(this.recipesUsed.object2IntEntrySet());
 
         for(Entry<ResourceLocation> entry : this.recipesUsed.object2IntEntrySet()) {
             pLevel.getRecipeManager().byKey(entry.getKey()).ifPresent(p_300839_ -> {
                 list.add(p_300839_);
-                createExperience(pLevel, pPopVec, entry.getIntValue(), ((AbstractCookingRecipe)p_300839_.value()).getExperience());
+                createExperience(pLevel, pPopVec, entry.getIntValue(), ((TransmutationRecipe)p_300839_.value()).getExperience());
             });
         }
 

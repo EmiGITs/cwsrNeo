@@ -5,6 +5,7 @@ import com.mojang.datafixers.util.Pair;
 import com.raptorbk.CyanWarriorSwordsRedux.config.Config;
 import com.raptorbk.CyanWarriorSwordsRedux.config.ItemConfig;
 import com.raptorbk.CyanWarriorSwordsRedux.core.init.*;
+import com.raptorbk.CyanWarriorSwordsRedux.core.init.TransmutationFurnace.TransmutationFurnaceMenu;
 import com.raptorbk.CyanWarriorSwordsRedux.data.DataGenerators;
 import com.raptorbk.CyanWarriorSwordsRedux.data.recipe.TransmutationRecipeBuilder;
 import net.minecraft.core.HolderLookup;
@@ -48,6 +49,8 @@ public class CyanWarriorSwordsRedux {
         if(!ItemConfig.initialized){
             ItemConfig.load();
         }
+
+        MenuInit.MENU_TYPES.register(bus);
 
         BlockEntityTypeInit.BLOCK_ENTITY_TYPES.register(bus);
 
@@ -107,7 +110,7 @@ public class CyanWarriorSwordsRedux {
             protected void buildRecipes(RecipeOutput consumer) {
                 CompoundTag compoundtag = new CompoundTag();
 
-                TransmutationRecipeBuilder.begin(RecipeCategory.MISC, ItemInit.BEAST_ESSENCE.get(),compoundtag,5,5)
+                TransmutationRecipeBuilder.begin(RecipeCategory.MISC, ItemInit.BEAST_ESSENCE.get(),compoundtag,5,500)
                         .addMaterial(Ingredient.of(ItemInit.BEAST_SWORD.get()), 1)
                         .addCriterion("has_leather", has(itemTag("forge:leather")))
                         .save(consumer.withConditions(

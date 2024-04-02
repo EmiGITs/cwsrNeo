@@ -87,13 +87,13 @@ public class TransmutationRecipe implements Recipe<Container>
     {
 
         Map<Ingredient, Integer> missing = materials.stream().collect(Collectors.toMap(i -> i.ingredient, i -> i.count));
-        for (int i = 0; i < 4; i++)
+        for (int i = 0; i < 3; i++)
         {
             for (Map.Entry<Ingredient, Integer> mat : missing.entrySet())
             {
                 Ingredient ing = mat.getKey();
                 int value = mat.getValue();
-                ItemStack stack = inv.getItem(i + 2);
+                ItemStack stack = inv.getItem(i);
                 if (ing.test(stack))
                 {
                     int remaining = Math.max(0, value - stack.getCount());
