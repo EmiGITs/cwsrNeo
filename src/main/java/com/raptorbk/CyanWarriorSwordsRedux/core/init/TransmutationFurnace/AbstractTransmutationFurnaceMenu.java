@@ -13,7 +13,6 @@ import net.minecraft.world.item.crafting.Recipe;
 import net.minecraft.world.item.crafting.RecipeHolder;
 import net.minecraft.world.item.crafting.RecipeType;
 import net.minecraft.world.level.Level;
-import net.minecraft.world.level.block.entity.AbstractFurnaceBlockEntity;
 
 public abstract class AbstractTransmutationFurnaceMenu extends RecipeBookMenu<Container> {
     public static final int INGREDIENT_SLOT = 0;
@@ -56,7 +55,7 @@ public abstract class AbstractTransmutationFurnaceMenu extends RecipeBookMenu<Co
         this.level = pPlayerInventory.player.level();
         this.addSlot(new Slot(pContainer, 0, 56, 17));
         this.addSlot(new TransmutationFurnaceSlot(this, pContainer, 1, 56, 53));
-        this.addSlot(new FurnaceResultSlot(pPlayerInventory.player, pContainer, 2, 116, 35));
+        this.addSlot(new TransmutationFurnaceResultSlot(pPlayerInventory.player, pContainer, 2, 116, 35));
 
         for(int i = 0; i < 3; ++i) {
             for(int j = 0; j < 9; ++j) {

@@ -134,7 +134,6 @@ public class ExecuteSeffect implements SurroundEffect {
         BlockPos pos11 = new BlockPos((int) entity.getX()-1, (int) entity.getY(), (int) entity.getZ());
 
         if(world.isEmptyBlock(pos0)){
-            System.out.println(world.getBlockState(pos0).getBlock());
             world.setBlock(pos0, blk.defaultBlockState(),3);
         }
 

@@ -521,7 +521,7 @@ public abstract class AbstractTransmutationFurnaceBlockEntity extends BaseContai
 
     public List<RecipeHolder<?>> getRecipesToAwardAndPopExperience(ServerLevel pLevel, Vec3 pPopVec) {
         List<RecipeHolder<?>> list = Lists.newArrayList();
-        System.out.println(this.recipesUsed.object2IntEntrySet());
+
 
         for(Entry<ResourceLocation> entry : this.recipesUsed.object2IntEntrySet()) {
             pLevel.getRecipeManager().byKey(entry.getKey()).ifPresent(p_300839_ -> {
