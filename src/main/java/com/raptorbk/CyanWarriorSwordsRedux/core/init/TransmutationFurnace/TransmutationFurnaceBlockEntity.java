@@ -18,7 +18,7 @@ public class TransmutationFurnaceBlockEntity extends AbstractTransmutationFurnac
 
     @Override
     protected Component getDefaultName() {
-        return Component.translatable("container.furnace");
+        return Component.translatable("ui.cwsr.transfurnace.title");
     }
 
     @Override
