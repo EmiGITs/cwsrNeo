@@ -118,7 +118,6 @@ public abstract class AbstractTransmutationFurnaceBlockEntity extends BaseContai
         this.recipeType = pRecipeType;
     }
 
-    /**@deprecated Forge: get burn times by calling CommonHooks#getBurnTime(ItemStack)*/ @Deprecated
     public static Map<Item, Integer> getFuel() {
         Map<Item, Integer> map = Maps.newLinkedHashMap();
         add(map, Items.LAVA_BUCKET, 20000);
@@ -378,17 +377,13 @@ public abstract class AbstractTransmutationFurnaceBlockEntity extends BaseContai
         }
     }
 
-    /**
-     * Returns {@code true} if automation can insert the given item in the given slot from the given side.
-     */
+
     @Override
     public boolean canPlaceItemThroughFace(int pIndex, ItemStack pItemStack, @Nullable Direction pDirection) {
         return this.canPlaceItem(pIndex, pItemStack);
     }
 
-    /**
-     * Returns {@code true} if automation can extract the given item in the given slot from the given side.
-     */
+
     @Override
     public boolean canTakeItemThroughFace(int pIndex, ItemStack pStack, Direction pDirection) {
         if (pDirection == Direction.DOWN && pIndex == 1) {
@@ -398,9 +393,7 @@ public abstract class AbstractTransmutationFurnaceBlockEntity extends BaseContai
         }
     }
 
-    /**
-     * Returns the number of slots in the inventory.
-     */
+
     @Override
     public int getContainerSize() {
         return this.items.size();
@@ -417,33 +410,25 @@ public abstract class AbstractTransmutationFurnaceBlockEntity extends BaseContai
         return true;
     }
 
-    /**
-     * Returns the stack in the given slot.
-     */
+
     @Override
     public ItemStack getItem(int pIndex) {
         return this.items.get(pIndex);
     }
 
-    /**
-     * Removes up to a specified number of items from an inventory slot and returns them in a new stack.
-     */
+
     @Override
     public ItemStack removeItem(int pIndex, int pCount) {
         return ContainerHelper.removeItem(this.items, pIndex, pCount);
     }
 
-    /**
-     * Removes a stack from the given slot and returns it.
-     */
+
     @Override
     public ItemStack removeItemNoUpdate(int pIndex) {
         return ContainerHelper.takeItem(this.items, pIndex);
     }
 
-    /**
-     * Sets the given item stack to the specified slot in the inventory (can be crafting or armor sections).
-     */
+
     @Override
     public void setItem(int pIndex, ItemStack pStack) {
         ItemStack itemstack = this.items.get(pIndex);
@@ -460,17 +445,13 @@ public abstract class AbstractTransmutationFurnaceBlockEntity extends BaseContai
         }
     }
 
-    /**
-     * Don't rename this method to canInteractWith due to conflicts with Container
-     */
+
     @Override
     public boolean stillValid(Player pPlayer) {
         return Container.stillValidBlockEntity(this, pPlayer);
     }
 
-    /**
-     * Returns {@code true} if automation is allowed to insert the given stack (ignoring stack size) into the given slot. For guis use Slot.isItemValid
-     */
+
     @Override
     public boolean canPlaceItem(int pIndex, ItemStack pStack) {
         if (pIndex == 2) {

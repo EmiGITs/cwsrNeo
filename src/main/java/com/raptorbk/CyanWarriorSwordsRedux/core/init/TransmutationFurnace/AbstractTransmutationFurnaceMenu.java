@@ -108,17 +108,13 @@ public abstract class AbstractTransmutationFurnaceMenu extends RecipeBookMenu<Co
         return 3;
     }
 
-    /**
-     * Determines whether supplied player can use this container
-     */
+
     @Override
     public boolean stillValid(Player pPlayer) {
         return this.container.stillValid(pPlayer);
     }
 
-    /**
-     * Handle when the stack in slot {@code index} is shift-clicked. Normally this moves the stack between the player inventory and the other inventory(s).
-     */
+
     @Override
     public ItemStack quickMoveStack(Player pPlayer, int pIndex) {
         ItemStack itemstack = ItemStack.EMPTY;

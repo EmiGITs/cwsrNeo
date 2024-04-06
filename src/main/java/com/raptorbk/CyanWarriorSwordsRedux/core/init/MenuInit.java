@@ -5,6 +5,7 @@ import com.raptorbk.CyanWarriorSwordsRedux.core.init.TransmutationFurnace.Transm
 import com.raptorbk.CyanWarriorSwordsRedux.core.init.TransmutationFurnace.TransmutationFurnaceMenu;
 import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.world.flag.FeatureFlags;
+import net.minecraft.world.inventory.AbstractContainerMenu;
 import net.minecraft.world.inventory.MenuType;
 import net.minecraft.world.level.block.entity.BlockEntityType;
 import net.neoforged.neoforge.registries.DeferredHolder;

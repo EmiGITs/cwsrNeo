@@ -16,17 +16,13 @@ public class TransmutationFurnaceResultSlot extends Slot {
         this.player = pPlayer;
     }
 
-    /**
-     * Check if the stack is allowed to be placed in this slot, used for armor slots as well as furnace fuel.
-     */
+
     @Override
     public boolean mayPlace(ItemStack pStack) {
         return false;
     }
 
-    /**
-     * Decrease the size of the stack in slot (first int arg) by the amount of the second int arg. Returns the new stack.
-     */
+
     @Override
     public ItemStack remove(int pAmount) {
         if (this.hasItem()) {
@@ -42,20 +38,14 @@ public class TransmutationFurnaceResultSlot extends Slot {
         super.onTake(pPlayer, pStack);
     }
 
-    /**
-     * Typically increases an internal count, then calls {@code onCrafting(item)}.
-     *
-     * @param pStack the output - ie, iron ingots, and pickaxes, not ore and wood.
-     */
+
     @Override
     protected void onQuickCraft(ItemStack pStack, int pAmount) {
         this.removeCount += pAmount;
         this.checkTakeAchievements(pStack);
     }
 
-    /**
-     * @param pStack the output - ie, iron ingots, and pickaxes, not ore and wood.
-     */
+
     @Override
     protected void checkTakeAchievements(ItemStack pStack) {
         pStack.onCraftedBy(this.player.level(), this.player, this.removeCount);

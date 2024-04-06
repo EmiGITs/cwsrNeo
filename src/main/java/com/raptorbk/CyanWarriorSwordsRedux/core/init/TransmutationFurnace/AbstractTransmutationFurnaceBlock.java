@@ -49,11 +49,7 @@ public abstract class AbstractTransmutationFurnaceBlock extends BaseEntityBlock 
         }
     }
 
-    /**
-     * Called to open this furnace's container.
-     *
-     * @see #use
-     */
+
     protected abstract void openContainer(Level pLevel, BlockPos pPos, Player pPlayer);
 
     @Override
@@ -61,9 +57,7 @@ public abstract class AbstractTransmutationFurnaceBlock extends BaseEntityBlock 
         return this.defaultBlockState().setValue(FACING, pContext.getHorizontalDirection().getOpposite());
     }
 
-    /**
-     * Called by BlockItem after this block has been placed.
-     */
+
     @Override
     public void setPlacedBy(Level pLevel, BlockPos pPos, BlockState pState, LivingEntity pPlacer, ItemStack pStack) {
         if (pStack.hasCustomHoverName()) {
@@ -95,19 +89,13 @@ public abstract class AbstractTransmutationFurnaceBlock extends BaseEntityBlock 
         }
     }
 
-    /**
-     * @deprecated call via {@link net.minecraft.world.level.block.state.BlockBehaviour.BlockStateBase#hasAnalogOutputSignal} whenever possible. Implementing/overriding is fine.
-     */
+
     @Override
     public boolean hasAnalogOutputSignal(BlockState pState) {
         return true;
     }
 
-    /**
-     * Returns the analog signal this block emits. This is the signal a comparator can read from it.
-     *
-     * @deprecated call via {@link net.minecraft.world.level.block.state.BlockBehaviour.BlockStateBase#getAnalogOutputSignal} whenever possible. Implementing/overriding is fine.
-     */
+
     @Override
     public int getAnalogOutputSignal(BlockState pBlockState, Level pLevel, BlockPos pPos) {
         return AbstractContainerMenu.getRedstoneSignalFromBlockEntity(pLevel.getBlockEntity(pPos));
@@ -118,19 +106,13 @@ public abstract class AbstractTransmutationFurnaceBlock extends BaseEntityBlock 
         return RenderShape.MODEL;
     }
 
-    /**
-     * Returns the blockstate with the given rotation from the passed blockstate. If inapplicable, returns the passed blockstate.
-     * @deprecated call via {@link net.minecraft.world.level.block.state.BlockBehaviour.BlockStateBase#rotate} whenever possible. Implementing/overriding is fine.
-     */
+
     @Override
     public BlockState rotate(BlockState pState, Rotation pRotation) {
         return pState.setValue(FACING, pRotation.rotate(pState.getValue(FACING)));
     }
 
-    /**
-     * Returns the blockstate with the given mirror of the passed blockstate. If inapplicable, returns the passed blockstate.
-     * @deprecated call via {@link net.minecraft.world.level.block.state.BlockBehaviour.BlockStateBase#mirror} whenever possible. Implementing/overriding is fine.
-     */
+
     @Override
     public BlockState mirror(BlockState pState, Mirror pMirror) {
         return pState.rotate(pMirror.getRotation(pState.getValue(FACING)));

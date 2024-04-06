@@ -45,11 +45,7 @@ public class TransmutationFurnaceBlock extends AbstractTransmutationFurnaceBlock
         return createFurnaceTicker(pLevel, pBlockEntityType, BlockEntityTypeInit.TRANSMUTATION_FURNACE.get());
     }
 
-    /**
-     * Called to open this furnace's container.
-     *
-     * @see #use
-     */
+
     @Override
     protected void openContainer(Level pLevel, BlockPos pPos, Player pPlayer) {
         BlockEntity blockentity = pLevel.getBlockEntity(pPos);
@@ -59,9 +55,7 @@ public class TransmutationFurnaceBlock extends AbstractTransmutationFurnaceBlock
         }
     }
 
-    /**
-     * Called periodically clientside on blocks near the player to show effects (like furnace fire particles).
-     */
+
     @Override
     public void animateTick(BlockState pState, Level pLevel, BlockPos pPos, RandomSource pRandom) {
         if (pState.getValue(LIT)) {

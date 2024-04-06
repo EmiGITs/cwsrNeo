@@ -13,9 +13,7 @@ public class TransmutationFurnaceSlot extends Slot {
         this.menu = pFurnaceMenu;
     }
 
-    /**
-     * Check if the stack is allowed to be placed in this slot, used for armor slots as well as furnace fuel.
-     */
+
     @Override
     public boolean mayPlace(ItemStack pStack) {
         return this.menu.isFuel(pStack) || isBucket(pStack);

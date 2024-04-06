@@ -6,6 +6,7 @@ import com.raptorbk.CyanWarriorSwordsRedux.config.Config;
 import com.raptorbk.CyanWarriorSwordsRedux.config.ItemConfig;
 import com.raptorbk.CyanWarriorSwordsRedux.core.init.*;
 import com.raptorbk.CyanWarriorSwordsRedux.core.init.TransmutationFurnace.TransmutationFurnaceMenu;
+import com.raptorbk.CyanWarriorSwordsRedux.core.init.TransmutationFurnace.TransmutationFurnaceScreen;
 import com.raptorbk.CyanWarriorSwordsRedux.data.DataGenerators;
 import com.raptorbk.CyanWarriorSwordsRedux.data.recipe.TransmutationRecipeBuilder;
 import net.minecraft.core.HolderLookup;
@@ -23,6 +24,7 @@ import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.crafting.Ingredient;
 import net.minecraft.world.level.ItemLike;
+import net.neoforged.bus.api.EventPriority;
 import net.neoforged.bus.api.IEventBus;
 import net.neoforged.fml.ModList;
 import net.neoforged.fml.ModLoadingContext;
@@ -30,6 +32,7 @@ import net.neoforged.fml.common.Mod;
 import net.neoforged.fml.config.ModConfig;
 import net.neoforged.fml.event.lifecycle.FMLClientSetupEvent;
 import net.neoforged.fml.loading.FMLPaths;
+import net.neoforged.neoforge.client.event.RegisterMenuScreensEvent;
 import net.neoforged.neoforge.common.conditions.IConditionBuilder;
 import net.neoforged.neoforge.data.event.GatherDataEvent;
 import net.neoforged.neoforge.registries.DeferredHolder;
@@ -49,6 +52,8 @@ public class CyanWarriorSwordsRedux {
         if(!ItemConfig.initialized){
             ItemConfig.load();
         }
+
+       bus.addListener(EventPriority.NORMAL, false, RegisterMenuScreensEvent.class, CyanWarriorSwordsRedux::registerMenuScreens);
 
         MenuInit.MENU_TYPES.register(bus);
 
@@ -89,6 +94,10 @@ public class CyanWarriorSwordsRedux {
         }));
     }
 
+    private static void registerMenuScreens(RegisterMenuScreensEvent ev) {
+        ev.register(MenuInit.TRANSMUTATION_FURNACE_MENU.get(), TransmutationFurnaceScreen::new);
+    }
+
     public void gatherData(GatherDataEvent event)
     {
         DataGen.gatherData(event);
@@ -110,9 +119,9 @@ public class CyanWarriorSwordsRedux {
             protected void buildRecipes(RecipeOutput consumer) {
                 CompoundTag compoundtag = new CompoundTag();
 
-                TransmutationRecipeBuilder.begin(RecipeCategory.MISC, ItemInit.BEAST_ESSENCE.get(),compoundtag,5,500)
+                TransmutationRecipeBuilder.begin(RecipeCategory.MISC, ItemInit.BEAST_ESSENCE.get(),2,compoundtag,5,500)
                         .addMaterial(Ingredient.of(ItemInit.BEAST_SWORD.get()), 1)
-                        .addCriterion("has_leather", has(itemTag("forge:leather")))
+                        .addCriterion("has_item", has(itemTag("cwsr:sword_handle")))
                         .save(consumer.withConditions(
                                 modLoaded("cwsr")
                         ), transmutationRecipeId(ItemInit.BEAST_ESSENCE));
