@@ -9,7 +9,7 @@ import net.neoforged.neoforge.registries.DeferredRegister;
 
 public class SerializerInit {
 
-    //public static final DeferredRegister<RecipeSerializer<?>> RECIPE_SERIALIZERS = DeferredRegister.create(ForgeRegistries.Keys.RECIPE_SERIALIZERS, CyanWarriorSwordsReduxMod.MOD_ID);
+    //public static final DeferredRegister<RecipeSerializer<?>> RECIPE_SERIALIZERS = DeferredRegister.create(ForgeRegistries.Keys.RECIPE_SERIALIZERS, CyanWarriorSwordsRedux.MOD_ID);
     //public static final RegistryObject<RecipeSerializer<?>> TRANSMUTATION_RECIPE = RECIPE_SERIALIZERS.register("transmutation", () -> new TransmutationRecipeSerializer<>(TransmutationRecipe::new,200));
     public static final DeferredRegister<RecipeSerializer<?>> RECIPE_SERIALIZERS = DeferredRegister.create(BuiltInRegistries.RECIPE_SERIALIZER, CyanWarriorSwordsRedux.MOD_ID);
     public static final DeferredHolder<RecipeSerializer<?>, RecipeSerializer<TransmutationRecipe>> TRANSMUTATION = RECIPE_SERIALIZERS.register("transmutation", TransmutationRecipe.Serializer::new); {

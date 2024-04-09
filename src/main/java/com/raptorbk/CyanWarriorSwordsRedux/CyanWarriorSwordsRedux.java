@@ -98,6 +98,11 @@ public class CyanWarriorSwordsRedux {
         ev.register(MenuInit.TRANSMUTATION_FURNACE_MENU.get(), TransmutationFurnaceScreen::new);
     }
 
+    public static ResourceLocation rl(String name)
+    {
+        return new ResourceLocation(CyanWarriorSwordsRedux.MOD_ID, name);
+    }
+
     public void gatherData(GatherDataEvent event)
     {
         DataGen.gatherData(event);
