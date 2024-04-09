@@ -119,23 +119,156 @@ public class CyanWarriorSwordsRedux {
             protected void buildRecipes(RecipeOutput consumer) {
                 CompoundTag compoundtag = new CompoundTag();
 
-                TransmutationRecipeBuilder.begin(RecipeCategory.MISC, ItemInit.BEAST_ESSENCE.get(),2,compoundtag,5,500)
+                TransmutationRecipeBuilder.begin(RecipeCategory.MISC, ItemInit.BEAST_ESSENCE.get(),1,compoundtag,5,1000)
                         .addMaterial(Ingredient.of(ItemInit.BEAST_SWORD.get()), 1)
                         .addCriterion("has_item", has(itemTag("cwsr:sword_handle")))
                         .save(consumer.withConditions(
                                 modLoaded("cwsr")
-                        ), transmutationRecipeId(ItemInit.BEAST_ESSENCE));
+                        ), transmutationRecipeId(ItemInit.BEAST_ESSENCE, ItemInit.BEAST_SWORD));
+
+                TransmutationRecipeBuilder.begin(RecipeCategory.MISC, ItemInit.BEAST_ESSENCE.get(),2,compoundtag,5,1000)
+                        .addMaterial(Ingredient.of(ItemInit.GOLEM_SWORD.get()), 1)
+                        .addCriterion("has_item", has(itemTag("cwsr:sword_handle")))
+                        .save(consumer.withConditions(
+                                modLoaded("cwsr")
+                        ), transmutationRecipeId(ItemInit.BEAST_ESSENCE, ItemInit.GOLEM_SWORD));
+
+
+                TransmutationRecipeBuilder.begin(RecipeCategory.MISC, ItemInit.DARK_ESSENCE.get(),1,compoundtag,5,1000)
+                        .addMaterial(Ingredient.of(ItemInit.DARK_SWORD.get()), 1)
+                        .addCriterion("has_item", has(itemTag("cwsr:sword_handle")))
+                        .save(consumer.withConditions(
+                                modLoaded("cwsr")
+                        ), transmutationRecipeId(ItemInit.DARK_ESSENCE, ItemInit.DARK_SWORD));
+
+                TransmutationRecipeBuilder.begin(RecipeCategory.MISC, ItemInit.DARK_ESSENCE.get(),2,compoundtag,5,1000)
+                        .addMaterial(Ingredient.of(ItemInit.DARK_NETHER.get()), 1)
+                        .addCriterion("has_item", has(itemTag("cwsr:sword_handle")))
+                        .save(consumer.withConditions(
+                                modLoaded("cwsr")
+                        ), transmutationRecipeId(ItemInit.DARK_ESSENCE, ItemInit.DARK_NETHER));
+
+
+                TransmutationRecipeBuilder.begin(RecipeCategory.MISC, ItemInit.EARTH_ESSENCE.get(),1,compoundtag,5,1000)
+                        .addMaterial(Ingredient.of(ItemInit.EARTH_SWORD.get()), 1)
+                        .addCriterion("has_item", has(itemTag("cwsr:sword_handle")))
+                        .save(consumer.withConditions(
+                                modLoaded("cwsr")
+                        ), transmutationRecipeId(ItemInit.EARTH_ESSENCE, ItemInit.EARTH_SWORD));
+
+                TransmutationRecipeBuilder.begin(RecipeCategory.MISC, ItemInit.EARTH_ESSENCE.get(),2,compoundtag,5,1000)
+                        .addMaterial(Ingredient.of(ItemInit.WILD_NATURE.get()), 1)
+                        .addCriterion("has_item", has(itemTag("cwsr:sword_handle")))
+                        .save(consumer.withConditions(
+                                modLoaded("cwsr")
+                        ), transmutationRecipeId(ItemInit.EARTH_ESSENCE, ItemInit.WILD_NATURE));
+
+
+
+                TransmutationRecipeBuilder.begin(RecipeCategory.MISC, ItemInit.ENDER_ESSENCE.get(),1,compoundtag,5,1000)
+                        .addMaterial(Ingredient.of(ItemInit.ENDER_SWORD.get()), 1)
+                        .addCriterion("has_item", has(itemTag("cwsr:sword_handle")))
+                        .save(consumer.withConditions(
+                                modLoaded("cwsr")
+                        ), transmutationRecipeId(ItemInit.ENDER_ESSENCE, ItemInit.ENDER_SWORD));
+
+                TransmutationRecipeBuilder.begin(RecipeCategory.MISC, ItemInit.ENDER_ESSENCE.get(),2,compoundtag,5,1000)
+                        .addMaterial(Ingredient.of(ItemInit.ENDER_PORTAL.get()), 1)
+                        .addCriterion("has_item", has(itemTag("cwsr:sword_handle")))
+                        .save(consumer.withConditions(
+                                modLoaded("cwsr")
+                        ), transmutationRecipeId(ItemInit.ENDER_ESSENCE, ItemInit.ENDER_PORTAL));
+
+
+                TransmutationRecipeBuilder.begin(RecipeCategory.MISC, ItemInit.FIRE_ESSENCE.get(),1,compoundtag,5,1000)
+                        .addMaterial(Ingredient.of(ItemInit.FIRE_SWORD.get()), 1)
+                        .addCriterion("has_item", has(itemTag("cwsr:sword_handle")))
+                        .save(consumer.withConditions(
+                                modLoaded("cwsr")
+                        ), transmutationRecipeId(ItemInit.FIRE_ESSENCE, ItemInit.FIRE_SWORD));
+
+                TransmutationRecipeBuilder.begin(RecipeCategory.MISC, ItemInit.FIRE_ESSENCE.get(),2,compoundtag,5,1000)
+                        .addMaterial(Ingredient.of(ItemInit.COMBUSTION_SWORD.get()), 1)
+                        .addCriterion("has_item", has(itemTag("cwsr:sword_handle")))
+                        .save(consumer.withConditions(
+                                modLoaded("cwsr")
+                        ), transmutationRecipeId(ItemInit.FIRE_ESSENCE, ItemInit.COMBUSTION_SWORD));
+
+
+
+                TransmutationRecipeBuilder.begin(RecipeCategory.MISC, ItemInit.LIGHT_ESSENCE.get(),1,compoundtag,5,1000)
+                        .addMaterial(Ingredient.of(ItemInit.LIGHT_SWORD.get()), 1)
+                        .addCriterion("has_item", has(itemTag("cwsr:sword_handle")))
+                        .save(consumer.withConditions(
+                                modLoaded("cwsr")
+                        ), transmutationRecipeId(ItemInit.LIGHT_ESSENCE, ItemInit.LIGHT_SWORD));
+
+                TransmutationRecipeBuilder.begin(RecipeCategory.MISC, ItemInit.LIGHT_ESSENCE.get(),2,compoundtag,5,1000)
+                        .addMaterial(Ingredient.of(ItemInit.LIGHT_NETHER.get()), 1)
+                        .addCriterion("has_item", has(itemTag("cwsr:sword_handle")))
+                        .save(consumer.withConditions(
+                                modLoaded("cwsr")
+                        ), transmutationRecipeId(ItemInit.LIGHT_ESSENCE, ItemInit.LIGHT_NETHER));
+
+
+                TransmutationRecipeBuilder.begin(RecipeCategory.MISC, ItemInit.THUNDER_ESSENCE.get(),1,compoundtag,5,1000)
+                        .addMaterial(Ingredient.of(ItemInit.THUNDER_SWORD.get()), 1)
+                        .addCriterion("has_item", has(itemTag("cwsr:sword_handle")))
+                        .save(consumer.withConditions(
+                                modLoaded("cwsr")
+                        ), transmutationRecipeId(ItemInit.THUNDER_ESSENCE, ItemInit.THUNDER_SWORD));
+
+                TransmutationRecipeBuilder.begin(RecipeCategory.MISC, ItemInit.THUNDER_ESSENCE.get(),2,compoundtag,5,1000)
+                        .addMaterial(Ingredient.of(ItemInit.THUNDER_SHOCK.get()), 1)
+                        .addCriterion("has_item", has(itemTag("cwsr:sword_handle")))
+                        .save(consumer.withConditions(
+                                modLoaded("cwsr")
+                        ), transmutationRecipeId(ItemInit.THUNDER_ESSENCE, ItemInit.THUNDER_SHOCK));
+
+
+                TransmutationRecipeBuilder.begin(RecipeCategory.MISC, ItemInit.WATER_ESSENCE.get(),1,compoundtag,5,1000)
+                        .addMaterial(Ingredient.of(ItemInit.WATER_SWORD.get()), 1)
+                        .addCriterion("has_item", has(itemTag("cwsr:sword_handle")))
+                        .save(consumer.withConditions(
+                                modLoaded("cwsr")
+                        ), transmutationRecipeId(ItemInit.WATER_ESSENCE, ItemInit.WATER_SWORD));
+
+                TransmutationRecipeBuilder.begin(RecipeCategory.MISC, ItemInit.WATER_ESSENCE.get(),2,compoundtag,5,1000)
+                        .addMaterial(Ingredient.of(ItemInit.ICE_SWORD.get()), 1)
+                        .addCriterion("has_item", has(itemTag("cwsr:sword_handle")))
+                        .save(consumer.withConditions(
+                                modLoaded("cwsr")
+                        ), transmutationRecipeId(ItemInit.WATER_ESSENCE, ItemInit.ICE_SWORD));
+
+
+                TransmutationRecipeBuilder.begin(RecipeCategory.MISC, ItemInit.WIND_ESSENCE.get(),1,compoundtag,5,1000)
+                        .addMaterial(Ingredient.of(ItemInit.WIND_SWORD.get()), 1)
+                        .addCriterion("has_item", has(itemTag("cwsr:sword_handle")))
+                        .save(consumer.withConditions(
+                                modLoaded("cwsr")
+                        ), transmutationRecipeId(ItemInit.WIND_ESSENCE, ItemInit.WIND_SWORD));
+
+                TransmutationRecipeBuilder.begin(RecipeCategory.MISC, ItemInit.WIND_ESSENCE.get(),2,compoundtag,5,1000)
+                        .addMaterial(Ingredient.of(ItemInit.WIND_IMPULSE.get()), 1)
+                        .addCriterion("has_item", has(itemTag("cwsr:sword_handle")))
+                        .save(consumer.withConditions(
+                                modLoaded("cwsr")
+                        ), transmutationRecipeId(ItemInit.WIND_ESSENCE, ItemInit.WIND_IMPULSE));
+
+
+
+
             }
             }
 
-            private static ResourceLocation transmutationRecipeId(DeferredHolder<?, ?> item)
+            private static ResourceLocation transmutationRecipeId(DeferredHolder<?, ?> item, DeferredHolder<?, ?> item2)
             {
-                return transmutationRecipeId(item.getId());
+                return transmutationRecipeId(item.getId(), item2.getId());
             }
 
-            private static ResourceLocation transmutationRecipeId(ResourceLocation item)
+            private static ResourceLocation transmutationRecipeId(ResourceLocation item, ResourceLocation item2)
             {
-                return  new ResourceLocation(item.getNamespace(), item.getPath() + "_via_transmutation");
+                return  new ResourceLocation(item.getNamespace(), item.getPath() + "_via_transmutation"+"_from_"+item2.getPath());
             }
 
             public final ItemStack stack(ItemLike item, CompoundTag tag)
