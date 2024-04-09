@@ -162,7 +162,7 @@ public class ENDER_FIRE extends ENDER_CLASS_SWORD {
         if(!(world instanceof ServerLevel)) return;
         ServerPlayer serverPlayer= (ServerPlayer) entity;
         TriggerInit.SE_TRIGGER.get().trigger(serverPlayer);
-        TriggerInit.TM_TRIGGER.get().trigger(serverPlayer);
+        TriggerInit.BB_TRIGGER.get().trigger(serverPlayer);
     }
 
     @Override

@@ -26,6 +26,7 @@ public class TriggerInit {
 
     public static final DeferredHolder<CriterionTrigger<?>, Removingdentstrigger> RD_TRIGGER= TRIGGERS.register("removing_dents_trigger", Removingdentstrigger::new);
 
+    public static final DeferredHolder<CriterionTrigger<?>, Bestbothtrigger> BB_TRIGGER= TRIGGERS.register("best_both_trigger", Bestbothtrigger::new);
 
 
 }

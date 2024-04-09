@@ -1,0 +1,25 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern":
+  [
+    "ooo",
+    "omo",
+    "ooo"
+  ],
+  "key":
+  {
+    "m":
+    {
+      "item": "cwsr:ability_totem"
+    },
+    "o":
+    {
+      "item": "minecraft:bricks"
+    }
+  },
+  "result":
+  {
+    "item": "cwsr:transmutation_furnace",
+    "count": 1
+  }
+}

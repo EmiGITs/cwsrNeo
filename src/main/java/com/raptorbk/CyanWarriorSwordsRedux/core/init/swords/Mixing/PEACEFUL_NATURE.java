@@ -116,7 +116,7 @@ public class PEACEFUL_NATURE extends SWORD_CWSR {
         if(!(world instanceof ServerLevel)) return;
         ServerPlayer serverPlayer= (ServerPlayer) entity;
         TriggerInit.SE_TRIGGER.get().trigger(serverPlayer);
-        TriggerInit.TM_TRIGGER.get().trigger(serverPlayer);
+        TriggerInit.BB_TRIGGER.get().trigger(serverPlayer);
     }
 
     @Override
