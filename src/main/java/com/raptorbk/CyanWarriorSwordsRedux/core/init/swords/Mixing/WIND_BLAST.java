@@ -147,22 +147,17 @@ public class WIND_BLAST extends SWORD_CWSR {
 
     @Override
     public void inventoryTick(ItemStack stack, Level worldIn, Entity entityIn, int itemSlot, boolean isSelected) {
-        if(isSelected && !worldIn.isClientSide){
-            if(entityIn instanceof Player) {
-                Player playerIn = (Player) entityIn;
-                addEffectsTick(playerIn);
-                unlockACH(playerIn,worldIn);
-            }
-        }else{
-            if(entityIn instanceof Player) {
-                Player playerIn = (Player) entityIn;
+        if(!worldIn.isClientSide){
+            if(entityIn instanceof Player playerIn) {
 
                 ItemStack OffHandItem = playerIn.getOffhandItem();
-                if(OffHandItem.getItem() instanceof WIND_BLAST){
+                ItemStack MainHandItem = playerIn.getMainHandItem();
+                if((OffHandItem.getItem() instanceof WIND_BLAST && MainHandItem.getItem() instanceof WIND_BOOM) || (MainHandItem.getItem() instanceof WIND_BLAST && OffHandItem.getItem() instanceof WIND_BOOM)){
                     addEffectsTick(playerIn);
                     unlockACH(playerIn,worldIn);
                 }
             }
+
         }
     }
 
