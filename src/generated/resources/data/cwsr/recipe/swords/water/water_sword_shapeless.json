@@ -1,0 +1,17 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "group":"cwsr:water_sword",
+  "ingredients": [
+    {
+      "item": "cwsr:sword_handle"
+    },
+    {
+      "item": "cwsr:water_essence"
+    }
+  ],
+  "result":
+  {
+    "id": "cwsr:water_sword",
+    "count": 1
+  }
+}

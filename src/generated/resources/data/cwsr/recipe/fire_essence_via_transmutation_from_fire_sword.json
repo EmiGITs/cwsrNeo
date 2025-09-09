@@ -1,0 +1,26 @@
+{
+  "neoforge:conditions": [
+    {
+      "type": "neoforge:mod_loaded",
+      "modid": "cwsr"
+    }
+  ],
+  "type": "cwsr:transmutation",
+  "cookingtime": 1000,
+  "experience": 5.0,
+  "materials": [
+    {
+      "count": 1,
+      "ingredient": {
+        "item": "cwsr:fire_sword"
+      }
+    }
+  ],
+  "result": {
+    "components": {
+      "minecraft:custom_data": {}
+    },
+    "count": 1,
+    "id": "cwsr:fire_essence"
+  }
+}

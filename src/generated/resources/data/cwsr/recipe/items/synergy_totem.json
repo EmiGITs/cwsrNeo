@@ -1,0 +1,16 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "ingredients": [
+    {
+      "item": "cwsr:ability_totem"
+    },
+    {
+      "item": "cwsr:mixed_essence"
+    }
+  ],
+  "result":
+  {
+    "id": "cwsr:synergy_totem",
+    "count": 1
+  }
+}

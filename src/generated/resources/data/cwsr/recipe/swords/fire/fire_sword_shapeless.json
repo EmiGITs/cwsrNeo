@@ -1,0 +1,17 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "group":"cwsr:fire_sword",
+  "ingredients": [
+    {
+      "item": "cwsr:sword_handle"
+    },
+    {
+      "item": "cwsr:fire_essence"
+    }
+  ],
+  "result":
+  {
+    "id": "cwsr:fire_sword",
+    "count": 1
+  }
+}
