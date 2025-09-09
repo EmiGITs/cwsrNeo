@@ -1,6 +1,7 @@
 package com.raptorbk.CyanWarriorSwordsRedux.core.init.LootModifiers;
 
-import com.mojang.serialization.Codec;
+
+import com.mojang.serialization.MapCodec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
 import it.unimi.dsi.fastutil.objects.ObjectArrayList;
 import net.minecraft.resources.ResourceLocation;
@@ -11,13 +12,12 @@ import net.minecraft.world.level.storage.loot.parameters.LootContextParam;
 import net.minecraft.world.level.storage.loot.predicates.LootItemCondition;
 import net.neoforged.neoforge.common.loot.IGlobalLootModifier;
 import net.neoforged.neoforge.common.loot.LootModifier;
-import org.apache.logging.log4j.Level;
 import org.jetbrains.annotations.NotNull;
 
 import java.util.List;
 
 public class RollExtraTablesLootModifier extends LootModifier {
-    public static final Codec<RollExtraTablesLootModifier> CODEC = RecordCodecBuilder.create(builder -> codecStart(builder).and(
+    public static final MapCodec<RollExtraTablesLootModifier> CODEC = RecordCodecBuilder.mapCodec(builder -> codecStart(builder).and(
             ResourceLocation.CODEC.listOf().fieldOf("tables").forGetter(instance -> instance.additionalTables)
     ).apply(builder, RollExtraTablesLootModifier::new));
 
@@ -30,7 +30,7 @@ public class RollExtraTablesLootModifier extends LootModifier {
     }
 
     @Override
-    public Codec<? extends IGlobalLootModifier> codec() {
+    public MapCodec<? extends IGlobalLootModifier> codec() {
         return CODEC;
     }
 
@@ -38,7 +38,7 @@ public class RollExtraTablesLootModifier extends LootModifier {
     @Override
     protected ObjectArrayList<ItemStack> doApply(ObjectArrayList<ItemStack> generatedLoot, LootContext context) {
         for (ResourceLocation tableLocation : additionalTables) {
-            LootTable table = context.getLevel().getServer().getLootData().getLootTable(tableLocation);
+            LootTable table = context.getLevel().getServer().reloadableRegistries().getLootTable(net.minecraft.resources.ResourceKey.create(net.minecraft.core.registries.Registries.LOOT_TABLE, tableLocation));
             boolean compatible = true;
 
             for (LootContextParam<?> param : table.getParamSet().getRequired()) {
@@ -49,7 +49,7 @@ public class RollExtraTablesLootModifier extends LootModifier {
             }
 
             if (compatible && table != LootTable.EMPTY)
-                table.getRandomItemsRaw(context, generatedLoot::add);
+                table.getRandomItems(context, generatedLoot::add);
         }
 
         return generatedLoot;

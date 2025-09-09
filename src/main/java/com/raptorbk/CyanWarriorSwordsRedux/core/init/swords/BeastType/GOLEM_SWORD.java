@@ -42,7 +42,7 @@ import java.util.Random;
 
 public class GOLEM_SWORD extends SWORD_CWSR {
 
-    public static SimpleTier tierIn = new SimpleTier(3, SwordConfig.GOLEM_SWORD_DUR.get(), 0.0f, 4.0f, 10, BlockTags.NEEDS_DIAMOND_TOOL, () ->
+    public static SimpleTier tierIn = new SimpleTier(BlockTags.NEEDS_DIAMOND_TOOL, SwordConfig.GOLEM_SWORD_DUR.get(), 0.0f, 4.0f, 10, () ->
             Ingredient.of(Tags.Items.ORES_DIAMOND));
 
     public GOLEM_SWORD(float attackSpeedIn, Properties builder) {
@@ -82,10 +82,8 @@ public class GOLEM_SWORD extends SWORD_CWSR {
         ItemStack ActiveSynergyTotemStack = new ItemStack(ItemInit.ACTIVE_SYNERGY_TOTEM.get(),1);
 
         if(!lfAbilityTotem(entity) && ((entity.getMainHandItem() != entity.getItemInHand(handIn) && entity.getMainHandItem().getItem() instanceof SWORD_CWSR && lfActiveSinergyTotem(entity)) || entity.getMainHandItem() == entity.getItemInHand(handIn) || (entity.getOffhandItem()==entity.getItemInHand(handIn) && !(entity.getMainHandItem().getItem() instanceof SWORD_CWSR)))){
-            currentSword.hurtAndBreak(SwordConfig.GOLEM_SWORD_USE_COST.get(),entity,Player -> {
-                unlockDestroyACH(entity,world);
-                Player.broadcastBreakEvent(EquipmentSlot.MAINHAND);
-            });
+            unlockDestroyACH(entity,world);
+            currentSword.hurtAndBreak(SwordConfig.GOLEM_SWORD_USE_COST.get(), entity, EquipmentSlot.MAINHAND);
         }
 
 
@@ -93,18 +91,16 @@ public class GOLEM_SWORD extends SWORD_CWSR {
     }
 
     @Override
-    public void appendHoverText(ItemStack stack, @Nullable Level worldIn, List<Component> tooltip, TooltipFlag flagIn) {
+    public void appendHoverText(ItemStack stack, Item.TooltipContext context, List<Component> tooltip, TooltipFlag flagIn) {
         tooltip.add(Component.translatable("tooltip.cwsr.golem_sword"));
     }
 
     @Override
     public boolean hurtEnemy(ItemStack stack, LivingEntity target, LivingEntity attacker){
-        stack.hurtAndBreak(SwordConfig.ALL_SWORDS_HIT_COST.get(),attacker,Player -> {
-            if(attacker instanceof Player){
-                unlockDestroyACH((Player) attacker,attacker.getCommandSenderWorld());
-            }
-            Player.broadcastBreakEvent(EquipmentSlot.MAINHAND);
-        });
+        if(attacker instanceof Player){
+            unlockDestroyACH((Player) attacker,attacker.getCommandSenderWorld());
+        }
+        stack.hurtAndBreak(SwordConfig.ALL_SWORDS_HIT_COST.get(), attacker, EquipmentSlot.MAINHAND);
         return true;
     }
 

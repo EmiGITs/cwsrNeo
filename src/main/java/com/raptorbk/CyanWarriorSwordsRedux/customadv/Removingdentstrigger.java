@@ -1,10 +1,9 @@
 package com.raptorbk.CyanWarriorSwordsRedux.customadv;
 
 import com.mojang.serialization.Codec;
-import net.minecraft.advancements.CriterionTriggerInstance;
 import net.minecraft.advancements.critereon.*;
 import net.minecraft.server.level.ServerPlayer;
-import org.jetbrains.annotations.NotNull;
+import javax.annotation.Nonnull;
 
 import java.util.Optional;
 
@@ -27,11 +26,11 @@ public class Removingdentstrigger extends SimpleCriterionTrigger<Removingdentstr
     }
 
 
-    public static record TriggerInstance() implements CriterionTriggerInstance, SimpleInstance {
+    public static record TriggerInstance() implements SimpleCriterionTrigger.SimpleInstance {
         public static final Codec<Removingdentstrigger.TriggerInstance> CODEC = Codec.unit(new Removingdentstrigger.TriggerInstance());
 
         @Override
-        public void validate(@NotNull CriterionValidator p_312237_) {
+        public void validate(@Nonnull CriterionValidator p_312237_) {
         }
 
         @Override

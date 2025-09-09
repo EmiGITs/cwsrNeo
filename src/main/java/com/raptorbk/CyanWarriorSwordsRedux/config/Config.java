@@ -1,11 +1,8 @@
 package com.raptorbk.CyanWarriorSwordsRedux.config;
 
-import com.electronwill.nightconfig.core.file.CommentedFileConfig;
-import com.electronwill.nightconfig.core.io.WritingMode;
+ 
 import com.raptorbk.CyanWarriorSwordsRedux.config.SwordConfig.SwordConfig;
-import net.neoforged.bus.api.SubscribeEvent;
-import net.neoforged.fml.common.Mod;
-import net.neoforged.fml.event.config.ModConfigEvent;
+ 
 import net.neoforged.neoforge.common.ModConfigSpec;
 
 public class Config {
@@ -25,13 +22,6 @@ public class Config {
 
     public static void loadConfig(ModConfigSpec config, String path)
     {
-        final CommentedFileConfig configData = CommentedFileConfig.builder(path)
-                .sync()
-                .autosave()
-                .writingMode(WritingMode.REPLACE)
-                .build();
-
-        configData.load();
-        config.setConfig(configData);
+        // No-op: NeoForge handles loading/saving configs after registration.
     }
 }

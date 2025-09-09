@@ -38,7 +38,7 @@ import java.util.List;
 import java.util.Objects;
 
 public class THUNDERSTORM_SWORD extends SWORD_CWSR {
-    public static SimpleTier tierIn = new SimpleTier(3, SwordConfig.THUNDERSTORM_SWORD_DUR.get(), 0.0f, 4.0f, 10, BlockTags.NEEDS_DIAMOND_TOOL, () ->
+    public static SimpleTier tierIn = new SimpleTier(BlockTags.NEEDS_DIAMOND_TOOL, SwordConfig.THUNDERSTORM_SWORD_DUR.get(), 0.0f, 4.0f, 10, () ->
             Ingredient.of(Tags.Items.ORES_DIAMOND));
 
 
@@ -56,7 +56,7 @@ public class THUNDERSTORM_SWORD extends SWORD_CWSR {
     }
 
     @Override
-    public void appendHoverText(ItemStack stack, @Nullable Level worldIn, List<Component> tooltip, TooltipFlag flagIn) {
+    public void appendHoverText(ItemStack stack, Item.TooltipContext context, List<Component> tooltip, TooltipFlag flagIn) {
         tooltip.add(Component.translatable("tooltip.cwsr.thunderstorm_sword"));
     }
 
@@ -70,7 +70,6 @@ public class THUNDERSTORM_SWORD extends SWORD_CWSR {
         ServerLevel worldSV = (ServerLevel) world;
 
         float var4 = 1.0F;
-        int j = (int)(entity.yo + (entity.getY() - entity.yo) * (double)var4 + 1.62D - entity.getMyRidingOffset(entity));
 
         LightningBolt entityBolt = EntityType.LIGHTNING_BOLT.create(worldSV);
         entityBolt.moveTo((int) Math.round(entity.getX()), (int) Math.round(entity.getY()), (int) Math.round(entity.getZ()));
@@ -107,10 +106,8 @@ public class THUNDERSTORM_SWORD extends SWORD_CWSR {
         ItemStack ActiveSynergyTotemStack = new ItemStack(ItemInit.ACTIVE_SYNERGY_TOTEM.get(),1);
 
         if(!lfAbilityTotem(entity) && ((entity.getMainHandItem() != entity.getItemInHand(handIn) && entity.getMainHandItem().getItem() instanceof SWORD_CWSR && lfActiveSinergyTotem(entity)) || entity.getMainHandItem() == entity.getItemInHand(handIn) || (entity.getOffhandItem()==entity.getItemInHand(handIn) && !(entity.getMainHandItem().getItem() instanceof SWORD_CWSR)))){
-            currentSword.hurtAndBreak(SwordConfig.THUNDERSTORM_SWORD_USE_COST.get(),entity,Player -> {
-                unlockDestroyACH(entity,world);
-                Player.broadcastBreakEvent(EquipmentSlot.MAINHAND);
-            });
+            unlockDestroyACH(entity,world);
+            currentSword.hurtAndBreak(SwordConfig.THUNDERSTORM_SWORD_USE_COST.get(), entity, EquipmentSlot.MAINHAND);
         }
 
         return callerRC(world,entity,handIn,ItemInit.THUNDERSTORM_SWORD.getId(),SwordConfig.THUNDERSTORM_SWORD_COOLDOWN.get());
@@ -119,11 +116,10 @@ public class THUNDERSTORM_SWORD extends SWORD_CWSR {
     @Override
     public boolean hurtEnemy(ItemStack stack, LivingEntity target, LivingEntity attacker){
         target.knockback(2,attacker.getX() - target.getX(), attacker.getZ() - target.getZ());
-        stack.hurtAndBreak(SwordConfig.ALL_SWORDS_HIT_COST.get(),attacker,Player -> {
-            if(attacker instanceof Player){
-                unlockDestroyACH((Player) attacker,attacker.getCommandSenderWorld());
-            }
-            Player.broadcastBreakEvent(EquipmentSlot.MAINHAND);        });
+        if(attacker instanceof Player){
+            unlockDestroyACH((Player) attacker,attacker.getCommandSenderWorld());
+        }
+        stack.hurtAndBreak(SwordConfig.ALL_SWORDS_HIT_COST.get(), attacker, EquipmentSlot.MAINHAND);
         return true;
     }
 

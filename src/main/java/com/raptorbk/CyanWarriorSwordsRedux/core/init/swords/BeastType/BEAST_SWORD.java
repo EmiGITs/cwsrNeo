@@ -33,7 +33,7 @@ import java.util.List;
 
 public class BEAST_SWORD extends SWORD_CWSR {
 
-    public static SimpleTier tierIn = new SimpleTier(3, SwordConfig.BEAST_SWORD_DUR.get(), 0.0f, 4.0f, 10, BlockTags.NEEDS_DIAMOND_TOOL, () ->
+    public static SimpleTier tierIn = new SimpleTier(BlockTags.NEEDS_DIAMOND_TOOL, SwordConfig.BEAST_SWORD_DUR.get(), 0.0f, 4.0f, 10, () ->
             Ingredient.of(Tags.Items.ORES_DIAMOND));
 
     public BEAST_SWORD(float attackSpeedIn, Properties builder) {
@@ -49,7 +49,6 @@ public class BEAST_SWORD extends SWORD_CWSR {
         Wolf wolfProjectile = new Wolf(EntityType.WOLF,world);
         wolfProjectile.setPos((int) Math.round(entity.getX()),entity.getY()+1,entity.getZ());
         wolfProjectile.setDeltaMovement(look.x,look.y,look.z);
-        wolfProjectile.setTame(true);
         wolfProjectile.tame(entity);
         world.addFreshEntity(wolfProjectile);
         return new InteractionResultHolder<>(InteractionResult.SUCCESS, currentSword);
@@ -76,10 +75,8 @@ public class BEAST_SWORD extends SWORD_CWSR {
 
 
         if(!lfAbilityTotem(entity) && ((entity.getMainHandItem() != entity.getItemInHand(handIn) && entity.getMainHandItem().getItem() instanceof SWORD_CWSR && lfActiveSinergyTotem(entity)) || entity.getMainHandItem() == entity.getItemInHand(handIn) || (entity.getOffhandItem()==entity.getItemInHand(handIn) && !(entity.getMainHandItem().getItem() instanceof SWORD_CWSR)))){
-            currentSword.hurtAndBreak(SwordConfig.BEAST_SWORD_USE_COST.get(),entity,Player -> {
-                unlockDestroyACH(entity,world);
-                Player.broadcastBreakEvent(EquipmentSlot.MAINHAND);
-            });
+            unlockDestroyACH(entity,world);
+            currentSword.hurtAndBreak(SwordConfig.BEAST_SWORD_USE_COST.get(), entity, EquipmentSlot.MAINHAND);
         }
 
         return callerRC(world,entity,handIn,ItemInit.BEAST_SWORD.getId(),SwordConfig.BEAST_SWORD_COOLDOWN.get());
@@ -87,18 +84,16 @@ public class BEAST_SWORD extends SWORD_CWSR {
 
     @Override
     public boolean hurtEnemy(ItemStack stack, LivingEntity target, LivingEntity attacker){
-        stack.hurtAndBreak(SwordConfig.ALL_SWORDS_HIT_COST.get(),attacker,Player -> {
-            if(attacker instanceof Player){
-                unlockDestroyACH((Player) attacker,attacker.getCommandSenderWorld());
-            }
-            Player.broadcastBreakEvent(EquipmentSlot.MAINHAND);
-        });
+        if(attacker instanceof Player){
+            unlockDestroyACH((Player) attacker,attacker.getCommandSenderWorld());
+        }
+        stack.hurtAndBreak(SwordConfig.ALL_SWORDS_HIT_COST.get(), attacker, EquipmentSlot.MAINHAND);
         return true;
     }
 
 
     @Override
-    public void appendHoverText(ItemStack stack, @Nullable Level worldIn, List<Component> tooltip, TooltipFlag flagIn) {
+    public void appendHoverText(ItemStack stack, Item.TooltipContext context, List<Component> tooltip, TooltipFlag flagIn) {
         tooltip.add(Component.translatable("tooltip.cwsr.beast_sword"));
     }
 

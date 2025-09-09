@@ -19,6 +19,7 @@ import net.minecraft.world.InteractionResult;
 import net.minecraft.world.InteractionResultHolder;
 import net.minecraft.world.effect.MobEffectInstance;
 import net.minecraft.world.effect.MobEffects;
+import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.entity.EquipmentSlot;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.projectile.WitherSkull;
@@ -45,7 +46,7 @@ import java.util.Random;
 
 public class DARK_NETHER extends SWORD_CWSR {
 
-    public static SimpleTier tierIn = new SimpleTier(3, SwordConfig.DARK_NETHER_SWORD_DUR.get(), 0.0f, 4.0f, 10, BlockTags.NEEDS_DIAMOND_TOOL, () ->
+    public static SimpleTier tierIn = new SimpleTier(BlockTags.NEEDS_DIAMOND_TOOL, SwordConfig.DARK_NETHER_SWORD_DUR.get(), 0.0f, 4.0f, 10, () ->
             Ingredient.of(Tags.Items.ORES_DIAMOND));
 
 
@@ -74,7 +75,7 @@ public class DARK_NETHER extends SWORD_CWSR {
     }
 
     @Override
-    public void appendHoverText(ItemStack stack, @Nullable Level worldIn, List<Component> tooltip, TooltipFlag flagIn) {
+    public void appendHoverText(ItemStack stack, Item.TooltipContext context, List<Component> tooltip, TooltipFlag flagIn) {
         tooltip.add(Component.translatable("tooltip.cwsr.dark_nether"));
     }
 
@@ -91,13 +92,11 @@ public class DARK_NETHER extends SWORD_CWSR {
         //Creo que esto no genera efecto de wither en el enemigo
         entity.addEffect(new MobEffectInstance(MobEffects.BLINDNESS,20,1));
         Vec3 vec3 = entity.getViewVector(1.0F);
-        WitherSkull witherEntity = new WitherSkull(world, entity,vec3.x,vec3.y,vec3.z);
+        WitherSkull witherEntity = new WitherSkull(EntityType.WITHER_SKULL, world);
         witherEntity.setXRot(entity.getXRot());
         witherEntity.setYRot(entity.getYRot());
         witherEntity.setPos((int) Math.round(entity.getX()),entity.getY()+2,entity.getZ());
-        witherEntity.xPower=vec3.x;
-        witherEntity.yPower=vec3.y;
-        witherEntity.zPower=vec3.z;
+        witherEntity.shoot(vec3.x, vec3.y, vec3.z, 1.5F, 1.0F);
         world.addFreshEntity(witherEntity);
         world.playSound((Player) null, entity.getX(), (int) Math.round(entity.getY()), (int) Math.round(entity.getZ()), SoundEvents.WITHER_SHOOT, SoundSource.NEUTRAL, 0.5F, 0.4F / (Mth.nextFloat(world.random,0.0F,1.0F) * 0.4F + 0.8F));
 
@@ -124,12 +123,10 @@ public class DARK_NETHER extends SWORD_CWSR {
     @Override
     public boolean hurtEnemy(ItemStack stack, LivingEntity target, LivingEntity attacker){
         target.addEffect(new MobEffectInstance(MobEffects.WITHER,SwordConfig.DARK_NETHER_SWORD_HIT_TK.get(),0));
-        stack.hurtAndBreak(SwordConfig.ALL_SWORDS_HIT_COST.get(),attacker,Player -> {
-            if(attacker instanceof Player){
-                unlockDestroyACH((Player) attacker,attacker.getCommandSenderWorld());
-            }
-            Player.broadcastBreakEvent(EquipmentSlot.MAINHAND);
-        });
+        if(attacker instanceof Player){
+            unlockDestroyACH((Player) attacker,attacker.getCommandSenderWorld());
+        }
+        stack.hurtAndBreak(SwordConfig.ALL_SWORDS_HIT_COST.get(), attacker, EquipmentSlot.MAINHAND);
         return true;
     }
 
@@ -144,10 +141,8 @@ public class DARK_NETHER extends SWORD_CWSR {
 
 
         if(!lfAbilityTotem(entity) && ((entity.getMainHandItem() != entity.getItemInHand(handIn) && entity.getMainHandItem().getItem() instanceof SWORD_CWSR && lfActiveSinergyTotem(entity)) || entity.getMainHandItem() == entity.getItemInHand(handIn) || (entity.getOffhandItem()==entity.getItemInHand(handIn) && !(entity.getMainHandItem().getItem() instanceof SWORD_CWSR)))){
-            currentSword.hurtAndBreak(SwordConfig.DARK_NETHER_SWORD_USE_COST.get(),entity,Player -> {
-                unlockDestroyACH(entity,world);
-                Player.broadcastBreakEvent(EquipmentSlot.MAINHAND);
-            });
+            unlockDestroyACH(entity,world);
+            currentSword.hurtAndBreak(SwordConfig.DARK_NETHER_SWORD_USE_COST.get(), entity, EquipmentSlot.MAINHAND);
         }
         return callerRC(world,entity,handIn, ItemInit.DARK_NETHER.getId(),SwordConfig.DARK_NETHER_SWORD_COOLDOWN.get());
     }

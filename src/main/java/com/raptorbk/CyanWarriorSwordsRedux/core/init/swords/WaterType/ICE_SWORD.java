@@ -23,7 +23,6 @@ import net.minecraft.world.entity.EquipmentSlot;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.decoration.ArmorStand;
 import net.minecraft.world.item.TooltipFlag;
-import net.minecraft.world.item.enchantment.FrostWalkerEnchantment;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.Blocks;
@@ -46,7 +45,7 @@ import java.util.List;
 import java.util.Objects;
 
 public class ICE_SWORD extends SWORD_CWSR {
-    public static SimpleTier tierIn = new SimpleTier(3, SwordConfig.ICE_SWORD_DUR.get(), 0.0f, 4.0f, 10, BlockTags.NEEDS_DIAMOND_TOOL, () ->
+    public static SimpleTier tierIn = new SimpleTier(BlockTags.NEEDS_DIAMOND_TOOL, SwordConfig.ICE_SWORD_DUR.get(), 0.0f, 4.0f, 10, () ->
             Ingredient.of(Tags.Items.ORES_DIAMOND));
 
 
@@ -66,7 +65,7 @@ public class ICE_SWORD extends SWORD_CWSR {
     }
 
     @Override
-    public void appendHoverText(ItemStack stack, @Nullable Level worldIn, List<Component> tooltip, TooltipFlag flagIn) {
+    public void appendHoverText(ItemStack stack, Item.TooltipContext context, List<Component> tooltip, TooltipFlag flagIn) {
         tooltip.add(Component.translatable("tooltip.cwsr.ice_sword"));
     }
 
@@ -147,10 +146,8 @@ public class ICE_SWORD extends SWORD_CWSR {
         ItemStack ActiveSynergyTotemStack = new ItemStack(ItemInit.ACTIVE_SYNERGY_TOTEM.get(),1);
 
         if(!lfAbilityTotem(entity) && ((entity.getMainHandItem() != entity.getItemInHand(handIn) && entity.getMainHandItem().getItem() instanceof SWORD_CWSR && lfActiveSinergyTotem(entity)) || entity.getMainHandItem() == entity.getItemInHand(handIn) || (entity.getOffhandItem()==entity.getItemInHand(handIn) && !(entity.getMainHandItem().getItem() instanceof SWORD_CWSR)))){
-            currentSword.hurtAndBreak(SwordConfig.ICE_SWORD_USE_COST.get(), entity,Player -> {
-                unlockDestroyACH(entity,world);
-                Player.broadcastBreakEvent(EquipmentSlot.MAINHAND);
-            });
+            unlockDestroyACH(entity,world);
+            currentSword.hurtAndBreak(SwordConfig.ICE_SWORD_USE_COST.get(), entity, EquipmentSlot.MAINHAND);
         }
 
         return callerRC(world,entity,handIn,ItemInit.ICE_SWORD.getId(),SwordConfig.ICE_SWORD_COOLDOWN.get());
@@ -159,11 +156,10 @@ public class ICE_SWORD extends SWORD_CWSR {
     @Override
     public boolean hurtEnemy(ItemStack stack, LivingEntity target, LivingEntity attacker){
         target.addEffect(new MobEffectInstance(MobEffects.DIG_SLOWDOWN,SwordConfig.ICE_SWORD_HIT_TK.get(),3));
-        stack.hurtAndBreak(SwordConfig.ALL_SWORDS_HIT_COST.get(),attacker,Player -> {
-            if(attacker instanceof Player){
-                unlockDestroyACH((Player) attacker,attacker.getCommandSenderWorld());
-            }
-            Player.broadcastBreakEvent(EquipmentSlot.MAINHAND);        });
+        if(attacker instanceof Player){
+            unlockDestroyACH((Player) attacker,attacker.getCommandSenderWorld());
+        }
+        stack.hurtAndBreak(SwordConfig.ALL_SWORDS_HIT_COST.get(), attacker, EquipmentSlot.MAINHAND);
         return true;
     }
 
@@ -186,7 +182,7 @@ public class ICE_SWORD extends SWORD_CWSR {
             if(entityIn instanceof Player) {
                 LivingEntity tempEntity=(LivingEntity) entityIn;
                 BlockPos playerBlockStandingPos=entityIn.blockPosition();
-                FrostWalkerEnchantment.onEntityMoved(tempEntity,worldIn,playerBlockStandingPos,2);
+                freezeWaterUnderfoot(worldIn, playerBlockStandingPos, 2);
             }
         }else{
             if(entityIn instanceof Player) {
@@ -196,11 +192,18 @@ public class ICE_SWORD extends SWORD_CWSR {
                 if(Objects.equals(BuiltInRegistries.ITEM.getKey(OffHandItem.getItem()), ItemInit.ICE_SWORD.getId())){
                     LivingEntity tempEntity=(LivingEntity) entityIn;
                     BlockPos playerBlockStandingPos=entityIn.blockPosition();
-                    FrostWalkerEnchantment.onEntityMoved(tempEntity,worldIn,playerBlockStandingPos,2);
+                    freezeWaterUnderfoot(worldIn, playerBlockStandingPos, 2);
                 }
             }
         }
     }
 
-
+    private static void freezeWaterUnderfoot(Level level, BlockPos center, int radius) {
+        int effectiveRadius = Math.min(16, 2 + radius);
+        for (BlockPos pos : BlockPos.betweenClosed(center.offset(-effectiveRadius, -1, -effectiveRadius), center.offset(effectiveRadius, -1, effectiveRadius))) {
+            if (level.getBlockState(pos).is(Blocks.WATER) && level.getBlockState(pos.above()).isAir()) {
+                level.setBlock(pos, Blocks.FROSTED_ICE.defaultBlockState(), 3);
+            }
+        }
+    }
 }

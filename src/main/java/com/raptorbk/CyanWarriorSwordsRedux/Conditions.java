@@ -1,16 +1,12 @@
 package com.raptorbk.CyanWarriorSwordsRedux;
 
-import com.mojang.serialization.Codec;
+import com.mojang.serialization.MapCodec;
 import net.neoforged.neoforge.common.conditions.ICondition;
-import net.neoforged.neoforge.registries.DeferredHolder;
-import net.neoforged.neoforge.registries.DeferredRegister;
-import net.neoforged.neoforge.registries.NeoForgeRegistries;
-
 public class Conditions
 {
     public static class EnableNormalCrafting implements ICondition
     {
-        public static final Codec<EnableNormalCrafting> CODEC = Codec.unit(EnableNormalCrafting::new);
+        public static final MapCodec<EnableNormalCrafting> CODEC = MapCodec.unit(EnableNormalCrafting::new);
 
         @Override
         public boolean test(IContext context)
@@ -19,7 +15,7 @@ public class Conditions
         }
 
         @Override
-        public Codec<? extends ICondition> codec()
+        public MapCodec<? extends ICondition> codec()
         {
             return CODEC;
         }
@@ -27,7 +23,7 @@ public class Conditions
 
     public static class EnableTransmutationCrafting implements ICondition
     {
-        public static final Codec<EnableTransmutationCrafting> CODEC = Codec.unit(EnableTransmutationCrafting::new);
+        public static final MapCodec<EnableTransmutationCrafting> CODEC = MapCodec.unit(EnableTransmutationCrafting::new);
 
         @Override
         public boolean test(IContext context)
@@ -36,7 +32,7 @@ public class Conditions
         }
 
         @Override
-        public Codec<? extends ICondition> codec()
+        public MapCodec<? extends ICondition> codec()
         {
             return CODEC;
         }

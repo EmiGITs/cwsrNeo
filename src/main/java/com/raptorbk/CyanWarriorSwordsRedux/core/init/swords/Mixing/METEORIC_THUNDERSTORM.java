@@ -22,6 +22,7 @@ import net.minecraft.world.effect.MobEffectInstance;
 import net.minecraft.world.effect.MobEffects;
 import net.minecraft.world.entity.*;
 import net.minecraft.world.entity.projectile.LargeFireball;
+import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.item.TooltipFlag;
 import net.minecraft.world.item.enchantment.Enchantments;
 import net.minecraft.world.level.Explosion;
@@ -47,7 +48,7 @@ import java.util.Objects;
 import java.util.Random;
 
 public class METEORIC_THUNDERSTORM extends METEOR_CLASS_SWORD {
-    public static SimpleTier tierIn = new SimpleTier(3, SwordConfig.METEORIC_THUNDERSTORM_DUR.get(), 0.0f, 4.0f, 10, BlockTags.NEEDS_DIAMOND_TOOL, () ->
+    public static SimpleTier tierIn = new SimpleTier(BlockTags.NEEDS_DIAMOND_TOOL, SwordConfig.METEORIC_THUNDERSTORM_DUR.get(), 0.0f, 4.0f, 10, () ->
             Ingredient.of(Tags.Items.ORES_DIAMOND));
 
 
@@ -67,7 +68,7 @@ public class METEORIC_THUNDERSTORM extends METEOR_CLASS_SWORD {
     }
 
     @Override
-    public void appendHoverText(ItemStack stack, @Nullable Level worldIn, List<Component> tooltip, TooltipFlag flagIn) {
+    public void appendHoverText(ItemStack stack, Item.TooltipContext context, List<Component> tooltip, TooltipFlag flagIn) {
         tooltip.add(Component.translatable("tooltip.cwsr.meteoric_thunderstorm"));
     }
 
@@ -86,13 +87,12 @@ public class METEORIC_THUNDERSTORM extends METEOR_CLASS_SWORD {
 
         entity.addEffect(new MobEffectInstance(MobEffects.FIRE_RESISTANCE,200,0));
         Vec3 vec3 = entity.getViewVector(1.0F);
-        LargeFireball LargeFireball = new LargeFireball(world, entity,vec3.x,vec3.y,vec3.z,fireballStrength);
+        LargeFireball LargeFireball = (LargeFireball) EntityType.FIREBALL.create((ServerLevel) world);
+        LargeFireball.setOwner(entity);
         LargeFireball.setXRot(entity.getXRot());
         LargeFireball.setYRot(entity.getYRot());
         LargeFireball.setPos((int) Math.round(entity.getX()),entity.getY()+2,entity.getZ());
-        LargeFireball.xPower=vec3.x;
-        LargeFireball.yPower=vec3.y;
-        LargeFireball.zPower=vec3.z;
+        LargeFireball.shoot(vec3.x, vec3.y, vec3.z, 1.5F, 1.0F);
 
         ItemStack x = new ItemStack(ItemInit.ACTIVE_SYNERGY_TOTEM.get(),1);
         if(lfActiveSinergyTotem(entity)){
@@ -111,8 +111,6 @@ public class METEORIC_THUNDERSTORM extends METEOR_CLASS_SWORD {
         }
 
         float var4 = 1.0F;
-        int j = (int)(entity.yo + (entity.getY() - entity.yo) * (double)var4 + 1.62D - entity.getMyRidingOffset(entity));
-
 
         LightningBolt entityBolt = EntityType.LIGHTNING_BOLT.create(worldSV);
         entityBolt.moveTo((int) Math.round(entity.getX()), (int) Math.round(entity.getY()), (int) Math.round(entity.getZ()));
@@ -148,10 +146,8 @@ public class METEORIC_THUNDERSTORM extends METEOR_CLASS_SWORD {
         ItemStack ActiveSynergyTotemStack = new ItemStack(ItemInit.ACTIVE_SYNERGY_TOTEM.get(),1);
 
         if(!lfAbilityTotem(entity) && ((entity.getMainHandItem() != entity.getItemInHand(handIn) && entity.getMainHandItem().getItem() instanceof SWORD_CWSR && lfActiveSinergyTotem(entity)) || entity.getMainHandItem() == entity.getItemInHand(handIn) || (entity.getOffhandItem()==entity.getItemInHand(handIn) && !(entity.getMainHandItem().getItem() instanceof SWORD_CWSR)))){
-            currentSword.hurtAndBreak(SwordConfig.METEORIC_THUNDERSTORM_USE_COST.get(),entity,Player -> {
-                unlockDestroyACH(entity,world);
-                Player.broadcastBreakEvent(EquipmentSlot.MAINHAND);
-            });
+            unlockDestroyACH(entity,world);
+            currentSword.hurtAndBreak(SwordConfig.METEORIC_THUNDERSTORM_USE_COST.get(), entity, EquipmentSlot.MAINHAND);
         }
 
 
@@ -161,13 +157,11 @@ public class METEORIC_THUNDERSTORM extends METEOR_CLASS_SWORD {
     @Override
     public boolean hurtEnemy(ItemStack stack, LivingEntity target, LivingEntity attacker){
         target.knockback(2,attacker.getX() - target.getX(), attacker.getZ() - target.getZ());
-        target.setSecondsOnFire(SwordConfig.METEORIC_THUNDERSTORM_HIT_SEC.get());
-        stack.hurtAndBreak(SwordConfig.ALL_SWORDS_HIT_COST.get(),attacker,Player -> {
-            if(attacker instanceof Player){
-                unlockDestroyACH((Player) attacker,attacker.getCommandSenderWorld());
-            }
-            Player.broadcastBreakEvent(EquipmentSlot.MAINHAND);
-        });
+        target.setRemainingFireTicks(SwordConfig.METEORIC_THUNDERSTORM_HIT_SEC.get() * 20);
+        if(attacker instanceof Player){
+            unlockDestroyACH((Player) attacker,attacker.getCommandSenderWorld());
+        }
+        stack.hurtAndBreak(SwordConfig.ALL_SWORDS_HIT_COST.get(), attacker, EquipmentSlot.MAINHAND);
         return true;
     }
 

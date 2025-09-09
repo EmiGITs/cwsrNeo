@@ -22,6 +22,9 @@ import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.Tier;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
+import net.minecraft.core.component.DataComponents;
+import net.minecraft.world.item.component.CustomData;
+import net.minecraft.nbt.CompoundTag;
 import net.minecraft.world.item.SwordItem;
 
 import net.minecraft.world.item.enchantment.EnchantmentHelper;
@@ -43,7 +46,7 @@ public class SWORD_CWSR extends SwordItem {
     public int swordCD=0;
     public ThrownEnderpearl throwEnder=null;
     public SWORD_CWSR(Tier tier, int attackDamageIn, float attackSpeedIn, Item.Properties builder) {
-        super(tier,attackDamageIn,attackSpeedIn,builder);
+        super(tier, builder.attributes(SwordItem.createAttributes(tier, attackDamageIn, attackSpeedIn)));
     }
 
 
@@ -181,12 +184,10 @@ public class SWORD_CWSR extends SwordItem {
 
 
     public boolean checkINH(ItemStack totemItem){
-        Map<Enchantment, Integer> xEnc= EnchantmentHelper.getEnchantments(totemItem);
-        if(xEnc.containsKey(EnchantmentInit.INH_ENCHANT.get())){
-            return true;
-        }else{
-            return false;
-        }
+        CustomData data = totemItem.get(DataComponents.CUSTOM_DATA);
+        if (data == null) return false;
+        CompoundTag tag = data.copyTag();
+        return tag.getBoolean("cwsr_inh");
     }
 
     public void setCD(){ }
@@ -272,7 +273,7 @@ public class SWORD_CWSR extends SwordItem {
                         if(!(Objects.equals(BuiltInRegistries.ITEM.getKey(OffHandItem.getItem()),BuiltInRegistries.ITEM.getKey(MainHandItem.getItem())))){
                             if(!blocker){
                                 ((SWORD_CWSR) OffHandItem.getItem()).setDamagePU();
-                                OffHandItem.hurtAndBreak(((SWORD_CWSR) OffHandItem.getItem()).getDamagePU(),entity,Player -> Player.broadcastBreakEvent(EquipmentSlot.OFFHAND));
+                                OffHandItem.hurtAndBreak(((SWORD_CWSR) OffHandItem.getItem()).getDamagePU(), entity, EquipmentSlot.OFFHAND);
                                 ((SWORD_CWSR) OffHandItem.getItem()).setCD();
                                 entity.getCooldowns().addCooldown(OffHandItem.getItem(), ((SWORD_CWSR) OffHandItem.getItem()).getSwordCD());
                                 ((SWORD_CWSR) OffHandItem.getItem()).eventRC(world, entity, handIn,OffHandItem);
