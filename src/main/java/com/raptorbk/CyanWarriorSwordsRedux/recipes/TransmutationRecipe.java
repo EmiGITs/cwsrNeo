@@ -3,15 +3,17 @@ package com.raptorbk.CyanWarriorSwordsRedux.recipes;
 
 import com.mojang.datafixers.Products;
 import com.mojang.serialization.Codec;
+import com.mojang.serialization.MapCodec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
 
 import com.raptorbk.CyanWarriorSwordsRedux.core.init.RecipeTypeInit;
 import com.raptorbk.CyanWarriorSwordsRedux.core.init.SerializerInit;
 import net.minecraft.core.NonNullList;
+import net.minecraft.core.HolderLookup;
 import net.minecraft.core.RegistryAccess;
-import net.minecraft.network.FriendlyByteBuf;
-import net.minecraft.util.ExtraCodecs;
-import net.minecraft.world.Container;
+import net.minecraft.network.RegistryFriendlyByteBuf;
+import net.minecraft.network.codec.StreamCodec;
+ 
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.crafting.*;
 import net.minecraft.world.level.Level;
@@ -23,20 +25,20 @@ import java.util.Optional;
 import java.util.function.Predicate;
 import java.util.stream.Collectors;
 
-public class TransmutationRecipe implements Recipe<Container>
+public class TransmutationRecipe implements Recipe<TransmutationRecipe.Input>
 {
     public static <T extends TransmutationRecipe> Products.P5<RecordCodecBuilder.Mu<T>, String, NonNullList<Material>, ItemStack, Float, Integer>
     defaultTransmutationFields(RecordCodecBuilder.Instance<T> instance)
     {
         return instance.group(
-                ExtraCodecs.strictOptionalField(Codec.STRING, "group", "").forGetter(TransmutationRecipe::getGroup),
+                Codec.STRING.optionalFieldOf("group", "").forGetter(TransmutationRecipe::getGroup),
                 NonNullList.codecOf(Material.CODEC).fieldOf("materials").forGetter(TransmutationRecipe::getMaterials),
-                ItemStack.ITEM_WITH_COUNT_CODEC.fieldOf("result").forGetter(TransmutationRecipe::getOutput),
+                ItemStack.CODEC.fieldOf("result").forGetter(TransmutationRecipe::getOutput),
                 Codec.FLOAT.fieldOf("experience").forGetter(TransmutationRecipe::getExperience),
                 Codec.INT.fieldOf("cookingtime").forGetter(TransmutationRecipe::getCookingTime));
     }
 
-    public static final Codec<TransmutationRecipe> CODEC = RecordCodecBuilder.create(instance -> defaultTransmutationFields(instance).apply(instance, TransmutationRecipe::new));
+    public static final MapCodec<TransmutationRecipe> CODEC = RecordCodecBuilder.mapCodec(instance -> defaultTransmutationFields(instance).apply(instance, TransmutationRecipe::new));
 
     private final String group;
 
@@ -83,7 +85,7 @@ public class TransmutationRecipe implements Recipe<Container>
     }
 
     @Override
-    public boolean matches(Container inv, Level worldIn)
+    public boolean matches(Input inv, Level worldIn)
     {
 
         Map<Ingredient, Integer> missing = materials.stream().collect(Collectors.toMap(i -> i.ingredient, i -> i.count));
@@ -107,13 +109,13 @@ public class TransmutationRecipe implements Recipe<Container>
     }
 
     @Override
-    public ItemStack assemble(Container p_44001_, RegistryAccess registryAccess)
+    public ItemStack assemble(Input input, HolderLookup.Provider registryAccess)
     {
         return getResultItem(registryAccess).copy();
     }
 
     @Override
-    public ItemStack getResultItem(RegistryAccess registryAccess)
+    public ItemStack getResultItem(HolderLookup.Provider registryAccess)
     {
         return output;
     }
@@ -160,59 +162,43 @@ public class TransmutationRecipe implements Recipe<Container>
 
 
 
-    public static class Serializer extends SerializerBase<TransmutationRecipe>
+    public static class Serializer implements RecipeSerializer<TransmutationRecipe>
     {
         @Override
-        public Codec<TransmutationRecipe> codec()
+        public MapCodec<TransmutationRecipe> codec()
         {
             return CODEC;
         }
 
         @Override
-        protected TransmutationRecipe makeRecipe(FriendlyByteBuf buffer, String group, NonNullList<Material> materials, ItemStack result, float experienceIn, int cookTimeIn)
+        public StreamCodec<RegistryFriendlyByteBuf, TransmutationRecipe> streamCodec()
         {
-            return new TransmutationRecipe(group, materials, result, experienceIn, cookTimeIn);
-        }
-    }
-
-    public static abstract class SerializerBase<T extends TransmutationRecipe>
-            implements RecipeSerializer<T>
-    {
-
-        @Override
-        public T fromNetwork(FriendlyByteBuf buffer)
-        {
-            String group = buffer.readUtf(32767);
-            int numMaterials = buffer.readVarInt();
-            NonNullList<Material> materials = NonNullList.create();
-            for (int i = 0; i < numMaterials; i++)
-            {
-                materials.add(Material.read(buffer));
-            }
-
-            ItemStack result = buffer.readItem();
-            float f = buffer.readFloat();
-            int i = buffer.readVarInt();
-
-            return makeRecipe(buffer, group, materials, result, f,i);
-        }
-
-        protected abstract T makeRecipe(FriendlyByteBuf buffer, String group, NonNullList<Material> materials, ItemStack result, float experienceIn, int cookTimeIn);
-
-        @Override
-        public void toNetwork(FriendlyByteBuf buffer, TransmutationRecipe recipe)
-        {
-            buffer.writeUtf(recipe.group);
-            buffer.writeVarInt(recipe.materials.size());
-            for (Material input : recipe.materials)
-            {
-                input.write(buffer);
-            }
-
-
-            buffer.writeItem(recipe.output);
-            buffer.writeFloat(recipe.experience);
-            buffer.writeVarInt(recipe.cookTime);
+            return StreamCodec.of((buf, recipe) -> {
+                buf.writeUtf(recipe.group);
+                buf.writeVarInt(recipe.materials.size());
+                for (Material m : recipe.materials)
+                {
+                    buf.writeVarInt(m.count);
+                    Ingredient.CONTENTS_STREAM_CODEC.encode(buf, m.ingredient);
+                }
+                ItemStack.STREAM_CODEC.encode(buf, recipe.output);
+                buf.writeFloat(recipe.experience);
+                buf.writeVarInt(recipe.cookTime);
+            }, (buf) -> {
+                String group = buf.readUtf(32767);
+                int numMaterials = buf.readVarInt();
+                NonNullList<Material> materials = NonNullList.create();
+                for (int i = 0; i < numMaterials; i++)
+                {
+                    int count = buf.readVarInt();
+                    Ingredient ingredient = Ingredient.CONTENTS_STREAM_CODEC.decode(buf);
+                    materials.add(Material.of(ingredient, count));
+                }
+                ItemStack result = ItemStack.STREAM_CODEC.decode(buf);
+                float experience = buf.readFloat();
+                int cookTime = buf.readVarInt();
+                return new TransmutationRecipe(group, materials, result, experience, cookTime);
+            });
         }
     }
 
@@ -243,17 +229,24 @@ public class TransmutationRecipe implements Recipe<Container>
             return ingredient.test(itemStack) && itemStack.getCount() >= count;
         }
 
-        public void write(FriendlyByteBuf packet)
-        {
-            packet.writeVarInt(count);
-            ingredient.toNetwork(packet);
+        // Stream serialization is handled in the Serializer via Ingredient.CONTENTS_STREAM_CODEC
+    }
+
+    public static class Input implements RecipeInput {
+        private final ItemStack[] items;
+
+        public Input(ItemStack... items) {
+            this.items = items;
         }
 
-        public static Material read(FriendlyByteBuf packet)
-        {
-            int count = packet.readVarInt();
-            Ingredient ingredient = Ingredient.fromNetwork(packet);
-            return new Material(ingredient, count);
+        @Override
+        public int size() {
+            return this.items.length;
+        }
+
+        @Override
+        public ItemStack getItem(int i) {
+            return this.items[i];
         }
     }
 }

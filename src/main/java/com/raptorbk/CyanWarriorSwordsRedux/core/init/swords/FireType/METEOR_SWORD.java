@@ -1,6 +1,7 @@
 package com.raptorbk.CyanWarriorSwordsRedux.core.init.swords.FireType;
 
 import com.raptorbk.CyanWarriorSwordsRedux.config.SwordConfig.SwordConfig;
+import com.raptorbk.CyanWarriorSwordsRedux.config.SafeConfig;
 import com.raptorbk.CyanWarriorSwordsRedux.core.init.ItemInit;
 import com.raptorbk.CyanWarriorSwordsRedux.core.init.SWORD_CWSR;
 import com.raptorbk.CyanWarriorSwordsRedux.core.init.SwordHabilities.METEOR_CLASS_SWORD;
@@ -45,12 +46,18 @@ import java.util.Objects;
 import java.util.Random;
 
 public class METEOR_SWORD extends METEOR_CLASS_SWORD {
-    public static SimpleTier tierIn = new SimpleTier(BlockTags.NEEDS_DIAMOND_TOOL, SwordConfig.METEOR_SWORD_DUR.get(), 0.0f, 4.0f, 10, () ->
-            Ingredient.of(Tags.Items.ORES_DIAMOND));
+    public static SimpleTier tierIn = new SimpleTier(
+            BlockTags.NEEDS_DIAMOND_TOOL,
+            SafeConfig.getInt(SwordConfig.METEOR_SWORD_DUR, 1000),
+            0.0f,
+            4.0f,
+            10,
+            () -> Ingredient.of(Tags.Items.ORES_DIAMOND)
+    );
 
 
     public METEOR_SWORD( float attackSpeedIn, Properties builder) {
-        super(tierIn, SwordConfig.METEOR_SWORD_DMG.get(), attackSpeedIn, builder);
+        super(tierIn, SafeConfig.getInt(SwordConfig.METEOR_SWORD_DMG, 1), attackSpeedIn, builder);
     }
 
     public int fireballStrength = 2;

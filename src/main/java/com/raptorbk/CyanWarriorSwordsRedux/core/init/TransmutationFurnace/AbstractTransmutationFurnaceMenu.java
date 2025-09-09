@@ -9,12 +9,13 @@ import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.entity.player.StackedContents;
 import net.minecraft.world.inventory.*;
 import net.minecraft.world.item.ItemStack;
-import net.minecraft.world.item.crafting.Recipe;
 import net.minecraft.world.item.crafting.RecipeHolder;
 import net.minecraft.world.item.crafting.RecipeType;
+import net.minecraft.world.item.crafting.SingleRecipeInput;
+import com.raptorbk.CyanWarriorSwordsRedux.recipes.TransmutationRecipe.Input;
 import net.minecraft.world.level.Level;
 
-public abstract class AbstractTransmutationFurnaceMenu extends RecipeBookMenu<Container> {
+public abstract class AbstractTransmutationFurnaceMenu extends RecipeBookMenu<Input, TransmutationRecipe> {
     public static final int INGREDIENT_SLOT = 0;
     public static final int FUEL_SLOT = 1;
     public static final int RESULT_SLOT = 2;
@@ -27,18 +28,18 @@ public abstract class AbstractTransmutationFurnaceMenu extends RecipeBookMenu<Co
     private final Container container;
     private final ContainerData data;
     protected final Level level;
-    private final RecipeType<? extends TransmutationRecipe> recipeType;
+    private final RecipeType<TransmutationRecipe> recipeType;
     private final RecipeBookType recipeBookType;
 
     protected AbstractTransmutationFurnaceMenu(
-            MenuType<?> pMenuType, RecipeType<? extends TransmutationRecipe> pRecipeType, RecipeBookType pRecipeBookType, int pContainerId, Inventory pPlayerInventory
+            MenuType<?> pMenuType, RecipeType<TransmutationRecipe> pRecipeType, RecipeBookType pRecipeBookType, int pContainerId, Inventory pPlayerInventory
     ) {
         this(pMenuType, pRecipeType, pRecipeBookType, pContainerId, pPlayerInventory, new SimpleContainer(3), new SimpleContainerData(4));
     }
 
     protected AbstractTransmutationFurnaceMenu(
             MenuType<?> pMenuType,
-            RecipeType<? extends TransmutationRecipe> pRecipeType,
+            RecipeType<TransmutationRecipe> pRecipeType,
             RecipeBookType pRecipeBookType,
             int pContainerId,
             Inventory pPlayerInventory,
@@ -84,8 +85,10 @@ public abstract class AbstractTransmutationFurnaceMenu extends RecipeBookMenu<Co
     }
 
     @Override
-    public boolean recipeMatches(RecipeHolder<? extends Recipe<Container>> pRecipe) {
-        return pRecipe.value().matches(this.container, this.level);
+    public boolean recipeMatches(RecipeHolder<TransmutationRecipe> pRecipe) {
+        return pRecipe.value().matches(new TransmutationRecipe.Input(
+                this.container.getItem(0), this.container.getItem(1), this.container.getItem(2)
+        ), this.level);
     }
 
     @Override
@@ -165,11 +168,12 @@ public abstract class AbstractTransmutationFurnaceMenu extends RecipeBookMenu<Co
     }
 
     protected boolean canSmelt(ItemStack pStack) {
-        return this.level.getRecipeManager().getRecipeFor((RecipeType<TransmutationRecipe>)this.recipeType, new SimpleContainer(pStack), this.level).isPresent();
+        return this.level.getRecipeManager().getRecipeFor(this.recipeType,
+                new TransmutationRecipe.Input(pStack, ItemStack.EMPTY, ItemStack.EMPTY), this.level).isPresent();
     }
 
     protected boolean isFuel(ItemStack pStack) {
-        return net.neoforged.neoforge.common.CommonHooks.getBurnTime(pStack, this.recipeType) > 0;
+        return AbstractTransmutationFurnaceBlockEntity.isFuel(pStack);
     }
 
     public float getBurnProgress() {

@@ -3,6 +3,7 @@ package com.raptorbk.CyanWarriorSwordsRedux.core.init.swords.CyanType;
 
 
 import com.raptorbk.CyanWarriorSwordsRedux.config.SwordConfig.SwordConfig;
+import com.raptorbk.CyanWarriorSwordsRedux.config.SafeConfig;
 import com.raptorbk.CyanWarriorSwordsRedux.core.init.ItemInit;
 import com.raptorbk.CyanWarriorSwordsRedux.core.init.SWORD_CWSR;
 import com.raptorbk.CyanWarriorSwordsRedux.core.init.SwordHabilities.SurroundEffect;
@@ -39,12 +40,12 @@ import java.util.List;
 
 public class CYAN_SWORD extends SWORD_CWSR {
 
-    public static SimpleTier tierIn = new SimpleTier(BlockTags.NEEDS_DIAMOND_TOOL, SwordConfig.CYAN_SWORD_DUR.get(), 0.0f, 4.0f, 10, () ->
-            Ingredient.of(Tags.Items.ORES_DIAMOND));
+    public static SimpleTier tierIn = new SimpleTier(BlockTags.NEEDS_DIAMOND_TOOL, SafeConfig.getInt(SwordConfig.CYAN_SWORD_DUR, 1000), 0.0f, 4.0f, 10, () ->
+            net.minecraft.world.item.crafting.Ingredient.of(Tags.Items.ORES_DIAMOND));
 
 
     public CYAN_SWORD( float attackSpeedIn, Properties builder) {
-            super(tierIn, SwordConfig.CYAN_SWORD_DMG.get(), attackSpeedIn, builder);
+            super(tierIn, SafeConfig.getInt(SwordConfig.CYAN_SWORD_DMG, 1), attackSpeedIn, builder);
     }
 
     public static void callEffect(SurroundEffect seffect, Level world, Player entity, InteractionHand handIn, Block blk){

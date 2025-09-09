@@ -15,8 +15,10 @@ import net.minecraft.core.Direction;
 import net.minecraft.core.Holder;
 import net.minecraft.core.NonNullList;
 import net.minecraft.core.RegistryAccess;
+import net.minecraft.core.HolderLookup;
 import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.nbt.CompoundTag;
+import net.minecraft.network.chat.Component;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.server.level.ServerPlayer;
@@ -62,8 +64,9 @@ public abstract class AbstractTransmutationFurnaceBlockEntity extends BaseContai
     public static final int NUM_DATA_VALUES = 4;
     public static final int BURN_TIME_STANDARD = 200;
     public static final int BURN_COOL_SPEED = 2;
-    private final RecipeType<? extends TransmutationRecipe> recipeType;
+    private final RecipeType<TransmutationRecipe> recipeType;
     protected NonNullList<ItemStack> items = NonNullList.withSize(3, ItemStack.EMPTY);
+    private Component customName;
     int litTime;
     int litDuration;
     int cookingProgress;
@@ -108,13 +111,11 @@ public abstract class AbstractTransmutationFurnaceBlockEntity extends BaseContai
         }
     };
     private final Object2IntOpenHashMap<ResourceLocation> recipesUsed = new Object2IntOpenHashMap<>();
-    private final RecipeManager.CachedCheck<Container, ? extends TransmutationRecipe> quickCheck;
 
     protected AbstractTransmutationFurnaceBlockEntity(
             DeferredHolder<BlockEntityType<?>, BlockEntityType<TransmutationFurnaceBlockEntity>> pType, BlockPos pPos, BlockState pBlockState, RecipeType<TransmutationRecipe> pRecipeType
     ) {
         super(pType.get(), pPos, pBlockState);
-        this.quickCheck = RecipeManager.createCheck(pRecipeType);
         this.recipeType = pRecipeType;
     }
 
@@ -214,10 +215,10 @@ public abstract class AbstractTransmutationFurnaceBlockEntity extends BaseContai
     }
 
     @Override
-    public void load(CompoundTag pTag) {
-        super.load(pTag);
+    protected void loadAdditional(CompoundTag pTag, HolderLookup.Provider pRegistries) {
+        super.loadAdditional(pTag, pRegistries);
         this.items = NonNullList.withSize(this.getContainerSize(), ItemStack.EMPTY);
-        ContainerHelper.loadAllItems(pTag, this.items);
+        ContainerHelper.loadAllItems(pTag, this.items, pRegistries);
         this.litTime = pTag.getInt("BurnTime");
         this.cookingProgress = pTag.getInt("CookTime");
         this.cookingTotalTime = pTag.getInt("CookTimeTotal");
@@ -225,17 +226,17 @@ public abstract class AbstractTransmutationFurnaceBlockEntity extends BaseContai
         CompoundTag compoundtag = pTag.getCompound("RecipesUsed");
 
         for(String s : compoundtag.getAllKeys()) {
-            this.recipesUsed.put(new ResourceLocation(s), compoundtag.getInt(s));
+            this.recipesUsed.put(ResourceLocation.parse(s), compoundtag.getInt(s));
         }
     }
 
     @Override
-    protected void saveAdditional(CompoundTag pTag) {
-        super.saveAdditional(pTag);
+    protected void saveAdditional(CompoundTag pTag, HolderLookup.Provider pRegistries) {
+        super.saveAdditional(pTag, pRegistries);
         pTag.putInt("BurnTime", this.litTime);
         pTag.putInt("CookTime", this.cookingProgress);
         pTag.putInt("CookTimeTotal", this.cookingTotalTime);
-        ContainerHelper.saveAllItems(pTag, this.items);
+        ContainerHelper.saveAllItems(pTag, this.items, pRegistries);
         CompoundTag compoundtag = new CompoundTag();
         this.recipesUsed.forEach((p_187449_, p_187450_) -> compoundtag.putInt(p_187449_.toString(), p_187450_));
         pTag.put("RecipesUsed", compoundtag);
@@ -254,7 +255,7 @@ public abstract class AbstractTransmutationFurnaceBlockEntity extends BaseContai
         if (pBlockEntity.isLit() || flag3 && flag2) {
             RecipeHolder<?> recipeholder;
             if (flag2) {
-                recipeholder = pBlockEntity.quickCheck.getRecipeFor(pBlockEntity, pLevel).orElse(null);
+                recipeholder = pBlockEntity.findMatchingRecipe(pLevel).orElse(null);
             } else {
                 recipeholder = null;
             }
@@ -309,7 +310,10 @@ public abstract class AbstractTransmutationFurnaceBlockEntity extends BaseContai
 
     private boolean canBurn(RegistryAccess pRecipe, @Nullable RecipeHolder<?> pInventory, NonNullList<ItemStack> pMaxStackSize, int p_155008_) {
         if (!pMaxStackSize.get(0).isEmpty() && pInventory != null) {
-            ItemStack itemstack = ((RecipeHolder<net.minecraft.world.item.crafting.Recipe<WorldlyContainer>>) pInventory).value().assemble(this, pRecipe);
+            TransmutationRecipe recipe = (TransmutationRecipe) pInventory.value();
+            ItemStack itemstack = recipe.assemble(new com.raptorbk.CyanWarriorSwordsRedux.recipes.TransmutationRecipe.Input(
+                    pMaxStackSize.get(0), pMaxStackSize.get(1), pMaxStackSize.get(2)
+            ), pRecipe);
             if (itemstack.isEmpty()) {
                 return false;
             } else {
@@ -332,7 +336,10 @@ public abstract class AbstractTransmutationFurnaceBlockEntity extends BaseContai
     private boolean burn(RegistryAccess pRecipe, @Nullable RecipeHolder<?> pInventory, NonNullList<ItemStack> pMaxStackSize, int p_267157_) {
         if (pInventory != null && this.canBurn(pRecipe, pInventory, pMaxStackSize, p_267157_)) {
             ItemStack itemstack = pMaxStackSize.get(0);
-            ItemStack itemstack1 = ((RecipeHolder<net.minecraft.world.item.crafting.Recipe<WorldlyContainer>>) pInventory).value().assemble(this, pRecipe);
+            TransmutationRecipe recipe = (TransmutationRecipe) pInventory.value();
+            ItemStack itemstack1 = recipe.assemble(new com.raptorbk.CyanWarriorSwordsRedux.recipes.TransmutationRecipe.Input(
+                    pMaxStackSize.get(0), pMaxStackSize.get(1), pMaxStackSize.get(2)
+            ), pRecipe);
             ItemStack itemstack2 = pMaxStackSize.get(2);
             if (itemstack2.isEmpty()) {
                 pMaxStackSize.set(2, itemstack1.copy());
@@ -356,16 +363,30 @@ public abstract class AbstractTransmutationFurnaceBlockEntity extends BaseContai
             return 0;
         } else {
             Item item = pFuel.getItem();
-            return net.neoforged.neoforge.common.CommonHooks.getBurnTime(pFuel, this.recipeType);
+            return getFuel().getOrDefault(item, 0);
         }
     }
 
     private static int getTotalCookTime(Level pLevel, AbstractTransmutationFurnaceBlockEntity pBlockEntity) {
-        return pBlockEntity.quickCheck.getRecipeFor(pBlockEntity, pLevel).map(p_300840_ -> p_300840_.value().getCookingTime()).orElse(200);
+        return pBlockEntity.findMatchingRecipe(pLevel).map(holder -> holder.value().getCookingTime()).orElse(200);
+    }
+
+    private java.util.Optional<RecipeHolder<TransmutationRecipe>> findMatchingRecipe(Level level) {
+        @SuppressWarnings({"rawtypes", "unchecked"})
+        java.util.List<RecipeHolder<?>> all = (java.util.List) level.getRecipeManager().getAllRecipesFor((RecipeType) this.recipeType);
+        for (RecipeHolder<?> holder : all) {
+            TransmutationRecipe recipe = (TransmutationRecipe) holder.value();
+            if (recipe.matches(new com.raptorbk.CyanWarriorSwordsRedux.recipes.TransmutationRecipe.Input(
+                    this.items.get(0), this.items.get(1), this.items.get(2)
+            ), level)) {
+                return (java.util.Optional) java.util.Optional.of(holder);
+            }
+        }
+        return java.util.Optional.empty();
     }
 
     public static boolean isFuel(ItemStack pStack) {
-        return net.neoforged.neoforge.common.CommonHooks.getBurnTime(pStack, null) > 0;
+        return getFuel().getOrDefault(pStack.getItem(), 0) > 0;
     }
 
     @Override
@@ -432,7 +453,7 @@ public abstract class AbstractTransmutationFurnaceBlockEntity extends BaseContai
     @Override
     public void setItem(int pIndex, ItemStack pStack) {
         ItemStack itemstack = this.items.get(pIndex);
-        boolean flag = !pStack.isEmpty() && ItemStack.isSameItemSameTags(itemstack, pStack);
+        boolean flag = !pStack.isEmpty() && ItemStack.isSameItemSameComponents(itemstack, pStack);
         this.items.set(pIndex, pStack);
         if (pStack.getCount() > this.getMaxStackSize()) {
             pStack.setCount(this.getMaxStackSize());
@@ -460,7 +481,7 @@ public abstract class AbstractTransmutationFurnaceBlockEntity extends BaseContai
             return true;
         } else {
             ItemStack itemstack = this.items.get(1);
-            return net.neoforged.neoforge.common.CommonHooks.getBurnTime(pStack, this.recipeType) > 0 || pStack.is(Items.BUCKET) && !itemstack.is(Items.BUCKET);
+            return getFuel().getOrDefault(pStack.getItem(), 0) > 0 || pStack.is(Items.BUCKET) && !itemstack.is(Items.BUCKET);
         }
     }
 
@@ -512,6 +533,29 @@ public abstract class AbstractTransmutationFurnaceBlockEntity extends BaseContai
         }
 
         return list;
+    }
+
+    public void setCustomName(Component name) {
+        this.customName = name;
+    }
+
+    @Override
+    public Component getDisplayName() {
+        return this.customName != null ? this.customName : this.getDefaultName();
+    }
+
+    protected Component getDefaultName() {
+        return Component.translatable("container.furnace");
+    }
+
+    @Override
+    protected NonNullList<ItemStack> getItems() {
+        return this.items;
+    }
+
+    @Override
+    protected void setItems(NonNullList<ItemStack> items) {
+        this.items = items;
     }
 
     private static void createExperience(ServerLevel pLevel, Vec3 pPopVec, int pRecipeIndex, float pExperience) {

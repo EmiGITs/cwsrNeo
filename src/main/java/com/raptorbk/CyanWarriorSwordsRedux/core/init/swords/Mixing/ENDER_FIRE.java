@@ -2,6 +2,7 @@ package com.raptorbk.CyanWarriorSwordsRedux.core.init.swords.Mixing;
 
 
 import com.raptorbk.CyanWarriorSwordsRedux.config.SwordConfig.SwordConfig;
+import com.raptorbk.CyanWarriorSwordsRedux.config.SafeConfig;
 import com.raptorbk.CyanWarriorSwordsRedux.core.init.ItemInit;
 import com.raptorbk.CyanWarriorSwordsRedux.core.init.SWORD_CWSR;
 import com.raptorbk.CyanWarriorSwordsRedux.core.init.SwordHabilities.ENDER_CLASS_SWORD;
@@ -49,12 +50,18 @@ import java.util.Objects;
 import java.util.Random;
 
 public class ENDER_FIRE extends ENDER_CLASS_SWORD {
-    public static SimpleTier tierIn = new SimpleTier(BlockTags.NEEDS_DIAMOND_TOOL, SwordConfig.ENDER_FIRE_DUR.get(), 0.0f, 4.0f, 10, () ->
-            Ingredient.of(Tags.Items.ORES_DIAMOND));
+    public static SimpleTier tierIn = new SimpleTier(
+            BlockTags.NEEDS_DIAMOND_TOOL,
+            SafeConfig.getInt(SwordConfig.ENDER_FIRE_DUR, 1000),
+            0.0f,
+            4.0f,
+            10,
+            () -> Ingredient.of(Tags.Items.ORES_DIAMOND)
+    );
 
 
     public ENDER_FIRE( float attackSpeedIn, Properties builder) {
-        super(tierIn, SwordConfig.ENDER_FIRE_DMG.get(), attackSpeedIn, builder);
+        super(tierIn, SafeConfig.getInt(SwordConfig.ENDER_FIRE_DMG, 1), attackSpeedIn, builder);
     }
 
     public static void callEffect(SurroundEffect seffect, Level world, Player entity, InteractionHand handIn, Block blk){

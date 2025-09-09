@@ -2,6 +2,7 @@ package com.raptorbk.CyanWarriorSwordsRedux.core.init.swords.Mixing;
 
 
 import com.raptorbk.CyanWarriorSwordsRedux.config.SwordConfig.SwordConfig;
+import com.raptorbk.CyanWarriorSwordsRedux.config.SafeConfig;
 import com.raptorbk.CyanWarriorSwordsRedux.core.init.ItemInit;
 import com.raptorbk.CyanWarriorSwordsRedux.core.init.SWORD_CWSR;
 import com.raptorbk.CyanWarriorSwordsRedux.core.init.SwordHabilities.SurroundEffect;
@@ -40,12 +41,18 @@ import javax.annotation.Nullable;
 import java.util.List;
 
 public class STEAM_SWORD extends SWORD_CWSR {
-    public static SimpleTier tierIn = new SimpleTier(BlockTags.NEEDS_DIAMOND_TOOL, SwordConfig.STEAM_SWORD_DUR.get(), 0.0f, 4.0f, 10, () ->
-            Ingredient.of(Tags.Items.ORES_DIAMOND));
+    public static SimpleTier tierIn = new SimpleTier(
+            BlockTags.NEEDS_DIAMOND_TOOL,
+            SafeConfig.getInt(SwordConfig.STEAM_SWORD_DUR, 1000),
+            0.0f,
+            4.0f,
+            10,
+            () -> Ingredient.of(Tags.Items.ORES_DIAMOND)
+    );
 
 
     public STEAM_SWORD( float attackSpeedIn, Properties builder) {
-        super(tierIn, SwordConfig.STEAM_SWORD_DMG.get(), attackSpeedIn, builder);
+        super(tierIn, SafeConfig.getInt(SwordConfig.STEAM_SWORD_DMG, 1), attackSpeedIn, builder);
     }
     public static void callEffect(SurroundEffect seffect, Level world, Player entity, InteractionHand handIn, Block blk){
         seffect.execute(world,entity,handIn,blk);

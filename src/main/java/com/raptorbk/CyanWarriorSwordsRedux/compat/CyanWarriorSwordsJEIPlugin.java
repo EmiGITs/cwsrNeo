@@ -45,8 +45,9 @@ public class CyanWarriorSwordsJEIPlugin implements IModPlugin {
 
     @Override
     public void registerRecipes(@NotNull IRecipeRegistration registration){
-        assert Minecraft.getInstance().level != null;
-        var recipeManager = Minecraft.getInstance().level.getRecipeManager();
+        var level = Minecraft.getInstance().level;
+        if (level == null) return; // client world not ready
+        var recipeManager = level.getRecipeManager();
         List<RecipeHolder<TransmutationRecipe>> transmutation_Recipes = recipeManager.getAllRecipesFor(RecipeTypeInit.TRANSMUTATION.get());
 
         List<TransmutationRecipe> transmutation_converted=new ArrayList<>();

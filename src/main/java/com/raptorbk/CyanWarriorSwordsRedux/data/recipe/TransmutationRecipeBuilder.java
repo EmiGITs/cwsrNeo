@@ -10,14 +10,15 @@ import net.minecraft.core.NonNullList;
 import net.minecraft.data.recipes.RecipeCategory;
 import net.minecraft.data.recipes.RecipeOutput;
 import net.minecraft.nbt.CompoundTag;
+import net.minecraft.core.component.DataComponents;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.tags.TagKey;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
+import net.minecraft.world.item.component.CustomData;
 import net.minecraft.world.item.Tier;
 import net.minecraft.world.item.crafting.Ingredient;
 import net.minecraft.world.level.ItemLike;
-import net.neoforged.neoforge.common.ToolAction;
 
 import javax.annotation.Nullable;
 import java.util.LinkedHashMap;
@@ -150,7 +151,9 @@ public class TransmutationRecipeBuilder
         ResourceLocation advancementId = id.withPrefix("recipes/" + category.getFolderName() + "/" );
 
         var resultStack = new ItemStack(this.result, this.count);
-        resultStack.setTag(this.tag);
+        if (this.tag != null) {
+            resultStack.set(DataComponents.CUSTOM_DATA, CustomData.of(this.tag));
+        }
 
         var recipe = new TransmutationRecipe(
                 Objects.requireNonNullElse(this.group, ""),

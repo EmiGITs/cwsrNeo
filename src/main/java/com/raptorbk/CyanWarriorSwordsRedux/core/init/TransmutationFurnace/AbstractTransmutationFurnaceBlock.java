@@ -3,10 +3,10 @@ package com.raptorbk.CyanWarriorSwordsRedux.core.init.TransmutationFurnace;
 import com.mojang.serialization.MapCodec;
 import javax.annotation.Nullable;
 import net.minecraft.core.BlockPos;
+import net.minecraft.core.component.DataComponents;
 import net.minecraft.core.Direction;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.world.Containers;
-import net.minecraft.world.InteractionHand;
 import net.minecraft.world.InteractionResult;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.player.Player;
@@ -16,8 +16,8 @@ import net.minecraft.world.item.context.BlockPlaceContext;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.*;
 import net.minecraft.world.level.block.entity.BlockEntity;
-import net.minecraft.world.level.block.entity.BlockEntityTicker;
 import net.minecraft.world.level.block.entity.BlockEntityType;
+import net.minecraft.world.level.block.entity.BlockEntityTicker;
 import net.minecraft.world.level.block.state.BlockBehaviour;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.block.state.StateDefinition;
@@ -40,7 +40,7 @@ public abstract class AbstractTransmutationFurnaceBlock extends BaseEntityBlock 
     protected abstract MapCodec<? extends AbstractTransmutationFurnaceBlock> codec();
 
     @Override
-    public InteractionResult use(BlockState pState, Level pLevel, BlockPos pPos, Player pPlayer, InteractionHand pHand, BlockHitResult pHit) {
+    public InteractionResult useWithoutItem(BlockState pState, Level pLevel, BlockPos pPos, Player pPlayer, BlockHitResult pHit) {
         if (pLevel.isClientSide) {
             return InteractionResult.SUCCESS;
         } else {
@@ -60,10 +60,10 @@ public abstract class AbstractTransmutationFurnaceBlock extends BaseEntityBlock 
 
     @Override
     public void setPlacedBy(Level pLevel, BlockPos pPos, BlockState pState, LivingEntity pPlacer, ItemStack pStack) {
-        if (pStack.hasCustomHoverName()) {
+        if (pStack.has(DataComponents.CUSTOM_NAME)) {
             BlockEntity blockentity = pLevel.getBlockEntity(pPos);
-            if (blockentity instanceof AbstractTransmutationFurnaceBlockEntity) {
-                ((AbstractTransmutationFurnaceBlockEntity)blockentity).setCustomName(pStack.getHoverName());
+            if (blockentity instanceof AbstractTransmutationFurnaceBlockEntity be) {
+                be.setCustomName(pStack.getHoverName());
             }
         }
     }

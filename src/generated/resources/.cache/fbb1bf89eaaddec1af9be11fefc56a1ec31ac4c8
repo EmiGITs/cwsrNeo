@@ -1,4 +1,4 @@
-// 1.20.4	2024-04-01T15:32:44.13814	Item Models: cwsr
+// 1.21	2025-09-09T17:13:56.7950524	Item Models: cwsr
 2fcf464fc5372b65aea29c988741e041bba6971a assets/cwsr/models/item/ability_totem.json
 44ad35ff915c6e7ea1001578bf8e76e143020c94 assets/cwsr/models/item/active_synergy_totem.json
 881076d1f85bf7a92acd6e02929348541b69a446 assets/cwsr/models/item/atlantis_sword.json
@@ -24,17 +24,17 @@ bb381f95603348185ad808420ab4b559157fb057 assets/cwsr/models/item/golem_sword.jso
 8a1526f4ef2598e9e4e83a1d804a173968c797f3 assets/cwsr/models/item/light_essence.json
 03236581204840a5203237e064e95c0889d73492 assets/cwsr/models/item/light_nether.json
 6f55546c79f8a1e1f26ef4e237843eff6fc784b7 assets/cwsr/models/item/light_sword.json
-e633a9a2b87d8a3af2d647ff5dda4ebd9f5372d8 assets/cwsr/models/item/meteor_sword.json
 f9853ac254f5d843b809f60e1b97d30591a98a6a assets/cwsr/models/item/meteoric_thunderstorm.json
+e633a9a2b87d8a3af2d647ff5dda4ebd9f5372d8 assets/cwsr/models/item/meteor_sword.json
 3132500dc64d5c346d3de6640d7bc2889d71145f assets/cwsr/models/item/mixed_essence.json
 5f9575dc30dfdc3a8284e336f1755cdf03656921 assets/cwsr/models/item/peaceful_nature.json
 41f1a9fdb692eae68be5dcd5b2ffabe4189e5011 assets/cwsr/models/item/steam_sword.json
 3bac888d244fa303a47d32aace9d0f171d02b818 assets/cwsr/models/item/sword_handle.json
 427a3e7dc23a98f46f30474eecdec88e6be86f7c assets/cwsr/models/item/synergy_totem.json
+20f8d80e08c1985e8c6d0b5e01a76937ad977a59 assets/cwsr/models/item/thunderstorm_sword.json
 03f52854a60179c48d823265bf233b1c99be9dd1 assets/cwsr/models/item/thunder_essence.json
 aa7b50eff7065f4f7ef439fbd1f2a117ef08cc11 assets/cwsr/models/item/thunder_shock.json
 06a209c91a53b1772ba62ff4bde28f078ec23b45 assets/cwsr/models/item/thunder_sword.json
-20f8d80e08c1985e8c6d0b5e01a76937ad977a59 assets/cwsr/models/item/thunderstorm_sword.json
 2f61322ed0aab31d16022c6c96b813a4e0f353be assets/cwsr/models/item/time_sword.json
 1aa68ed1c170a3d1bb5eacc7a710fcca0384e046 assets/cwsr/models/item/tri_ender.json
 9f5fe4cb8cd096b957156aee6fe2e5ffdb56f33c assets/cwsr/models/item/water_essence.json

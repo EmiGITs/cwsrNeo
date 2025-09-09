@@ -2,6 +2,7 @@ package com.raptorbk.CyanWarriorSwordsRedux.core.init.swords.Mixing;
 
 
 import com.raptorbk.CyanWarriorSwordsRedux.config.SwordConfig.SwordConfig;
+import com.raptorbk.CyanWarriorSwordsRedux.config.SafeConfig;
 import com.raptorbk.CyanWarriorSwordsRedux.core.init.ItemInit;
 import com.raptorbk.CyanWarriorSwordsRedux.core.init.SWORD_CWSR;
 import com.raptorbk.CyanWarriorSwordsRedux.core.init.SwordHabilities.SurroundEffect;
@@ -42,12 +43,18 @@ import javax.annotation.Nullable;
 import java.util.List;
 
 public class WIND_BLAST extends SWORD_CWSR {
-    public static SimpleTier tierIn = new SimpleTier(BlockTags.NEEDS_DIAMOND_TOOL, SwordConfig.WIND_BLAST_DUR.get(), 0.0f, 4.0f, 10, () ->
-            Ingredient.of(Tags.Items.ORES_DIAMOND));
+    public static SimpleTier tierIn = new SimpleTier(
+            BlockTags.NEEDS_DIAMOND_TOOL,
+            SafeConfig.getInt(SwordConfig.WIND_BLAST_DUR, 1000),
+            0.0f,
+            4.0f,
+            10,
+            () -> Ingredient.of(Tags.Items.ORES_DIAMOND)
+    );
 
 
     public WIND_BLAST( float attackSpeedIn, Properties builder) {
-        super(tierIn, SwordConfig.WIND_BLAST_DMG.get(), attackSpeedIn, builder);
+        super(tierIn, SafeConfig.getInt(SwordConfig.WIND_BLAST_DMG, 1), attackSpeedIn, builder);
     }
 
     public static void callEffect(SurroundEffect seffect, Level world, Player entity, InteractionHand handIn, Block blk){

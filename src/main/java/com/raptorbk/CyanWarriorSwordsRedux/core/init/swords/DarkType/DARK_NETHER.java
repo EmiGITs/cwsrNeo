@@ -3,6 +3,7 @@ package com.raptorbk.CyanWarriorSwordsRedux.core.init.swords.DarkType;
 
 
 import com.raptorbk.CyanWarriorSwordsRedux.config.SwordConfig.SwordConfig;
+import com.raptorbk.CyanWarriorSwordsRedux.config.SafeConfig;
 import com.raptorbk.CyanWarriorSwordsRedux.core.init.ItemInit;
 import com.raptorbk.CyanWarriorSwordsRedux.core.init.SWORD_CWSR;
 import com.raptorbk.CyanWarriorSwordsRedux.core.init.SwordHabilities.SurroundEffect;
@@ -46,12 +47,12 @@ import java.util.Random;
 
 public class DARK_NETHER extends SWORD_CWSR {
 
-    public static SimpleTier tierIn = new SimpleTier(BlockTags.NEEDS_DIAMOND_TOOL, SwordConfig.DARK_NETHER_SWORD_DUR.get(), 0.0f, 4.0f, 10, () ->
-            Ingredient.of(Tags.Items.ORES_DIAMOND));
+    public static SimpleTier tierIn = new SimpleTier(BlockTags.NEEDS_DIAMOND_TOOL, SafeConfig.getInt(SwordConfig.DARK_NETHER_SWORD_DUR, 1000), 0.0f, 4.0f, 10, () ->
+            net.minecraft.world.item.crafting.Ingredient.of(Tags.Items.ORES_DIAMOND));
 
 
     public DARK_NETHER(float attackSpeedIn, Properties builder) {
-        super(tierIn, SwordConfig.DARK_NETHER_SWORD_DMG.get(), attackSpeedIn, new Item.Properties());
+        super(tierIn, SafeConfig.getInt(SwordConfig.DARK_NETHER_SWORD_DMG, 1), attackSpeedIn, new Item.Properties());
     }
 
     @Override

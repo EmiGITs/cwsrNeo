@@ -22,6 +22,8 @@ import net.minecraft.resources.ResourceLocation;
 import net.minecraft.tags.TagKey;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
+import net.minecraft.core.component.DataComponents;
+import net.minecraft.world.item.component.CustomData;
 import net.minecraft.world.item.crafting.Ingredient;
 import net.minecraft.world.level.ItemLike;
 import net.neoforged.bus.api.EventPriority;
@@ -53,6 +55,10 @@ public class CyanWarriorSwordsRedux {
             ItemConfig.load();
         }
 
+        // Register configs as early as possible to allow safe access during registrations
+        ModLoadingContext.get().getActiveContainer().registerConfig(ModConfig.Type.COMMON, Config.COMMON);
+        ModLoadingContext.get().getActiveContainer().registerConfig(ModConfig.Type.CLIENT, Config.CLIENT);
+
        bus.addListener(EventPriority.NORMAL, false, RegisterMenuScreensEvent.class, CyanWarriorSwordsRedux::registerMenuScreens);
 
         MenuInit.MENU_TYPES.register(bus);
@@ -77,9 +83,6 @@ public class CyanWarriorSwordsRedux {
 
         bus.addListener(this::gatherData);
 
-        ModLoadingContext.get().registerConfig(ModConfig.Type.COMMON, Config.COMMON, "cwsr-common.toml");
-        ModLoadingContext.get().registerConfig(ModConfig.Type.CLIENT, Config.CLIENT, "cwsr-client.toml");
-
         bus.addListener(DataGenerators::gatherData);
 
         Config.loadConfig(Config.CLIENT, FMLPaths.CONFIGDIR.get().resolve("cwsr-client.toml").toString());
@@ -100,7 +103,7 @@ public class CyanWarriorSwordsRedux {
 
     public static ResourceLocation rl(String name)
     {
-        return new ResourceLocation(CyanWarriorSwordsRedux.MOD_ID, name);
+        return ResourceLocation.fromNamespaceAndPath(CyanWarriorSwordsRedux.MOD_ID, name);
     }
 
     public void gatherData(GatherDataEvent event)
@@ -273,13 +276,13 @@ public class CyanWarriorSwordsRedux {
 
             private static ResourceLocation transmutationRecipeId(ResourceLocation item, ResourceLocation item2)
             {
-                return  new ResourceLocation(item.getNamespace(), item.getPath() + "_via_transmutation"+"_from_"+item2.getPath());
+                return  ResourceLocation.fromNamespaceAndPath(item.getNamespace(), item.getPath() + "_via_transmutation"+"_from_"+item2.getPath());
             }
 
             public final ItemStack stack(ItemLike item, CompoundTag tag)
             {
                 ItemStack stack = new ItemStack(item);
-                stack.setTag(tag);
+                stack.set(DataComponents.CUSTOM_DATA, CustomData.of(tag));
                 return stack;
             }
 
@@ -297,7 +300,7 @@ public class CyanWarriorSwordsRedux {
 
     private static TagKey<Item> itemTag(String name)
     {
-        return TagKey.create(Registries.ITEM, new ResourceLocation(name));
+        return TagKey.create(Registries.ITEM, ResourceLocation.parse(name));
     }
 
 }

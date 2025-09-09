@@ -2,6 +2,7 @@ package com.raptorbk.CyanWarriorSwordsRedux.core.init.swords.EarthType;
 
 
 import com.raptorbk.CyanWarriorSwordsRedux.config.SwordConfig.SwordConfig;
+import com.raptorbk.CyanWarriorSwordsRedux.config.SafeConfig;
 import com.raptorbk.CyanWarriorSwordsRedux.core.init.ItemInit;
 import com.raptorbk.CyanWarriorSwordsRedux.core.init.SWORD_CWSR;
 import com.raptorbk.CyanWarriorSwordsRedux.core.init.SwordHabilities.ExecuteSeffect;
@@ -43,12 +44,12 @@ import java.util.Objects;
 
 public class WILD_NATURE extends SWORD_CWSR {
 
-    public static SimpleTier tierIn = new SimpleTier(BlockTags.NEEDS_DIAMOND_TOOL, SwordConfig.WILD_NATURE_SWORD_DUR.get(), 0.0f, 4.0f, 10, () ->
-            Ingredient.of(Tags.Items.ORES_DIAMOND));
+    public static SimpleTier tierIn = new SimpleTier(BlockTags.NEEDS_DIAMOND_TOOL, SafeConfig.getInt(SwordConfig.WILD_NATURE_SWORD_DUR, 1000), 0.0f, 4.0f, 10, () ->
+            net.minecraft.world.item.crafting.Ingredient.of(Tags.Items.ORES_DIAMOND));
 
 
     public WILD_NATURE( float attackSpeedIn, Properties builder) {
-        super(tierIn, SwordConfig.WILD_NATURE_SWORD_DMG.get(), attackSpeedIn, builder);
+        super(tierIn, SafeConfig.getInt(SwordConfig.WILD_NATURE_SWORD_DMG, 2), attackSpeedIn, builder);
     }
 
     public static void callEffect(SurroundEffect seffect, Level world, Player entity, InteractionHand handIn, Block blk){

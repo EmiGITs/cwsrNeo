@@ -8,9 +8,9 @@ import net.minecraft.world.entity.player.Inventory;
 import net.minecraft.world.inventory.FurnaceMenu;
 
 public class TransmutationFurnaceScreen extends AbstractTransmutationFurnaceScreen<TransmutationFurnaceMenu> {
-    private static final ResourceLocation LIT_PROGRESS_SPRITE = new ResourceLocation("container/furnace/lit_progress");
-    private static final ResourceLocation BURN_PROGRESS_SPRITE = new ResourceLocation("container/furnace/burn_progress");
-    private static final ResourceLocation TEXTURE = new ResourceLocation("textures/gui/container/furnace.png");
+    private static final ResourceLocation LIT_PROGRESS_SPRITE = ResourceLocation.withDefaultNamespace("container/furnace/lit_progress");
+    private static final ResourceLocation BURN_PROGRESS_SPRITE = ResourceLocation.withDefaultNamespace("container/furnace/burn_progress");
+    private static final ResourceLocation TEXTURE = ResourceLocation.withDefaultNamespace("textures/gui/container/furnace.png");
 
     public TransmutationFurnaceScreen(TransmutationFurnaceMenu pMenu, Inventory pPlayerInventory, Component pTitle) {
         super(pMenu, new SmeltingRecipeBookComponent(), pPlayerInventory, pTitle, TEXTURE, LIT_PROGRESS_SPRITE, BURN_PROGRESS_SPRITE);

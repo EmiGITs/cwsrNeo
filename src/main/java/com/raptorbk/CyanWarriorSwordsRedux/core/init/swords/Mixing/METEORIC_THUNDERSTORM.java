@@ -2,6 +2,7 @@ package com.raptorbk.CyanWarriorSwordsRedux.core.init.swords.Mixing;
 
 
 import com.raptorbk.CyanWarriorSwordsRedux.config.SwordConfig.SwordConfig;
+import com.raptorbk.CyanWarriorSwordsRedux.config.SafeConfig;
 import com.raptorbk.CyanWarriorSwordsRedux.core.init.ItemInit;
 import com.raptorbk.CyanWarriorSwordsRedux.core.init.SWORD_CWSR;
 import com.raptorbk.CyanWarriorSwordsRedux.core.init.SwordHabilities.METEOR_CLASS_SWORD;
@@ -48,12 +49,18 @@ import java.util.Objects;
 import java.util.Random;
 
 public class METEORIC_THUNDERSTORM extends METEOR_CLASS_SWORD {
-    public static SimpleTier tierIn = new SimpleTier(BlockTags.NEEDS_DIAMOND_TOOL, SwordConfig.METEORIC_THUNDERSTORM_DUR.get(), 0.0f, 4.0f, 10, () ->
-            Ingredient.of(Tags.Items.ORES_DIAMOND));
+    public static SimpleTier tierIn = new SimpleTier(
+            BlockTags.NEEDS_DIAMOND_TOOL,
+            SafeConfig.getInt(SwordConfig.METEORIC_THUNDERSTORM_DUR, 1000),
+            0.0f,
+            4.0f,
+            10,
+            () -> Ingredient.of(Tags.Items.ORES_DIAMOND)
+    );
 
 
     public METEORIC_THUNDERSTORM( float attackSpeedIn, Properties builder) {
-        super(tierIn, SwordConfig.METEORIC_THUNDERSTORM_DMG.get(), attackSpeedIn, builder);
+        super(tierIn, SafeConfig.getInt(SwordConfig.METEORIC_THUNDERSTORM_DMG, 1), attackSpeedIn, builder);
     }
 
 
