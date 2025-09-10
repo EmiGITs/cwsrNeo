@@ -92,6 +92,7 @@ public class SWORD_CWSR extends SwordItem {
 
 
 
+
     public ThrownEnderpearl getThrowEnder() {
         return this.throwEnder;
     }
@@ -146,6 +147,8 @@ public class SWORD_CWSR extends SwordItem {
         ServerPlayer serverPlayer= (ServerPlayer) entity;
 
     }
+
+
 
     @Override
     public void onCraftedBy(ItemStack stack, Level worldIn, Player playerIn) {

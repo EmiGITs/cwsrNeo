@@ -4,6 +4,7 @@ package com.raptorbk.CyanWarriorSwordsRedux;
 import com.mojang.datafixers.util.Pair;
 import com.raptorbk.CyanWarriorSwordsRedux.config.Config;
 import com.raptorbk.CyanWarriorSwordsRedux.config.ItemConfig;
+import com.raptorbk.CyanWarriorSwordsRedux.config.SwordConfig.SwordConfig;
 import com.raptorbk.CyanWarriorSwordsRedux.core.init.*;
 import com.raptorbk.CyanWarriorSwordsRedux.core.init.TransmutationFurnace.TransmutationFurnaceMenu;
 import com.raptorbk.CyanWarriorSwordsRedux.core.init.TransmutationFurnace.TransmutationFurnaceScreen;
@@ -29,11 +30,12 @@ import net.minecraft.world.level.ItemLike;
 import net.neoforged.bus.api.EventPriority;
 import net.neoforged.bus.api.IEventBus;
 import net.neoforged.fml.ModList;
-import net.neoforged.fml.ModLoadingContext;
+import net.neoforged.fml.ModContainer;
 import net.neoforged.fml.common.Mod;
 import net.neoforged.fml.config.ModConfig;
 import net.neoforged.fml.event.lifecycle.FMLClientSetupEvent;
-import net.neoforged.fml.loading.FMLPaths;
+
+import net.neoforged.fml.loading.FMLEnvironment;
 import net.neoforged.neoforge.client.event.RegisterMenuScreensEvent;
 import net.neoforged.neoforge.common.conditions.IConditionBuilder;
 import net.neoforged.neoforge.data.event.GatherDataEvent;
@@ -49,17 +51,18 @@ import java.util.concurrent.CompletableFuture;
 public class CyanWarriorSwordsRedux {
     public static final String MOD_ID = "cwsr";
     public static Logger logger = LoggerFactory.getLogger(CyanWarriorSwordsRedux.class);
-    public CyanWarriorSwordsRedux(IEventBus bus){
+    public CyanWarriorSwordsRedux(IEventBus bus, ModContainer mod){
+
+
+
+        mod.registerConfig(ModConfig.Type.COMMON, Config.COMMON);
+        mod.registerConfig(ModConfig.Type.CLIENT, Config.CLIENT);
 
         if(!ItemConfig.initialized){
             ItemConfig.load();
         }
 
-        // Register configs as early as possible to allow safe access during registrations
-        ModLoadingContext.get().getActiveContainer().registerConfig(ModConfig.Type.COMMON, Config.COMMON);
-        ModLoadingContext.get().getActiveContainer().registerConfig(ModConfig.Type.CLIENT, Config.CLIENT);
-
-       bus.addListener(EventPriority.NORMAL, false, RegisterMenuScreensEvent.class, CyanWarriorSwordsRedux::registerMenuScreens);
+        bus.addListener(EventPriority.NORMAL, false, RegisterMenuScreensEvent.class, CyanWarriorSwordsRedux::registerMenuScreens);
 
         MenuInit.MENU_TYPES.register(bus);
 
@@ -84,9 +87,6 @@ public class CyanWarriorSwordsRedux {
         bus.addListener(this::gatherData);
 
         bus.addListener(DataGenerators::gatherData);
-
-        Config.loadConfig(Config.CLIENT, FMLPaths.CONFIGDIR.get().resolve("cwsr-client.toml").toString());
-        Config.loadConfig(Config.COMMON, FMLPaths.CONFIGDIR.get().resolve("cwsr-common.toml").toString());
 
         bus.addListener(FMLClientSetupEvent.class, (fmlClientSetupEvent -> {
             fmlClientSetupEvent.enqueueWork(() -> {

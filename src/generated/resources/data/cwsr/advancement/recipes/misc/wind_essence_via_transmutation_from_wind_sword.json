@@ -10,7 +10,7 @@
       "conditions": {
         "items": [
           {
-            "items": "#cwsr:sword_handle"
+            "items": "cwsr:sword_handle"
           }
         ]
       },

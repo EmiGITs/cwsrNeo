@@ -19,7 +19,7 @@
   },
   "rewards": {
     "recipes": [
-      "cyanwarriorswordsredux:swords/fire/combustion_sword"
+      "cwsr:swords/fire/combustion_sword"
     ]
   }
 }

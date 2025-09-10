@@ -1,14 +1,14 @@
 {
-  "parent": "cyanwarriorswordsredux:cyanwarriorswords/root",
+  "parent": "cwsr:cyanwarriorswords/root",
   "display": {
     "icon": {
-      "item": "minecraft:tnt"
+      "item": "cwsr:synergy_totem"
     },
     "title": {
-      "translate": "advancements.cwsr.a_blast.title"
+      "translate": "advancements.cwsr.dual_wield.title"
     },
     "description": {
-      "translate": "advancements.cwsr.a_blast.desc"
+      "translate": "advancements.cwsr.dual_wield.desc"
     },
     "frame": "task",
     "show_toast": true,
@@ -19,8 +19,8 @@
     "experience": 65
   },
   "criteria": {
-    "really_rad": {
-      "trigger": "cwsr:a_blast_trigger"
+    "dual_wield": {
+      "trigger": "cwsr:dual_wield_ach_trigger"
     }
   }
 }

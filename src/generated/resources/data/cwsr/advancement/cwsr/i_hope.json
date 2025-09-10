@@ -1,14 +1,14 @@
 {
-  "parent": "cyanwarriorswordsredux:cyanwarriorswords/root",
+  "parent": "cwsr:cyanwarriorswords/root",
   "display": {
     "icon": {
-      "item": "minecraft:diamond"
+      "item": "minecraft:oak_planks"
     },
     "title": {
-      "translate": "advancements.cwsr.not_diamonds.title"
+      "translate": "advancements.cwsr.i_hope.title"
     },
     "description": {
-      "translate": "advancements.cwsr.not_diamonds.desc"
+      "translate": "advancements.cwsr.i_hope.desc"
     },
     "frame": "task",
     "show_toast": true,
@@ -16,13 +16,13 @@
     "hidden": false
   },
   "criteria": {
-    "cyan_sword": {
+    "ability_totem": {
       "trigger": "minecraft:inventory_changed",
       "conditions": {
         "items": [
           {
             "items": [
-              "cwsr:cyan_sword"
+              "cwsr:ability_totem"
             ]
           }
         ]
@@ -31,7 +31,7 @@
   },
   "requirements": [
     [
-      "cyan_sword"
+      "ability_totem"
     ]
   ]
 }

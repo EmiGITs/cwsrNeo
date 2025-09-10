@@ -19,13 +19,13 @@
   },
   "rewards": {
     "recipes": [
-      "cyanwarriorswordsredux:swords/ender/ender_sword_shapeless",
-      "cyanwarriorswordsredux:swords/ender/ender_portal_shapeless",
-      "cyanwarriorswordsredux:essences/ender_essence_smelt_o2",
-      "cyanwarriorswordsredux:essences/mixed_essence",
-      "cyanwarriorswordsredux:swords/mixing/ender_fire",
-      "cyanwarriorswordsredux:swords/mixing/ender_thunder",
-      "cyanwarriorswordsredux:swords/mixing/ender_wind"
+      "cwsr:swords/ender/ender_sword_shapeless",
+      "cwsr:swords/ender/ender_portal_shapeless",
+      "cwsr:essences/ender_essence_smelt_o2",
+      "cwsr:essences/mixed_essence",
+      "cwsr:swords/mixing/ender_fire",
+      "cwsr:swords/mixing/ender_thunder",
+      "cwsr:swords/mixing/ender_wind"
     ]
   }
 }

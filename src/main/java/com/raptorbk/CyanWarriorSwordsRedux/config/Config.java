@@ -1,8 +1,8 @@
 package com.raptorbk.CyanWarriorSwordsRedux.config;
 
- 
+
 import com.raptorbk.CyanWarriorSwordsRedux.config.SwordConfig.SwordConfig;
- 
+
 import net.neoforged.neoforge.common.ModConfigSpec;
 
 public class Config {
@@ -18,10 +18,11 @@ public class Config {
 
         COMMON = COMMON_BUILDER.build();
         CLIENT = CLIENT_BUILDER.build();
+
     }
 
     public static void loadConfig(ModConfigSpec config, String path)
     {
-        // No-op: NeoForge handles loading/saving configs after registration.
+        // No-op: NeoForge loads configs after registration.
     }
 }

@@ -19,16 +19,16 @@
   },
   "rewards": {
     "recipes": [
-      "cyanwarriorswordsredux:swords/beast/beast_sword",
-      "cyanwarriorswordsredux:swords/dark/dark_sword",
-      "cyanwarriorswordsredux:swords/earth/earth_sword",
-      "cyanwarriorswordsredux:swords/ender/ender_sword",
-      "cyanwarriorswordsredux:swords/fire/fire_sword",
-      "cyanwarriorswordsredux:swords/light/light_sword",
-      "cyanwarriorswordsredux:swords/thunder/thunder_sword",
-      "cyanwarriorswordsredux:swords/water/water_sword",
-      "cyanwarriorswordsredux:swords/wind/wind_sword",
-      "cyanwarriorswordsredux:items/ability_totem"
+      "cwsr:swords/beast/beast_sword",
+      "cwsr:swords/dark/dark_sword",
+      "cwsr:swords/earth/earth_sword",
+      "cwsr:swords/ender/ender_sword",
+      "cwsr:swords/fire/fire_sword",
+      "cwsr:swords/light/light_sword",
+      "cwsr:swords/thunder/thunder_sword",
+      "cwsr:swords/water/water_sword",
+      "cwsr:swords/wind/wind_sword",
+      "cwsr:items/ability_totem"
     ]
   }
 }

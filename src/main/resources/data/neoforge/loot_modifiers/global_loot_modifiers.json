@@ -1,12 +1,12 @@
 {
   "entries": [
-    "cyanwarriorswordsredux:simple_dungeon",
-    "cyanwarriorswordsredux:abandoned_mineshaft",
-    "cyanwarriorswordsredux:stronghold_corridor",
-    "cyanwarriorswordsredux:woodland_mansion",
-    "cyanwarriorswordsredux:desert_pyramid",
-    "cyanwarriorswordsredux:jungle_temple",
-    "cyanwarriorswordsredux:shipwreck_supply"
+    "cwsr:simple_dungeon",
+    "cwsr:abandoned_mineshaft",
+    "cwsr:stronghold_corridor",
+    "cwsr:woodland_mansion",
+    "cwsr:desert_pyramid",
+    "cwsr:jungle_temple",
+    "cwsr:shipwreck_supply"
   ],
   "replace": false
 }

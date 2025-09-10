@@ -19,7 +19,7 @@
   },
   "rewards": {
     "recipes": [
-      "cyanwarriorswordsredux:items/sword_handle"
+      "cwsr:items/sword_handle"
     ]
   }
 }

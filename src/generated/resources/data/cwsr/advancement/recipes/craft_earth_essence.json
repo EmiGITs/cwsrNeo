@@ -19,13 +19,13 @@
   },
   "rewards": {
     "recipes": [
-      "cyanwarriorswordsredux:swords/earth/earth_sword_shapeless",
-      "cyanwarriorswordsredux:swords/earth/wild_nature_shapeless",
-      "cyanwarriorswordsredux:essences/earth_essence_smelt_o2",
-      "cyanwarriorswordsredux:essences/mixed_essence",
-      "cyanwarriorswordsredux:swords/mixing/peaceful_nature",
-      "cyanwarriorswordsredux:swords/mixing/wind_blast",
-      "cyanwarriorswordsredux:swords/mixing/wind_boom"
+      "cwsr:swords/earth/earth_sword_shapeless",
+      "cwsr:swords/earth/wild_nature_shapeless",
+      "cwsr:essences/earth_essence_smelt_o2",
+      "cwsr:essences/mixed_essence",
+      "cwsr:swords/mixing/peaceful_nature",
+      "cwsr:swords/mixing/wind_blast",
+      "cwsr:swords/mixing/wind_boom"
     ]
   }
 }

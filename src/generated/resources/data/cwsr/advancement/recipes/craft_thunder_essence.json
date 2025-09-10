@@ -19,13 +19,13 @@
   },
   "rewards": {
     "recipes": [
-      "cyanwarriorswordsredux:swords/thunder/thunder_sword_shapeless",
-      "cyanwarriorswordsredux:swords/thunder/thunder_shock_shapeless",
-      "cyanwarriorswordsredux:essences/thunder_essence_smelt_o2",
-      "cyanwarriorswordsredux:essences/mixed_essence",
-      "cyanwarriorswordsredux:swords/mixing/atlantis_sword",
-      "cyanwarriorswordsredux:swords/mixing/ender_thunder",
-      "cyanwarriorswordsredux:swords/mixing/thunderstorm_sword"
+      "cwsr:swords/thunder/thunder_sword_shapeless",
+      "cwsr:swords/thunder/thunder_shock_shapeless",
+      "cwsr:essences/thunder_essence_smelt_o2",
+      "cwsr:essences/mixed_essence",
+      "cwsr:swords/mixing/atlantis_sword",
+      "cwsr:swords/mixing/ender_thunder",
+      "cwsr:swords/mixing/thunderstorm_sword"
     ]
   }
 }

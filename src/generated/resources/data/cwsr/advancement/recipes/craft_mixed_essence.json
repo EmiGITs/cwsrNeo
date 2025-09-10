@@ -19,8 +19,8 @@
   },
   "rewards": {
     "recipes": [
-      "cyanwarriorswordsredux:swords/cyan/cyan_sword",
-      "cyanwarriorswordsredux:items/synergy_totem"
+      "cwsr:swords/cyan/cyan_sword",
+      "cwsr:items/synergy_totem"
     ]
   }
 }

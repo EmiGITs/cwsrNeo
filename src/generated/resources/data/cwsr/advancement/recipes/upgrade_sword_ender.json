@@ -19,7 +19,7 @@
   },
   "rewards": {
     "recipes": [
-      "cyanwarriorswordsredux:swords/ender/ender_portal"
+      "cwsr:swords/ender/ender_portal"
     ]
   }
 }

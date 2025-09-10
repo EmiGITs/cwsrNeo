@@ -19,14 +19,14 @@
   },
   "rewards": {
     "recipes": [
-      "cyanwarriorswordsredux:swords/wind/wind_sword_shapeless",
-      "cyanwarriorswordsredux:swords/wind/wind_impulse_shapeless",
-      "cyanwarriorswordsredux:essences/wind_essence_smelt_o2",
-      "cyanwarriorswordsredux:essences/mixed_essence",
-      "cyanwarriorswordsredux:swords/mixing/ender_wind",
-      "cyanwarriorswordsredux:swords/mixing/thunderstorm_sword",
-      "cyanwarriorswordsredux:swords/mixing/wind_blast",
-      "cyanwarriorswordsredux:swords/mixing/wind_boom"
+      "cwsr:swords/wind/wind_sword_shapeless",
+      "cwsr:swords/wind/wind_impulse_shapeless",
+      "cwsr:essences/wind_essence_smelt_o2",
+      "cwsr:essences/mixed_essence",
+      "cwsr:swords/mixing/ender_wind",
+      "cwsr:swords/mixing/thunderstorm_sword",
+      "cwsr:swords/mixing/wind_blast",
+      "cwsr:swords/mixing/wind_boom"
     ]
   }
 }

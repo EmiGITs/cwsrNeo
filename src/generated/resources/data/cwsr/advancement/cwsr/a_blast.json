@@ -1,14 +1,14 @@
 {
-  "parent": "cyanwarriorswordsredux:cyanwarriorswords/root",
+  "parent": "cwsr:cyanwarriorswords/root",
   "display": {
     "icon": {
-      "item": "minecraft:wither_rose"
+      "item": "minecraft:tnt"
     },
     "title": {
-      "translate": "advancements.cwsr.unexpected_farewell.title"
+      "translate": "advancements.cwsr.a_blast.title"
     },
     "description": {
-      "translate": "advancements.cwsr.unexpected_farewell.desc"
+      "translate": "advancements.cwsr.a_blast.desc"
     },
     "frame": "task",
     "show_toast": true,
@@ -20,7 +20,7 @@
   },
   "criteria": {
     "really_rad": {
-      "trigger": "cwsr:sword_destroyed_trigger"
+      "trigger": "cwsr:a_blast_trigger"
     }
   }
 }

@@ -1,16 +1,11 @@
 {
-  "neoforge:conditions": [
-    {
-      "type": "neoforge:mod_loaded",
-      "modid": "cwsr"
-    }
-  ],
+  "parent": "minecraft:recipes/root",
   "criteria": {
     "has_item": {
       "conditions": {
         "items": [
           {
-            "items": "#cwsr:sword_handle"
+            "items": "cwsr:sword_handle"
           }
         ]
       },

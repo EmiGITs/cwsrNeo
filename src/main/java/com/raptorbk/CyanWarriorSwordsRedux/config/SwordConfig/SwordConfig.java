@@ -2,208 +2,209 @@ package com.raptorbk.CyanWarriorSwordsRedux.config.SwordConfig;
 
 
 import net.neoforged.neoforge.common.ModConfigSpec;
+import net.neoforged.neoforge.common.ModConfigSpec.ConfigValue;
 
 public class SwordConfig {
 
-    public static ModConfigSpec.IntValue FIRE_SWORD_DMG;
-    public static ModConfigSpec.IntValue FIRE_SWORD_DUR;
-    public static ModConfigSpec.IntValue FIRE_SWORD_HIT_SEC;
-    public static ModConfigSpec.IntValue FIRE_SWORD_USE_COST;
-    public static ModConfigSpec.IntValue FIRE_SWORD_COOLDOWN;
+    public static ConfigValue<Integer> FIRE_SWORD_DMG;
+    public static ConfigValue<Integer> FIRE_SWORD_DUR;
+    public static ConfigValue<Integer> FIRE_SWORD_HIT_SEC;
+    public static ConfigValue<Integer> FIRE_SWORD_USE_COST;
+    public static ConfigValue<Integer> FIRE_SWORD_COOLDOWN;
 
 
-    public static ModConfigSpec.IntValue WATER_SWORD_DMG;
-    public static ModConfigSpec.IntValue WATER_SWORD_DUR;
-    public static ModConfigSpec.IntValue WATER_SWORD_USE_COST;
-    public static ModConfigSpec.IntValue WATER_SWORD_COOLDOWN;
+    public static ConfigValue<Integer> WATER_SWORD_DMG;
+    public static ConfigValue<Integer> WATER_SWORD_DUR;
+    public static ConfigValue<Integer> WATER_SWORD_USE_COST;
+    public static ConfigValue<Integer> WATER_SWORD_COOLDOWN;
 
 
 
-    public static ModConfigSpec.IntValue EARTH_SWORD_DMG;
-    public static ModConfigSpec.IntValue EARTH_SWORD_DUR;
-    public static ModConfigSpec.IntValue EARTH_SWORD_USE_COST;
-    public static ModConfigSpec.IntValue EARTH_SWORD_COOLDOWN;
+    public static ConfigValue<Integer> EARTH_SWORD_DMG;
+    public static ConfigValue<Integer> EARTH_SWORD_DUR;
+    public static ConfigValue<Integer> EARTH_SWORD_USE_COST;
+    public static ConfigValue<Integer> EARTH_SWORD_COOLDOWN;
 
 
-    public static ModConfigSpec.IntValue WIND_SWORD_DMG;
-    public static ModConfigSpec.IntValue WIND_SWORD_DUR;
-    public static ModConfigSpec.IntValue WIND_SWORD_USE_COST;
-    public static ModConfigSpec.IntValue WIND_SWORD_COOLDOWN;
+    public static ConfigValue<Integer> WIND_SWORD_DMG;
+    public static ConfigValue<Integer> WIND_SWORD_DUR;
+    public static ConfigValue<Integer> WIND_SWORD_USE_COST;
+    public static ConfigValue<Integer> WIND_SWORD_COOLDOWN;
 
 
-    public static ModConfigSpec.IntValue THUNDER_SWORD_DMG;
-    public static ModConfigSpec.IntValue THUNDER_SWORD_DUR;
-    public static ModConfigSpec.IntValue THUNDER_SWORD_USE_COST;
-    public static ModConfigSpec.IntValue THUNDER_SWORD_COOLDOWN;
+    public static ConfigValue<Integer> THUNDER_SWORD_DMG;
+    public static ConfigValue<Integer> THUNDER_SWORD_DUR;
+    public static ConfigValue<Integer> THUNDER_SWORD_USE_COST;
+    public static ConfigValue<Integer> THUNDER_SWORD_COOLDOWN;
 
 
-    public static ModConfigSpec.IntValue DARK_SWORD_DMG;
-    public static ModConfigSpec.IntValue DARK_SWORD_DUR;
-    public static ModConfigSpec.IntValue DARK_SWORD_USE_COST;
-    public static ModConfigSpec.IntValue DARK_SWORD_COOLDOWN;
-    public static ModConfigSpec.IntValue DARK_SWORD_WITHER_HIT_TK;
-    public static ModConfigSpec.IntValue DARK_SWORD_BLIND_HIT_TK;
+    public static ConfigValue<Integer> DARK_SWORD_DMG;
+    public static ConfigValue<Integer> DARK_SWORD_DUR;
+    public static ConfigValue<Integer> DARK_SWORD_USE_COST;
+    public static ConfigValue<Integer> DARK_SWORD_COOLDOWN;
+    public static ConfigValue<Integer> DARK_SWORD_WITHER_HIT_TK;
+    public static ConfigValue<Integer> DARK_SWORD_BLIND_HIT_TK;
 
-    public static ModConfigSpec.IntValue LIGHT_SWORD_DMG;
-    public static ModConfigSpec.IntValue LIGHT_SWORD_DUR;
-    public static ModConfigSpec.IntValue LIGHT_SWORD_USE_COST;
-    public static ModConfigSpec.IntValue LIGHT_SWORD_COOLDOWN;
-    public static ModConfigSpec.IntValue LIGHT_SWORD_WEAKNESS_HIT_TK;
-    public static ModConfigSpec.IntValue LIGHT_SWORD_BLIND_HIT_TK;
-
-
-    public static ModConfigSpec.IntValue ENDER_SWORD_DMG;
-    public static ModConfigSpec.IntValue ENDER_SWORD_DUR;
-    public static ModConfigSpec.IntValue ENDER_SWORD_USE_COST;
-    public static ModConfigSpec.IntValue ENDER_SWORD_COOLDOWN;
-
-    public static ModConfigSpec.IntValue BEAST_SWORD_DMG;
-    public static ModConfigSpec.IntValue BEAST_SWORD_DUR;
-    public static ModConfigSpec.IntValue BEAST_SWORD_USE_COST;
-    public static ModConfigSpec.IntValue BEAST_SWORD_COOLDOWN;
+    public static ConfigValue<Integer> LIGHT_SWORD_DMG;
+    public static ConfigValue<Integer> LIGHT_SWORD_DUR;
+    public static ConfigValue<Integer> LIGHT_SWORD_USE_COST;
+    public static ConfigValue<Integer> LIGHT_SWORD_COOLDOWN;
+    public static ConfigValue<Integer> LIGHT_SWORD_WEAKNESS_HIT_TK;
+    public static ConfigValue<Integer> LIGHT_SWORD_BLIND_HIT_TK;
 
 
-    public static ModConfigSpec.IntValue COMBUSTION_SWORD_DMG;
-    public static ModConfigSpec.IntValue COMBUSTION_SWORD_DUR;
-    public static ModConfigSpec.IntValue COMBUSTION_SWORD_HIT_SEC;
-    public static ModConfigSpec.IntValue COMBUSTION_SWORD_USE_COST;
-    public static ModConfigSpec.IntValue COMBUSTION_SWORD_COOLDOWN;
+    public static ConfigValue<Integer> ENDER_SWORD_DMG;
+    public static ConfigValue<Integer> ENDER_SWORD_DUR;
+    public static ConfigValue<Integer> ENDER_SWORD_USE_COST;
+    public static ConfigValue<Integer> ENDER_SWORD_COOLDOWN;
 
-    public static ModConfigSpec.IntValue ICE_SWORD_DMG;
-    public static ModConfigSpec.IntValue ICE_SWORD_DUR;
-    public static ModConfigSpec.IntValue ICE_SWORD_HIT_TK;
-    public static ModConfigSpec.IntValue ICE_SWORD_USE_COST;
-    public static ModConfigSpec.IntValue ICE_SWORD_COOLDOWN;
+    public static ConfigValue<Integer> BEAST_SWORD_DMG;
+    public static ConfigValue<Integer> BEAST_SWORD_DUR;
+    public static ConfigValue<Integer> BEAST_SWORD_USE_COST;
+    public static ConfigValue<Integer> BEAST_SWORD_COOLDOWN;
 
 
-    public static ModConfigSpec.IntValue WILD_NATURE_SWORD_DMG;
-    public static ModConfigSpec.IntValue WILD_NATURE_SWORD_DUR;
-    public static ModConfigSpec.IntValue WILD_NATURE_SWORD_HIT_TK;
-    public static ModConfigSpec.IntValue WILD_NATURE_SWORD_USE_COST;
-    public static ModConfigSpec.IntValue WILD_NATURE_SWORD_COOLDOWN;
+    public static ConfigValue<Integer> COMBUSTION_SWORD_DMG;
+    public static ConfigValue<Integer> COMBUSTION_SWORD_DUR;
+    public static ConfigValue<Integer> COMBUSTION_SWORD_HIT_SEC;
+    public static ConfigValue<Integer> COMBUSTION_SWORD_USE_COST;
+    public static ConfigValue<Integer> COMBUSTION_SWORD_COOLDOWN;
+
+    public static ConfigValue<Integer> ICE_SWORD_DMG;
+    public static ConfigValue<Integer> ICE_SWORD_DUR;
+    public static ConfigValue<Integer> ICE_SWORD_HIT_TK;
+    public static ConfigValue<Integer> ICE_SWORD_USE_COST;
+    public static ConfigValue<Integer> ICE_SWORD_COOLDOWN;
 
 
-    public static ModConfigSpec.IntValue WIND_IMPULSE_SWORD_DMG;
-    public static ModConfigSpec.IntValue WIND_IMPULSE_SWORD_DUR;
-    public static ModConfigSpec.IntValue WIND_IMPULSE_SWORD_USE_COST;
-    public static ModConfigSpec.IntValue WIND_IMPULSE_SWORD_COOLDOWN;
-
-    public static ModConfigSpec.IntValue THUNDER_SHOCK_SWORD_DMG;
-    public static ModConfigSpec.IntValue THUNDER_SHOCK_SWORD_DUR;
-    public static ModConfigSpec.IntValue THUNDER_SHOCK_SWORD_USE_COST;
-    public static ModConfigSpec.IntValue THUNDER_SHOCK_SWORD_COOLDOWN;
-
-    public static ModConfigSpec.IntValue DARK_NETHER_SWORD_DMG;
-    public static ModConfigSpec.IntValue DARK_NETHER_SWORD_DUR;
-    public static ModConfigSpec.IntValue DARK_NETHER_SWORD_USE_COST;
-    public static ModConfigSpec.IntValue DARK_NETHER_SWORD_HIT_TK;
-    public static ModConfigSpec.IntValue DARK_NETHER_SWORD_COOLDOWN;
+    public static ConfigValue<Integer> WILD_NATURE_SWORD_DMG;
+    public static ConfigValue<Integer> WILD_NATURE_SWORD_DUR;
+    public static ConfigValue<Integer> WILD_NATURE_SWORD_HIT_TK;
+    public static ConfigValue<Integer> WILD_NATURE_SWORD_USE_COST;
+    public static ConfigValue<Integer> WILD_NATURE_SWORD_COOLDOWN;
 
 
-    public static ModConfigSpec.IntValue LIGHT_NETHER_SWORD_DMG;
-    public static ModConfigSpec.IntValue LIGHT_NETHER_SWORD_DUR;
-    public static ModConfigSpec.IntValue LIGHT_NETHER_SWORD_USE_COST;
-    public static ModConfigSpec.IntValue LIGHT_NETHER_SWORD_BLINDNESS_HIT_TK;
-    public static ModConfigSpec.IntValue LIGHT_NETHER_SWORD_WEAKNESS_HIT_TK;
-    public static ModConfigSpec.IntValue LIGHT_NETHER_SWORD_COOLDOWN;
+    public static ConfigValue<Integer> WIND_IMPULSE_SWORD_DMG;
+    public static ConfigValue<Integer> WIND_IMPULSE_SWORD_DUR;
+    public static ConfigValue<Integer> WIND_IMPULSE_SWORD_USE_COST;
+    public static ConfigValue<Integer> WIND_IMPULSE_SWORD_COOLDOWN;
+
+    public static ConfigValue<Integer> THUNDER_SHOCK_SWORD_DMG;
+    public static ConfigValue<Integer> THUNDER_SHOCK_SWORD_DUR;
+    public static ConfigValue<Integer> THUNDER_SHOCK_SWORD_USE_COST;
+    public static ConfigValue<Integer> THUNDER_SHOCK_SWORD_COOLDOWN;
+
+    public static ConfigValue<Integer> DARK_NETHER_SWORD_DMG;
+    public static ConfigValue<Integer> DARK_NETHER_SWORD_DUR;
+    public static ConfigValue<Integer> DARK_NETHER_SWORD_USE_COST;
+    public static ConfigValue<Integer> DARK_NETHER_SWORD_HIT_TK;
+    public static ConfigValue<Integer> DARK_NETHER_SWORD_COOLDOWN;
 
 
-    public static ModConfigSpec.IntValue ENDER_PORTAL_SWORD_DMG;
-    public static ModConfigSpec.IntValue ENDER_PORTAL_SWORD_DUR;
-    public static ModConfigSpec.IntValue ENDER_PORTAL_SWORD_USE_COST;
-    public static ModConfigSpec.IntValue ENDER_PORTAL_SWORD_HIT_TK;
-    public static ModConfigSpec.IntValue ENDER_PORTAL_SWORD_COOLDOWN;
-
-    public static ModConfigSpec.IntValue GOLEM_SWORD_DMG;
-    public static ModConfigSpec.IntValue GOLEM_SWORD_DUR;
-    public static ModConfigSpec.IntValue GOLEM_SWORD_USE_COST;
-    public static ModConfigSpec.IntValue GOLEM_SWORD_COOLDOWN;
+    public static ConfigValue<Integer> LIGHT_NETHER_SWORD_DMG;
+    public static ConfigValue<Integer> LIGHT_NETHER_SWORD_DUR;
+    public static ConfigValue<Integer> LIGHT_NETHER_SWORD_USE_COST;
+    public static ConfigValue<Integer> LIGHT_NETHER_SWORD_BLINDNESS_HIT_TK;
+    public static ConfigValue<Integer> LIGHT_NETHER_SWORD_WEAKNESS_HIT_TK;
+    public static ConfigValue<Integer> LIGHT_NETHER_SWORD_COOLDOWN;
 
 
-    public static ModConfigSpec.IntValue PEACEFUL_NATURE_DMG;
-    public static ModConfigSpec.IntValue PEACEFUL_NATURE_DUR;
-    public static ModConfigSpec.IntValue PEACEFUL_NATURE_USE_COST;
-    public static ModConfigSpec.IntValue PEACEFUL_NATURE_HIT_TK;
-    public static ModConfigSpec.IntValue PEACEFUL_NATURE_COOLDOWN;
+    public static ConfigValue<Integer> ENDER_PORTAL_SWORD_DMG;
+    public static ConfigValue<Integer> ENDER_PORTAL_SWORD_DUR;
+    public static ConfigValue<Integer> ENDER_PORTAL_SWORD_USE_COST;
+    public static ConfigValue<Integer> ENDER_PORTAL_SWORD_HIT_TK;
+    public static ConfigValue<Integer> ENDER_PORTAL_SWORD_COOLDOWN;
+
+    public static ConfigValue<Integer> GOLEM_SWORD_DMG;
+    public static ConfigValue<Integer> GOLEM_SWORD_DUR;
+    public static ConfigValue<Integer> GOLEM_SWORD_USE_COST;
+    public static ConfigValue<Integer> GOLEM_SWORD_COOLDOWN;
 
 
-    public static ModConfigSpec.IntValue THUNDERSTORM_SWORD_DMG;
-    public static ModConfigSpec.IntValue THUNDERSTORM_SWORD_DUR;
-    public static ModConfigSpec.IntValue THUNDERSTORM_SWORD_USE_COST;
-    public static ModConfigSpec.IntValue THUNDERSTORM_SWORD_COOLDOWN;
-
-    public static ModConfigSpec.IntValue ENDER_FIRE_DMG;
-    public static ModConfigSpec.IntValue ENDER_FIRE_DUR;
-    public static ModConfigSpec.IntValue ENDER_FIRE_HIT_SEC;
-    public static ModConfigSpec.IntValue ENDER_FIRE_USE_COST;
-    public static ModConfigSpec.IntValue ENDER_FIRE_COOLDOWN;
-
-    public static ModConfigSpec.IntValue ENDER_WIND_DMG;
-    public static ModConfigSpec.IntValue ENDER_WIND_DUR;
-    public static ModConfigSpec.IntValue ENDER_WIND_USE_COST;
-    public static ModConfigSpec.IntValue ENDER_WIND_COOLDOWN;
-
-    public static ModConfigSpec.IntValue ENDER_THUNDER_DMG;
-    public static ModConfigSpec.IntValue ENDER_THUNDER_DUR;
-    public static ModConfigSpec.IntValue ENDER_THUNDER_USE_COST;
-    public static ModConfigSpec.IntValue ENDER_THUNDER_COOLDOWN;
+    public static ConfigValue<Integer> PEACEFUL_NATURE_DMG;
+    public static ConfigValue<Integer> PEACEFUL_NATURE_DUR;
+    public static ConfigValue<Integer> PEACEFUL_NATURE_USE_COST;
+    public static ConfigValue<Integer> PEACEFUL_NATURE_HIT_TK;
+    public static ConfigValue<Integer> PEACEFUL_NATURE_COOLDOWN;
 
 
-    public static ModConfigSpec.IntValue TIME_SWORD_DMG;
-    public static ModConfigSpec.IntValue TIME_SWORD_DUR;
-    public static ModConfigSpec.IntValue TIME_SWORD_USE_COST;
-    public static ModConfigSpec.IntValue TIME_SWORD_BLINDNESS_HIT_TK;
-    public static ModConfigSpec.IntValue TIME_SWORD_WEAKNESS_HIT_TK;
-    public static ModConfigSpec.IntValue TIME_SWORD_WITHER_HIT_TK;
-    public static ModConfigSpec.IntValue TIME_SWORD_COOLDOWN;
+    public static ConfigValue<Integer> THUNDERSTORM_SWORD_DMG;
+    public static ConfigValue<Integer> THUNDERSTORM_SWORD_DUR;
+    public static ConfigValue<Integer> THUNDERSTORM_SWORD_USE_COST;
+    public static ConfigValue<Integer> THUNDERSTORM_SWORD_COOLDOWN;
+
+    public static ConfigValue<Integer> ENDER_FIRE_DMG;
+    public static ConfigValue<Integer> ENDER_FIRE_DUR;
+    public static ConfigValue<Integer> ENDER_FIRE_HIT_SEC;
+    public static ConfigValue<Integer> ENDER_FIRE_USE_COST;
+    public static ConfigValue<Integer> ENDER_FIRE_COOLDOWN;
+
+    public static ConfigValue<Integer> ENDER_WIND_DMG;
+    public static ConfigValue<Integer> ENDER_WIND_DUR;
+    public static ConfigValue<Integer> ENDER_WIND_USE_COST;
+    public static ConfigValue<Integer> ENDER_WIND_COOLDOWN;
+
+    public static ConfigValue<Integer> ENDER_THUNDER_DMG;
+    public static ConfigValue<Integer> ENDER_THUNDER_DUR;
+    public static ConfigValue<Integer> ENDER_THUNDER_USE_COST;
+    public static ConfigValue<Integer> ENDER_THUNDER_COOLDOWN;
 
 
-    public static ModConfigSpec.IntValue STEAM_SWORD_DMG;
-    public static ModConfigSpec.IntValue STEAM_SWORD_DUR;
-    public static ModConfigSpec.IntValue STEAM_SWORD_HIT_SEC;
-    public static ModConfigSpec.IntValue STEAM_SWORD_USE_COST;
-    public static ModConfigSpec.IntValue STEAM_SWORD_COOLDOWN;
+    public static ConfigValue<Integer> TIME_SWORD_DMG;
+    public static ConfigValue<Integer> TIME_SWORD_DUR;
+    public static ConfigValue<Integer> TIME_SWORD_USE_COST;
+    public static ConfigValue<Integer> TIME_SWORD_BLINDNESS_HIT_TK;
+    public static ConfigValue<Integer> TIME_SWORD_WEAKNESS_HIT_TK;
+    public static ConfigValue<Integer> TIME_SWORD_WITHER_HIT_TK;
+    public static ConfigValue<Integer> TIME_SWORD_COOLDOWN;
 
 
-    public static ModConfigSpec.IntValue METEOR_SWORD_DMG;
-    public static ModConfigSpec.IntValue METEOR_SWORD_DUR;
-    public static ModConfigSpec.IntValue METEOR_SWORD_HIT_SEC;
-    public static ModConfigSpec.IntValue METEOR_SWORD_USE_COST;
-    public static ModConfigSpec.IntValue METEOR_SWORD_COOLDOWN;
-
-    public static ModConfigSpec.IntValue METEORIC_THUNDERSTORM_DMG;
-    public static ModConfigSpec.IntValue METEORIC_THUNDERSTORM_DUR;
-    public static ModConfigSpec.IntValue METEORIC_THUNDERSTORM_HIT_SEC;
-    public static ModConfigSpec.IntValue METEORIC_THUNDERSTORM_USE_COST;
-    public static ModConfigSpec.IntValue METEORIC_THUNDERSTORM_COOLDOWN;
-
-    public static ModConfigSpec.IntValue TRI_ENDER_DMG;
-    public static ModConfigSpec.IntValue TRI_ENDER_DUR;
-    public static ModConfigSpec.IntValue TRI_ENDER_HIT_SEC;
-    public static ModConfigSpec.IntValue TRI_ENDER_USE_COST;
-    public static ModConfigSpec.IntValue TRI_ENDER_COOLDOWN;
-
-    public static ModConfigSpec.IntValue ATLANTIS_SWORD_DMG;
-    public static ModConfigSpec.IntValue ATLANTIS_SWORD_DUR;
-    public static ModConfigSpec.IntValue ATLANTIS_SWORD_COOLDOWN;
-    public static ModConfigSpec.IntValue ATLANTIS_SWORD_USE_COST;
+    public static ConfigValue<Integer> STEAM_SWORD_DMG;
+    public static ConfigValue<Integer> STEAM_SWORD_DUR;
+    public static ConfigValue<Integer> STEAM_SWORD_HIT_SEC;
+    public static ConfigValue<Integer> STEAM_SWORD_USE_COST;
+    public static ConfigValue<Integer> STEAM_SWORD_COOLDOWN;
 
 
-    public static ModConfigSpec.IntValue CYAN_SWORD_DMG;
-    public static ModConfigSpec.IntValue CYAN_SWORD_DUR;
+    public static ConfigValue<Integer> METEOR_SWORD_DMG;
+    public static ConfigValue<Integer> METEOR_SWORD_DUR;
+    public static ConfigValue<Integer> METEOR_SWORD_HIT_SEC;
+    public static ConfigValue<Integer> METEOR_SWORD_USE_COST;
+    public static ConfigValue<Integer> METEOR_SWORD_COOLDOWN;
 
-    public static ModConfigSpec.IntValue WIND_BOOM_DMG;
-    public static ModConfigSpec.IntValue WIND_BOOM_DUR;
-    public static ModConfigSpec.IntValue WIND_BOOM_USE_COST;
-    public static ModConfigSpec.IntValue WIND_BOOM_COOLDOWN;
+    public static ConfigValue<Integer> METEORIC_THUNDERSTORM_DMG;
+    public static ConfigValue<Integer> METEORIC_THUNDERSTORM_DUR;
+    public static ConfigValue<Integer> METEORIC_THUNDERSTORM_HIT_SEC;
+    public static ConfigValue<Integer> METEORIC_THUNDERSTORM_USE_COST;
+    public static ConfigValue<Integer> METEORIC_THUNDERSTORM_COOLDOWN;
 
-    public static ModConfigSpec.IntValue WIND_BLAST_DMG;
-    public static ModConfigSpec.IntValue WIND_BLAST_DUR;
-    public static ModConfigSpec.IntValue WIND_BLAST_USE_COST;
-    public static ModConfigSpec.IntValue WIND_BLAST_COOLDOWN;
+    public static ConfigValue<Integer> TRI_ENDER_DMG;
+    public static ConfigValue<Integer> TRI_ENDER_DUR;
+    public static ConfigValue<Integer> TRI_ENDER_HIT_SEC;
+    public static ConfigValue<Integer> TRI_ENDER_USE_COST;
+    public static ConfigValue<Integer> TRI_ENDER_COOLDOWN;
+
+    public static ConfigValue<Integer> ATLANTIS_SWORD_DMG;
+    public static ConfigValue<Integer> ATLANTIS_SWORD_DUR;
+    public static ConfigValue<Integer> ATLANTIS_SWORD_COOLDOWN;
+    public static ConfigValue<Integer> ATLANTIS_SWORD_USE_COST;
 
 
-    public static ModConfigSpec.IntValue ALL_SWORDS_HIT_COST;
+    public static ConfigValue<Integer> CYAN_SWORD_DMG;
+    public static ConfigValue<Integer> CYAN_SWORD_DUR;
+
+    public static ConfigValue<Integer> WIND_BOOM_DMG;
+    public static ConfigValue<Integer> WIND_BOOM_DUR;
+    public static ConfigValue<Integer> WIND_BOOM_USE_COST;
+    public static ConfigValue<Integer> WIND_BOOM_COOLDOWN;
+
+    public static ConfigValue<Integer> WIND_BLAST_DMG;
+    public static ConfigValue<Integer> WIND_BLAST_DUR;
+    public static ConfigValue<Integer> WIND_BLAST_USE_COST;
+    public static ConfigValue<Integer> WIND_BLAST_COOLDOWN;
+
+
+    public static ConfigValue<Integer> ALL_SWORDS_HIT_COST;
 
 
     public static void init(ModConfigSpec.Builder common, ModConfigSpec.Builder client)

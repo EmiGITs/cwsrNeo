@@ -19,7 +19,7 @@
   },
   "rewards": {
     "recipes": [
-      "cyanwarriorswordsredux:swords/light/light_nether"
+      "cwsr:swords/light/light_nether"
     ]
   }
 }

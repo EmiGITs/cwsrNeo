@@ -1,5 +1,5 @@
 {
-  "parent": "cyanwarriorswordsredux:cyanwarriorswords/root",
+  "parent": "cwsr:cyanwarriorswords/root",
   "display": {
     "icon": {
       "item": "minecraft:iron_sword",

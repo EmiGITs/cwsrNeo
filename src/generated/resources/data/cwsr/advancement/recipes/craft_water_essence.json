@@ -19,13 +19,13 @@
   },
   "rewards": {
     "recipes": [
-      "cyanwarriorswordsredux:swords/water/water_sword_shapeless",
-      "cyanwarriorswordsredux:swords/water/ice_sword_shapeless",
-      "cyanwarriorswordsredux:essences/water_essence_smelt_o2",
-      "cyanwarriorswordsredux:essences/mixed_essence",
-      "cyanwarriorswordsredux:swords/mixing/atlantis_sword",
-      "cyanwarriorswordsredux:swords/mixing/peaceful_nature",
-      "cyanwarriorswordsredux:swords/mixing/steam_sword"
+      "cwsr:swords/water/water_sword_shapeless",
+      "cwsr:swords/water/ice_sword_shapeless",
+      "cwsr:essences/water_essence_smelt_o2",
+      "cwsr:essences/mixed_essence",
+      "cwsr:swords/mixing/atlantis_sword",
+      "cwsr:swords/mixing/peaceful_nature",
+      "cwsr:swords/mixing/steam_sword"
     ]
   }
 }

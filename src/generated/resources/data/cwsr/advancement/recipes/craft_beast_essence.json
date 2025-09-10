@@ -19,10 +19,10 @@
   },
   "rewards": {
     "recipes": [
-      "cyanwarriorswordsredux:swords/beast/beast_sword_shapeless",
-      "cyanwarriorswordsredux:swords/beast/golem_sword_shapeless",
-      "cyanwarriorswordsredux:essences/beast_essence_smelt_o2",
-      "cyanwarriorswordsredux:essences/mixed_essence"
+      "cwsr:swords/beast/beast_sword_shapeless",
+      "cwsr:swords/beast/golem_sword_shapeless",
+      "cwsr:essences/beast_essence_smelt_o2",
+      "cwsr:essences/mixed_essence"
     ]
   }
 }

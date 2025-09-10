@@ -19,7 +19,7 @@
   },
   "rewards": {
     "recipes": [
-      "cyanwarriorswordsredux:blocks/transmutation_furnace"
+      "cwsr:blocks/transmutation_furnace"
     ]
   }
 }
