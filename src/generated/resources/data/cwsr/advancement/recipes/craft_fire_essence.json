@@ -11,7 +11,7 @@
       "conditions": {
         "items": [
           {
-            "item": "cwsr:fire_essence"
+            "id": "cwsr:fire_essence"
           }
         ]
       }

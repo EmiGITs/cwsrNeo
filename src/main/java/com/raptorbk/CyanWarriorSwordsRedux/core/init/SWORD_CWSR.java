@@ -13,7 +13,6 @@ import net.minecraft.world.InteractionResult;
 import net.minecraft.world.InteractionResultHolder;
 import net.minecraft.world.entity.EquipmentSlot;
 import net.minecraft.world.entity.projectile.ThrownEnderpearl;
-import net.minecraft.world.item.enchantment.Enchantment;
 
 import net.minecraft.world.entity.Entity;
 
@@ -27,12 +26,11 @@ import net.minecraft.world.item.component.CustomData;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.world.item.SwordItem;
 
-import net.minecraft.world.item.enchantment.EnchantmentHelper;
 import net.minecraft.world.level.Level;
 
 
 import java.util.List;
-import java.util.Map;
+import javax.annotation.Nonnull;
 import java.util.Objects;
 
 public class SWORD_CWSR extends SwordItem {
@@ -144,14 +142,13 @@ public class SWORD_CWSR extends SwordItem {
 
     public void unlockSEACH(Player entity, Level world){
         if(!(world instanceof ServerLevel)) return;
-        ServerPlayer serverPlayer= (ServerPlayer) entity;
 
     }
 
 
 
     @Override
-    public void onCraftedBy(ItemStack stack, Level worldIn, Player playerIn) {
+    public void onCraftedBy(@Nonnull ItemStack stack, @Nonnull Level worldIn, @Nonnull Player playerIn) {
         unlockSEACH(playerIn,worldIn);
         super.onCraftedBy(stack, worldIn, playerIn);
     }
@@ -207,6 +204,21 @@ public class SWORD_CWSR extends SwordItem {
         TriggerInit.SD_TRIGGER.get().trigger(serverPlayer);
     }
 
+    protected static void damageAndTriggerIfBreak(ItemStack stack, net.minecraft.world.entity.LivingEntity user, EquipmentSlot slot, int cost){
+        int currentDamage = stack.getDamageValue();
+        int maxDamage = stack.getMaxDamage();
+        boolean willBreak = currentDamage + cost >= maxDamage;
+        stack.hurtAndBreak(cost, user, slot);
+        if (willBreak && user instanceof Player) {
+            Player player = (Player) user;
+            Level world = player.getCommandSenderWorld();
+            if (world instanceof ServerLevel) {
+                ServerPlayer serverPlayer = (ServerPlayer) player;
+                TriggerInit.SD_TRIGGER.get().trigger(serverPlayer);
+            }
+        }
+    }
+
 
 
     public InteractionResultHolder<ItemStack> callerRC(Level world, Player entity, InteractionHand handIn, ResourceLocation swordCH, int CooldownRC) {
@@ -226,7 +238,7 @@ public class SWORD_CWSR extends SwordItem {
             ReturnableItem=OffHandItem;
         }
 
-        ItemStack ActiveSynergyTotemStack = new ItemStack(ItemInit.ACTIVE_SYNERGY_TOTEM.get(),1);
+        
 
         List<ItemStack> listItems = entity.getInventory().items;
         boolean isINH=false;

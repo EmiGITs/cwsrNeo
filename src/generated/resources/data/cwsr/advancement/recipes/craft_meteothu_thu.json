@@ -11,7 +11,7 @@
       "conditions": {
         "items": [
           {
-            "item": "cwsr:thunderstorm_sword"
+            "id": "cwsr:thunderstorm_sword"
           }
         ]
       }

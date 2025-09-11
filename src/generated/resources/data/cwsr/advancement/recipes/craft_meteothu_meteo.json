@@ -11,7 +11,7 @@
       "conditions": {
         "items": [
           {
-            "item": "cwsr:meteor_sword"
+            "id": "cwsr:meteor_sword"
           }
         ]
       }

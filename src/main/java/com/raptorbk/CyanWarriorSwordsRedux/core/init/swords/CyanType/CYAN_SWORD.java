@@ -1,7 +1,8 @@
 package com.raptorbk.CyanWarriorSwordsRedux.core.init.swords.CyanType;
 
 
-
+import net.minecraft.core.component.DataComponents;
+import javax.annotation.Nonnull;
 import com.raptorbk.CyanWarriorSwordsRedux.config.SafeConfig;
 import com.raptorbk.CyanWarriorSwordsRedux.config.SwordConfig.SwordConfig;
 import com.raptorbk.CyanWarriorSwordsRedux.core.init.ItemInit;
@@ -13,7 +14,6 @@ import net.minecraft.network.chat.Component;
 
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.server.level.ServerPlayer;
-import net.minecraft.tags.BlockTags;
 import net.minecraft.world.InteractionHand;
 import net.minecraft.world.InteractionResult;
 import net.minecraft.world.InteractionResultHolder;
@@ -32,12 +32,7 @@ import net.minecraft.world.entity.Entity;
 
 import net.minecraft.world.entity.player.Player;
 
-import net.minecraft.world.item.crafting.Ingredient;
-import net.neoforged.neoforge.common.SimpleTier;
-import net.neoforged.neoforge.common.Tags;
-import net.neoforged.neoforge.event.ItemAttributeModifierEvent;
-
-import javax.annotation.Nullable;
+ 
 import java.util.List;
 
 
@@ -57,7 +52,7 @@ public class CYAN_SWORD extends SWORD_CWSR {
         playerIn.addEffect(new MobEffectInstance(MobEffects.REGENERATION,10,4));
     }
 
-    public InteractionResultHolder<ItemStack> use(Level world, Player entity, InteractionHand handIn) {
+    public InteractionResultHolder<ItemStack> use(@Nonnull Level world, @Nonnull Player entity, @Nonnull InteractionHand handIn) {
         if(!(world instanceof ServerLevel)) return new InteractionResultHolder<>(InteractionResult.PASS, entity.getItemInHand(handIn));
 
         return callerRC(world,entity,handIn, ItemInit.CYAN_SWORD.getId(),0);
@@ -65,30 +60,46 @@ public class CYAN_SWORD extends SWORD_CWSR {
 
 
     @Override
-    public int getMaxDamage(ItemStack stack) {
+    public int getMaxDamage(@Nonnull ItemStack stack) {
         return SwordConfig.CYAN_SWORD_DUR.get();
     }
 
-    @Override
-    public ItemAttributeModifiers getDefaultAttributeModifiers(ItemStack stack)
-    {
+
+    private static void applyDynamicMods(@Nonnull ItemStack stack) {
         var builder = ItemAttributeModifiers.builder();
         builder.add(
                 Attributes.ATTACK_DAMAGE,
-                new AttributeModifier(BuiltInRegistries.ITEM.getKey(this), SwordConfig.CYAN_SWORD_DMG.get(), AttributeModifier.Operation.ADD_VALUE),
+                new AttributeModifier(BuiltInRegistries.ITEM.getKey(stack.getItem()), SwordConfig.CYAN_SWORD_DMG.get()+5.0, AttributeModifier.Operation.ADD_VALUE),
                 EquipmentSlotGroup.MAINHAND
         );
-        return builder.build();
+        builder.add(
+                Attributes.ATTACK_SPEED,
+                new AttributeModifier(BuiltInRegistries.ITEM.getKey(stack.getItem()), -2.4F, AttributeModifier.Operation.ADD_VALUE),
+                EquipmentSlotGroup.MAINHAND
+        );
+        stack.set(DataComponents.ATTRIBUTE_MODIFIERS, builder.build());
+    }
+
+    @Override
+    public @Nonnull ItemStack getDefaultInstance() {
+        ItemStack stack = super.getDefaultInstance();
+        applyDynamicMods(stack);
+        return stack;
+    }
+
+    @Override
+    public void onCraftedBy(ItemStack stack, Level worldIn, Player playerIn) {
+        applyDynamicMods(stack);
+        super.onCraftedBy(stack, worldIn, playerIn);
     }
 
 
 
+
     @Override
-    public boolean hurtEnemy(ItemStack stack, LivingEntity target, LivingEntity attacker){
-        if(attacker instanceof Player){
-            unlockDestroyACH((Player) attacker,attacker.getCommandSenderWorld());
-        }
-        stack.hurtAndBreak(SwordConfig.ALL_SWORDS_HIT_COST.get(), attacker, EquipmentSlot.MAINHAND);
+    public boolean hurtEnemy(@Nonnull ItemStack stack, @Nonnull LivingEntity target, @Nonnull LivingEntity attacker){
+        
+        damageAndTriggerIfBreak(stack, attacker, EquipmentSlot.MAINHAND, SwordConfig.ALL_SWORDS_HIT_COST.get());
         return true;
     }
 
@@ -99,30 +110,36 @@ public class CYAN_SWORD extends SWORD_CWSR {
     }
 
 
+
+
     @Override
-    public void inventoryTick(ItemStack stack, Level worldIn, Entity entityIn, int itemSlot, boolean isSelected) {
+public void inventoryTick(@Nonnull ItemStack stack, @Nonnull Level worldIn, @Nonnull Entity entityIn, int itemSlot, boolean isSelected) {
+
+        if(!worldIn.isClientSide){
+                applyDynamicMods(stack);
+        }
 
         if(isSelected && !worldIn.isClientSide){
-            if(entityIn instanceof Player) {
-                Player playerIn = (Player) entityIn;
-                //unlockACH(playerIn,worldIn);
-            }
-        }else{
-            if(entityIn instanceof Player) {
-                Player playerIn = (Player) entityIn;
-
-                ItemStack OffHandItem = playerIn.getOffhandItem();
-                if(OffHandItem.getItem() instanceof  CYAN_SWORD){
-                    unlockACH(playerIn,worldIn);
+                if(entityIn instanceof Player) {
+                        // no-op
                 }
-            }
+        }else{
+                if(entityIn instanceof Player) {
+                        Player playerIn = (Player) entityIn;
+
+                        ItemStack OffHandItem = playerIn.getOffhandItem();
+                        if(OffHandItem.getItem() instanceof  CYAN_SWORD){
+                                unlockACH(playerIn,worldIn);
+                        }
+                }
         }
-    }
+}
+    
 
 
 
     @Override
-    public void appendHoverText(ItemStack stack, Item.TooltipContext context, List<Component> tooltip, TooltipFlag flagIn) {
+    public void appendHoverText(@Nonnull ItemStack stack, @Nonnull Item.TooltipContext context, @Nonnull List<Component> tooltip, @Nonnull TooltipFlag flagIn) {
         tooltip.add(Component.translatable("tooltip.cwsr.cyan_sword"));
     }
 

@@ -1,8 +1,8 @@
 {
-  "parent": "cwsr:cyanwarriorswords/root",
+  "parent": "cwsr:cwsr/root",
   "display": {
     "icon": {
-      "item": "cwsr:transmutation_furnace",
+      "id": "cwsr:transmutation_furnace",
       "nbt": "{Damage:0}"
     },
     "title": {

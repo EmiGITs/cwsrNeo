@@ -11,7 +11,7 @@
       "conditions": {
         "items": [
           {
-            "item": "cwsr:ender_fire"
+            "id": "cwsr:ender_fire"
           }
         ]
       }

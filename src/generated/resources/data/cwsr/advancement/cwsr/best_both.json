@@ -1,8 +1,8 @@
 {
-  "parent": "cwsr:cyanwarriorswords/root",
+  "parent": "cwsr:cwsr/root",
   "display": {
     "icon": {
-      "item": "minecraft:mycelium"
+      "id": "minecraft:mycelium"
     },
     "title": {
       "translate": "advancements.cwsr.best_both.title"

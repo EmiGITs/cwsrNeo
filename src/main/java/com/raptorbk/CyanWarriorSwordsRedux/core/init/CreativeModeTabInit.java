@@ -9,9 +9,7 @@ import net.minecraft.world.item.ItemStack;
 import net.neoforged.neoforge.registries.DeferredHolder;
 import net.neoforged.neoforge.registries.DeferredRegister;
 
-import java.util.Arrays;
 import java.util.Collection;
-import java.util.Collections;
 import java.util.List;
 
 public class CreativeModeTabInit {
@@ -77,6 +75,7 @@ public class CreativeModeTabInit {
             sorted_list
                     .stream()
                     .map(DeferredHolder::get)
+                    .map(Item::getDefaultInstance)
                     .forEach(output::accept);
         });
 

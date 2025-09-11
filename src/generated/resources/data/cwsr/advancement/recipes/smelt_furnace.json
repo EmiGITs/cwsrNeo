@@ -11,7 +11,7 @@
       "conditions": {
         "items": [
           {
-            "item": "cwsr:transmutation_furnace"
+            "id": "cwsr:transmutation_furnace"
           }
         ]
       }

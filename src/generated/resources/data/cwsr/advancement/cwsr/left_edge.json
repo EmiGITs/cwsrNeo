@@ -1,8 +1,8 @@
 {
-  "parent": "cwsr:cyanwarriorswords/root",
+  "parent": "cwsr:cwsr/root",
   "display": {
     "icon": {
-      "item": "cwsr:sword_handle",
+      "id": "cwsr:sword_handle",
       "nbt": "{Damage:0}"
     },
     "title": {

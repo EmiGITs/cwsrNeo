@@ -7,6 +7,7 @@ import com.raptorbk.CyanWarriorSwordsRedux.core.init.SWORD_CWSR;
 import com.raptorbk.CyanWarriorSwordsRedux.core.init.SwordHabilities.SurroundEffect;
 import com.raptorbk.CyanWarriorSwordsRedux.core.init.TriggerInit;
 import net.minecraft.core.BlockPos;
+import net.minecraft.core.component.DataComponents;
 import net.minecraft.core.particles.ParticleTypes;
 import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.network.chat.Component;
@@ -21,9 +22,13 @@ import net.minecraft.world.InteractionResultHolder;
 import net.minecraft.world.effect.MobEffectInstance;
 import net.minecraft.world.effect.MobEffects;
 import net.minecraft.world.entity.EquipmentSlot;
+import net.minecraft.world.entity.EquipmentSlotGroup;
 import net.minecraft.world.entity.LivingEntity;
+import net.minecraft.world.entity.ai.attributes.AttributeModifier;
+import net.minecraft.world.entity.ai.attributes.Attributes;
 import net.minecraft.world.entity.decoration.ArmorStand;
-import net.minecraft.world.item.TooltipFlag;
+import net.minecraft.world.item.*;
+import net.minecraft.world.item.component.ItemAttributeModifiers;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.Blocks;
@@ -41,23 +46,16 @@ import net.minecraft.world.phys.AABB;
 import net.neoforged.neoforge.common.SimpleTier;
 import net.neoforged.neoforge.common.Tags;
 
+import javax.annotation.Nonnull;
 import javax.annotation.Nullable;
 import java.util.List;
 import java.util.Objects;
 
 public class ICE_SWORD extends SWORD_CWSR {
-    public static SimpleTier tierIn = new SimpleTier(
-            BlockTags.NEEDS_DIAMOND_TOOL,
-            SafeConfig.getInt(SwordConfig.ICE_SWORD_DUR, 1000),
-            0.0f,
-            4.0f,
-            10,
-            () -> Ingredient.of(Tags.Items.ORES_DIAMOND)
-    );
 
 
     public ICE_SWORD( float attackSpeedIn, Properties builder) {
-        super(tierIn, SafeConfig.getInt(SwordConfig.ICE_SWORD_DMG, 2), attackSpeedIn, builder);
+        super(Tiers.DIAMOND, SafeConfig.getInt(SwordConfig.ICE_SWORD_DMG, 2), attackSpeedIn, builder);
     }
 
     public static void callEffect(SurroundEffect seffect, Level world, Player entity, InteractionHand handIn, Block blk){
@@ -74,6 +72,33 @@ public class ICE_SWORD extends SWORD_CWSR {
     @Override
     public void appendHoverText(ItemStack stack, Item.TooltipContext context, List<Component> tooltip, TooltipFlag flagIn) {
         tooltip.add(Component.translatable("tooltip.cwsr.ice_sword"));
+    }
+
+    private static void applyDynamicMods(@Nonnull ItemStack stack) {
+        var builder = ItemAttributeModifiers.builder();
+        builder.add(
+                Attributes.ATTACK_DAMAGE,
+                new AttributeModifier(BuiltInRegistries.ITEM.getKey(stack.getItem()), SwordConfig.ICE_SWORD_DMG.get()+5.0, AttributeModifier.Operation.ADD_VALUE),
+                EquipmentSlotGroup.MAINHAND
+        );
+        builder.add(
+                Attributes.ATTACK_SPEED,
+                new AttributeModifier(BuiltInRegistries.ITEM.getKey(stack.getItem()), -2.4F, AttributeModifier.Operation.ADD_VALUE),
+                EquipmentSlotGroup.MAINHAND
+        );
+        stack.set(DataComponents.ATTRIBUTE_MODIFIERS, builder.build());
+    }
+
+    @Override
+    public @Nonnull ItemStack getDefaultInstance() {
+        ItemStack stack = super.getDefaultInstance();
+        applyDynamicMods(stack);
+        return stack;
+    }
+
+    @Override
+    public int getMaxDamage(@Nonnull ItemStack stack) {
+        return SwordConfig.ICE_SWORD_DUR.get();
     }
 
     @Override
@@ -153,7 +178,6 @@ public class ICE_SWORD extends SWORD_CWSR {
         ItemStack ActiveSynergyTotemStack = new ItemStack(ItemInit.ACTIVE_SYNERGY_TOTEM.get(),1);
 
         if(!lfAbilityTotem(entity) && ((entity.getMainHandItem() != entity.getItemInHand(handIn) && entity.getMainHandItem().getItem() instanceof SWORD_CWSR && lfActiveSinergyTotem(entity)) || entity.getMainHandItem() == entity.getItemInHand(handIn) || (entity.getOffhandItem()==entity.getItemInHand(handIn) && !(entity.getMainHandItem().getItem() instanceof SWORD_CWSR)))){
-            unlockDestroyACH(entity,world);
             currentSword.hurtAndBreak(SwordConfig.ICE_SWORD_USE_COST.get(), entity, EquipmentSlot.MAINHAND);
         }
 
@@ -163,10 +187,8 @@ public class ICE_SWORD extends SWORD_CWSR {
     @Override
     public boolean hurtEnemy(ItemStack stack, LivingEntity target, LivingEntity attacker){
         target.addEffect(new MobEffectInstance(MobEffects.DIG_SLOWDOWN,SwordConfig.ICE_SWORD_HIT_TK.get(),3));
-        if(attacker instanceof Player){
-            unlockDestroyACH((Player) attacker,attacker.getCommandSenderWorld());
-        }
-        stack.hurtAndBreak(SwordConfig.ALL_SWORDS_HIT_COST.get(), attacker, EquipmentSlot.MAINHAND);
+        
+        damageAndTriggerIfBreak(stack, attacker, EquipmentSlot.MAINHAND, SwordConfig.ALL_SWORDS_HIT_COST.get());
         return true;
     }
 
@@ -174,6 +196,7 @@ public class ICE_SWORD extends SWORD_CWSR {
     public void onCraftedBy(ItemStack stack, Level world, Player entity) {
 
         //Ojo con esto, esquiva cualquier tipo de bloqueo
+        applyDynamicMods(stack);
         unlockSEACH(entity,world);
         BlockPos pos = new BlockPos((int) Math.round(entity.getX()), (int) Math.round(entity.getY())+3, (int) Math.round(entity.getZ()));
         world.setBlock(pos, Blocks.ICE.defaultBlockState(),1);

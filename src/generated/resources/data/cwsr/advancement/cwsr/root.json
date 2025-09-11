@@ -1,7 +1,7 @@
 {
   "display": {
     "icon": {
-      "item": "cwsr:sword_handle"
+      "id": "cwsr:sword_handle"
     },
     "title": {
       "translate": "Cyan Warrior Swords"
