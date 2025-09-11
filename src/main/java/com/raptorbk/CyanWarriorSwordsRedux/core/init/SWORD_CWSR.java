@@ -4,8 +4,13 @@ package com.raptorbk.CyanWarriorSwordsRedux.core.init;
 import com.raptorbk.CyanWarriorSwordsRedux.core.init.Totems.ABILITY_TOTEM;
 import com.raptorbk.CyanWarriorSwordsRedux.core.init.Totems.ACTIVE_SYNERGY_TOTEM;
 import com.raptorbk.CyanWarriorSwordsRedux.core.init.Totems.SYNERGY_TOTEM;
+import com.raptorbk.CyanWarriorSwordsRedux.CyanWarriorSwordsRedux;
 import net.minecraft.core.registries.BuiltInRegistries;
+import net.minecraft.core.Holder;
+import net.minecraft.core.HolderLookup;
+import net.minecraft.core.registries.Registries;
 import net.minecraft.resources.ResourceLocation;
+import net.minecraft.resources.ResourceKey;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.world.InteractionHand;
@@ -26,11 +31,14 @@ import net.minecraft.world.item.component.CustomData;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.world.item.SwordItem;
 
+import net.minecraft.world.item.enchantment.Enchantment;
+import net.minecraft.world.item.enchantment.ItemEnchantments;
 import net.minecraft.world.level.Level;
 
 
 import java.util.List;
 import javax.annotation.Nonnull;
+import java.util.Map;
 import java.util.Objects;
 
 public class SWORD_CWSR extends SwordItem {
@@ -158,7 +166,7 @@ public class SWORD_CWSR extends SwordItem {
         boolean isINH=false;
         for (ItemStack temp : listItems) {
             if(temp.getItem() instanceof ABILITY_TOTEM){
-                if(checkINH(temp)){
+                if(checkINH(temp, entity)){
                     isINH=true;
                 }
                 break;
@@ -183,11 +191,15 @@ public class SWORD_CWSR extends SwordItem {
 
 
 
-    public boolean checkINH(ItemStack totemItem){
-        CustomData data = totemItem.get(DataComponents.CUSTOM_DATA);
-        if (data == null) return false;
-        CompoundTag tag = data.copyTag();
-        return tag.getBoolean("cwsr_inh");
+    public boolean checkINH(ItemStack totemItem, Player entity){
+        HolderLookup.RegistryLookup<Enchantment> enchLookup = entity.level().registryAccess().lookupOrThrow(Registries.ENCHANTMENT);
+        ResourceKey<Enchantment> inhKey = ResourceKey.create(Registries.ENCHANTMENT, CyanWarriorSwordsRedux.rl("inh_enchant"));
+        Holder<Enchantment> inh = enchLookup.get(inhKey).orElse(null);
+        if(inh == null){
+            return false;
+        }
+        ItemEnchantments current = totemItem.getOrDefault(DataComponents.ENCHANTMENTS, ItemEnchantments.EMPTY);
+        return current.getLevel(inh) > 0;
     }
 
     public void setCD(){ }
@@ -249,8 +261,8 @@ public class SWORD_CWSR extends SwordItem {
             }
             if(temp.getItem() instanceof ABILITY_TOTEM || temp.getItem() instanceof SYNERGY_TOTEM || temp.getItem() instanceof ACTIVE_SYNERGY_TOTEM){
                 totemHits=totemHits+1;
-                if(checkINH(temp)){
-                    if(isINH==false){
+                if(checkINH(temp, entity)){
+                    if(!isINH){
                         isINH=true;
                     }
                 }

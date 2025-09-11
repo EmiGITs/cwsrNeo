@@ -5,6 +5,9 @@ import net.minecraft.core.registries.Registries;
 import net.minecraft.world.item.enchantment.Enchantment;
 import net.neoforged.neoforge.registries.DeferredRegister;
 
+
 public class EnchantmentInit {
     public static final DeferredRegister<Enchantment> ENCHANTMENTS = DeferredRegister.create(Registries.ENCHANTMENT, CyanWarriorSwordsRedux.MOD_ID);
+    // Enchantments are data-driven in 1.21+. Define them via JSON under data/<modid>/enchantment/...
+
 }

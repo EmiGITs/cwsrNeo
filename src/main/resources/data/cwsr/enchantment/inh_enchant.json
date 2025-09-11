@@ -1,0 +1,66 @@
+{
+    // The text component that will be used as the in-game name of the enchantment.
+    // Can be a translation key or a literal string. 
+    // Remember to translate this in your lang file if you use a translation key!
+    "description": {
+        "translate": "enchantment.cwsr.inh_enchantment"
+    },
+    
+    // Which items this enchantment can be applied to.
+    // Can be either an item id, such as "minecraft:trident",
+    // or a list of item ids, such as ["examplemod:red_sword", "examplemod:blue_sword"]
+    // or an item tag, such as "#examplemod:enchantable/enchant_name".
+    // Note that this doesn't cause the enchantment to appear for these items in the enchanting table.
+    "supported_items": "cwsr:ability_totem",
+    
+    // The likelihood that this enchantment will appear in the Enchanting Table. 
+    // Bounded by [1, 1024].
+    "weight": 1,
+    
+    // The maximum level this enchantment is allowed to reach.
+    // Bounded by [1, 255].
+    "max_level": 1,
+    
+    // The maximum cost of this enchantment, measured in "enchanting power". 
+    // This corresponds to, but is not equivalent to, the threshold in levels the player needs to meet to bestow this enchantment.
+    // See below for details.
+    // The actual cost will be between this and the min_cost.
+    "max_cost": {
+        "base": 45,
+        "per_level_above_first": 9
+    },
+    
+    // Specifies the minimum cost of this enchantment; otherwise as above.
+    "min_cost": {
+        "base": 2,
+        "per_level_above_first": 8
+    },
+
+    // The cost that this enchantment adds to repairing an item in an anvil in levels. The cost is multiplied by enchantment level.
+    // If an item has a DataComponentTypes.STORED_ENCHANTMENTS component, the cost is halved. In vanilla, this only applies to enchanted books.
+    // Bounded by [1, inf).
+    "anvil_cost": 2,
+    
+    // (Optional) A list of slot groups this enchantment provides effects in. 
+    // A slot group is defined as one of the possible values of the EquipmentSlotGroup enum.
+    // In vanilla, these are: `any`, `hand`, `mainhand`, `offhand`, `armor`, `feet`, `legs`, `chest`, `head`, and  `body`.
+    "slots": [
+        "mainhand"
+    ],
+
+    // The effects that this enchantment provides as a map of enchantment effect components (read on).
+    "effects": {
+        "minecraft:damage": [
+            {
+                "effect": {
+                    "type": "minecraft:add",
+                    "value": {
+                        "type": "minecraft:linear",
+                        "base": 0,
+                        "per_level_above_first": 0
+                    }
+                }
+            }
+        ]
+    }
+}
